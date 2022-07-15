@@ -1,5 +1,5 @@
 const Role = require('../models/role');
-const { Usuario, Categoria, Producto, Subscripcion, Escuela } = require('../models');
+const { Usuario, Categoria } = require('../models');
 
 const esRoleValido = async (rol = '') => {
 
@@ -18,30 +18,21 @@ const emailExiste = async (correo = '') => {
     }
 }
 
-const existeSubscripcion = async (nombre = '') => {
+const categoriaExiste = async (titulo = '') => {
 
-    const existeSubscripcion = await Subscripcion.findOne({ nombre });
+    const existeCategoria = await Categoria.findOne({ titulo });
 
-    if (existeSubscripcion) {
-        throw new Error(`La subscripción ${nombre} ya existe.`);
+    if (existeCategoria) {
+        throw new Error(`Error: La categoría ${titulo}, ya se encuentra registrada.`);
     }
 }
 
-const existeEscuela = async (nombre = '') => {
+const categoriaEsValida = async (_id = '') => {
 
-    const existeEscuela = await Escuela.findOne({ nombre });
+    const existeCategoria = await Categoria.findOne({ _id });
 
-    if (existeEscuela) {
-        throw new Error(`La escuela ${nombre} ya existe.`);
-    }
-}
-
-const existeSubscripcionPorId = async (id = '') => {
-
-    const existeSubscripcion = await Subscripcion.findById(id);
-
-    if (!existeSubscripcion) {
-        throw new Error(`La subscripción id ${id} no existe.`);
+    if (!existeCategoria) {
+        throw new Error(`Error: La categoría ${titulo} no existe.`);
     }
 }
 
@@ -51,18 +42,6 @@ const existeUsuarioPorId = async (id) => {
     // Verificar si el correo existe
     const existeUsuario = await Usuario.findById(id);
     if (!existeUsuario) {
-        throw new Error(`El id no existe ${id}`);
-    }
-}
-
-/**
- * Categorias
- */
-const existeCategoriaPorId = async (id) => {
-
-    // Verificar si el correo existe
-    const existeCategoria = await Categoria.findById(id);
-    if (!existeCategoria) {
         throw new Error(`El id no existe ${id}`);
     }
 }
@@ -86,10 +65,8 @@ module.exports = {
     esRoleValido,
     emailExiste,
     existeUsuarioPorId,
-    existeCategoriaPorId,
     coleccionesPermitidas,
-    existeSubscripcion,
-    existeSubscripcionPorId,
-    existeEscuela
+    categoriaExiste,
+    categoriaEsValida
 }
 

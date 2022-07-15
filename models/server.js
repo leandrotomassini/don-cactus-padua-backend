@@ -13,10 +13,8 @@ class Server {
         this.paths = {
             auth: '/api/auth',
             usuarios: '/api/usuarios',
-            subscripciones: '/api/subscripciones',
-            subscriptores: '/api/subscriptores',
-            escuelas: '/api/escuelas',
-            posts: '/api/posts',
+            categorias: '/api/categorias',
+            productos: '/api/productos'
         }
 
 
@@ -38,7 +36,7 @@ class Server {
     middlewares() {
 
         // CORS
-        this.app.use(cors());
+        this.app.use(cors({ origin: true, credentials: true }));
 
         // Lectura y parseo del body
         this.app.use(express.json());
@@ -58,17 +56,8 @@ class Server {
     routes() {
         this.app.use(this.paths.auth, require('../routes/auth'));
         this.app.use(this.paths.usuarios, require('../routes/usuarios'));
-        this.app.use(this.paths.subscripciones, require('../routes/subscripciones'));
-        this.app.use(this.paths.subscriptores, require('../routes/subscriptores'));
-        this.app.use(this.paths.escuelas, require('../routes/escuelas'));
-        this.app.use(this.paths.posts, require('../routes/posts'));
-
-        // this.app.use(this.paths.cursos, require('../routes/cursos'));
-        // this.app.use(this.paths.categoriascontenidos, require('../routes/categoriascontenidos'));
-        // this.app.use(this.paths.dificultades, require('../routes/dificultades'));
-        // this.app.use(this.paths.videos, require('../routes/videos'));
-        // this.app.use(this.paths.contenidos, require('../routes/contenidos'));
-
+        this.app.use(this.paths.categorias, require('../routes/categorias'));
+        this.app.use(this.paths.productos, require('../routes/productos'));
     }
 
     listen() {
