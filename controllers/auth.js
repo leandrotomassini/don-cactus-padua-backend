@@ -1,10 +1,10 @@
 const { response } = require('express');
 const bcryptjs = require('bcryptjs')
 
-const { googleVerify } = require('../helpers/google-verify');
 const Usuario = require('../models/usuario');
 
 const { generarJWT } = require('../helpers/generar-jwt');
+const { googleVerify } = require('../helpers/google-verify');
 
 
 const login = async (req, res = response) => {
@@ -28,8 +28,6 @@ const login = async (req, res = response) => {
             });
         }
 
-        // TODO: Verificar si es alumno y si la subscripción se encuentra activa
-
         // Verificar la contraseña
         const validPassword = bcryptjs.compareSync(password, usuario.password);
         if (!validPassword) {
@@ -42,7 +40,6 @@ const login = async (req, res = response) => {
         const token = await generarJWT(usuario.id);
 
         res.json({
-            ok: true,
             usuario,
             token
         })
@@ -56,23 +53,23 @@ const login = async (req, res = response) => {
 
 }
 
-const googleSignIn = async (req, res = response) => {
+
+const googleSignin = async (req, res = response) => {
 
     const { id_token } = req.body;
 
     try {
-
         const { correo, nombre, img } = await googleVerify(id_token);
 
         let usuario = await Usuario.findOne({ correo });
 
         if (!usuario) {
+            // Tengo que crearlo
             const data = {
                 nombre,
                 correo,
-                password: '-',
+                password: ':P',
                 img,
-                rol: 'USER_ROLE',
                 google: true
             };
 
@@ -80,9 +77,10 @@ const googleSignIn = async (req, res = response) => {
             await usuario.save();
         }
 
+        // Si el usuario en DB
         if (!usuario.estado) {
             return res.status(401).json({
-                msg: 'Hable con el administrador, usuario bloqueado.'
+                msg: 'Hable con el administrador, usuario bloqueado'
             });
         }
 
@@ -95,14 +93,16 @@ const googleSignIn = async (req, res = response) => {
         });
 
     } catch (error) {
-        return res.status(400).json({
-            ok: false,
-            msg: 'El token no se pudo verificar.'
-        });
+
+        res.status(400).json({
+            msg: 'Token de Google no es válido'
+        })
+
     }
+
 }
 
-const renovarToken = async(req, res = response) => {
+const renovarToken = async (req, res = response) => {
 
     const { usuario } = req;
 
@@ -110,14 +110,15 @@ const renovarToken = async(req, res = response) => {
     const token = await generarJWT(usuario.id);
 
     res.json({
-        ok: true,
         usuario,
         token
     });
 }
 
+
+
 module.exports = {
     login,
-    googleSignIn,
+    googleSignin,
     renovarToken
 }

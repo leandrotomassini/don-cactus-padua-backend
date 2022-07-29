@@ -5,6 +5,7 @@ const { check } = require('express-validator');
 const {
     validarCampos,
     validarJWT,
+    esAdminRole,
     tieneRole
 } = require('../middlewares');
 
@@ -15,37 +16,14 @@ const { usuariosGet,
         usuariosPut,
         usuariosPost,
         usuariosDelete,
-        usuariosPatch, 
-        obtenerUsuario,
-        rolesGet} = require('../controllers/usuarios');
+        usuariosPatch } = require('../controllers/usuarios');
 
 const router = Router();
 
 
-router.get('/',[
-    validarJWT,
-    // esAdminRole,
-    tieneRole('ADMINISTRADOR'),
-    validarCampos
-],usuariosGet );
-
-router.get('/roles',[
-    validarJWT,
-    // esAdminRole,
-    tieneRole('ADMINISTRADOR'),
-    validarCampos
-], rolesGet);
-
-router.get('/:id',[
-    validarJWT,
-    tieneRole('ADMINISTRADOR'),
-    check('id', 'No es un ID válido').isMongoId(),
-    validarCampos
-], obtenerUsuario );
+router.get('/', usuariosGet );
 
 router.put('/:id',[
-    validarJWT,
-    tieneRole('ADMINISTRADOR'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ),
     check('rol').custom( esRoleValido ), 
@@ -53,9 +31,6 @@ router.put('/:id',[
 ],usuariosPut );
 
 router.post('/',[
-    validarJWT,
-    // esAdminRole,
-    tieneRole('ADMINISTRADOR'),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('password', 'El password debe de ser más de 6 letras').isLength({ min: 6 }),
     check('correo', 'El correo no es válido').isEmail(),
@@ -68,7 +43,7 @@ router.post('/',[
 router.delete('/:id',[
     validarJWT,
     // esAdminRole,
-    tieneRole('ADMINISTRADOR'),
+    tieneRole('ADMIN_ROLE', 'VENTAR_ROLE','OTRO_ROLE'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ),
     validarCampos
