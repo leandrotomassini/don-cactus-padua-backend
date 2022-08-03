@@ -17,6 +17,7 @@ const login = async (req, res = response) => {
         const usuario = await Usuario.findOne({ correo });
         if (!usuario) {
             return res.status(400).json({
+                ok: false,
                 msg: 'Usuario / Password no son correctos - correo'
             });
         }
@@ -24,6 +25,7 @@ const login = async (req, res = response) => {
         // SI el usuario está activo
         if (!usuario.estado) {
             return res.status(400).json({
+                ok: false,
                 msg: 'Usuario / Password no son correctos - estado: false'
             });
         }
@@ -32,6 +34,7 @@ const login = async (req, res = response) => {
         const validPassword = bcryptjs.compareSync(password, usuario.password);
         if (!validPassword) {
             return res.status(400).json({
+                ok: false,
                 msg: 'Usuario / Password no son correctos - password'
             });
         }
@@ -40,6 +43,7 @@ const login = async (req, res = response) => {
         const token = await generarJWT(usuario.id);
 
         res.json({
+            ok: true,
             usuario,
             token
         })
@@ -47,6 +51,7 @@ const login = async (req, res = response) => {
     } catch (error) {
         console.log(error)
         res.status(500).json({
+            ok: false,
             msg: 'Hable con el administrador'
         });
     }
@@ -80,6 +85,7 @@ const googleSignin = async (req, res = response) => {
         // Si el usuario en DB
         if (!usuario.estado) {
             return res.status(401).json({
+                ok: false,
                 msg: 'Hable con el administrador, usuario bloqueado'
             });
         }
@@ -88,6 +94,7 @@ const googleSignin = async (req, res = response) => {
         const token = await generarJWT(usuario.id);
 
         res.json({
+            ok: true,
             usuario,
             token
         });
@@ -95,6 +102,7 @@ const googleSignin = async (req, res = response) => {
     } catch (error) {
 
         res.status(400).json({
+            ok: false,
             msg: 'Token de Google no es válido'
         })
 
@@ -110,6 +118,7 @@ const renovarToken = async (req, res = response) => {
     const token = await generarJWT(usuario.id);
 
     res.json({
+        ok: true,
         usuario,
         token
     });
