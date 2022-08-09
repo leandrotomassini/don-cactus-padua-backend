@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon dist/",
+    "build": "tsc -w",
     "start": "node dist/"
   },
   "author": "",
