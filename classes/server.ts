@@ -27,6 +27,9 @@ export default class Server {
 
         this.app = express();
         this.port = SERVER_PORT;
+        
+        // Directorio Público
+        this.app.use( express.static('public') );
 
         this.conectarDB();
 
