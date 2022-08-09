@@ -35,6 +35,16 @@ export const obtenerEtiqueta = async (req: Request, res: Response) => {
     res.json(etiqueta);
 }
 
+export const obtenerEtiquetaPorNombre = async (req: Request, res: Response) => {
+
+    const { nombre } = req.params;
+
+    const etiqueta = await Etiqueta.find({ 'nombre': nombre.toUpperCase() })
+        .populate('usuario', 'nombre');
+
+    res.json(etiqueta);
+}
+
 export const crearEtiqueta = async (req: Request, res: Response) => {
 
     const server = Server.instance;

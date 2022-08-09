@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 
-import { actualizarEtiqueta, borrarEtiqueta, crearEtiqueta, obtenerEtiqueta, obtenerEtiquetas } from "../controller/etiquetas";
+import { actualizarEtiqueta, borrarEtiqueta, crearEtiqueta, obtenerEtiqueta, obtenerEtiquetaPorNombre, obtenerEtiquetas } from "../controller/etiquetas";
 
 import {  existeEtiquetaPorId } from "../helpers/db-validators";
 import { validarCampos } from "../middlewares/validar-campos";
@@ -15,6 +15,8 @@ const etiquetas = Router();
  */
 
 etiquetas.get('/', obtenerEtiquetas);
+
+etiquetas.get('/:nombre', obtenerEtiquetaPorNombre);
 
 etiquetas.get('/:id', [
     check('id', 'No es un id de Mongo válido').isMongoId(),
