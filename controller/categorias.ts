@@ -16,6 +16,7 @@ export const obtenerCategorias = async (req: Request, res: Response) => {
     ]);
 
     res.json({
+        ok: true,   
         total,
         categorias: etiquetas
     });

@@ -33,6 +33,7 @@ const obtenerCategorias = (req, res) => __awaiter(void 0, void 0, void 0, functi
             .limit(Number(limite))
     ]);
     res.json({
+        ok: true,
         total,
         categorias: etiquetas
     });
