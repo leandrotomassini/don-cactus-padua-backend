@@ -67,7 +67,10 @@ const crearProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     yield producto.save();
     server.io.emit('productos', yield producto_1.Producto.find({ estado: true }).populate('usuario', 'nombre')
         .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
-    res.status(201).json(producto);
+    res.status(201).json({
+        ok: true,
+        producto
+    });
 });
 exports.crearProducto = crearProducto;
 const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

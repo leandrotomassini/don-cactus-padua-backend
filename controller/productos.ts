@@ -66,7 +66,10 @@ export const crearProducto = async (req: Request, res: Response) => {
     .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
 
 
-    res.status(201).json(producto);
+    res.status(201).json({
+        ok: true,
+        producto
+    });
 
 }
 
