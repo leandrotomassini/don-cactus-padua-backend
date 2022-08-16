@@ -17,6 +17,16 @@ export const productos = (cliente: Socket, io: socketIO.Server) => {
             .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
     });
 
+    cliente.on('get-productos-borrados', async () => {
+        io.emit('productos-borrados', await Producto.find({ estado: false }).populate('usuario', 'nombre')
+            .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
+    });
+
+    cliente.on('get-productos-sin-stock', async () => {
+        io.emit('productos-sin-stock', await Producto.find({ stock: '0' }).populate('usuario', 'nombre')
+            .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
+    });
+
 }
 
 

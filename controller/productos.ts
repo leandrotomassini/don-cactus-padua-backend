@@ -49,21 +49,21 @@ export const crearProducto = async (req: Request, res: Response) => {
         });
     }
 
-    
+
     // Generar la data a guardar
     const data = {
         ...body,
         nombre: body.nombre.toUpperCase(),
         usuario: req.usuario._id
     }
-    
+
     const producto = new Producto(data);
 
     // Guardar DB
     await producto.save();
-    
+
     server.io.emit('productos', await Producto.find({ estado: true }).populate('usuario', 'nombre')
-    .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
+        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
 
 
     res.status(201).json({
@@ -92,8 +92,14 @@ export const actualizarProducto = async (req: Request, res: Response) => {
 
 export const borrarProducto = async (req: Request, res: Response) => {
 
+    const server = Server.instance;
+
     const { id } = req.params;
+
     const productoBorrado = await Producto.findByIdAndUpdate(id, { estado: false }, { new: true });
+
+    server.io.emit('productos', await Producto.find({ estado: true }).populate('usuario', 'nombre')
+        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
 
     res.json(productoBorrado);
 }

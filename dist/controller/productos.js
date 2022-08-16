@@ -85,8 +85,11 @@ const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, funct
 });
 exports.actualizarProducto = actualizarProducto;
 const borrarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const server = server_1.default.instance;
     const { id } = req.params;
     const productoBorrado = yield producto_1.Producto.findByIdAndUpdate(id, { estado: false }, { new: true });
+    server.io.emit('productos', yield producto_1.Producto.find({ estado: true }).populate('usuario', 'nombre')
+        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
     res.json(productoBorrado);
 });
 exports.borrarProducto = borrarProducto;
