@@ -75,6 +75,8 @@ export const crearProducto = async (req: Request, res: Response) => {
 
 export const actualizarProducto = async (req: Request, res: Response) => {
 
+    const server = Server.instance;
+
     const { id } = req.params;
     const { estado, usuario, ...data } = req.body;
 
@@ -85,6 +87,9 @@ export const actualizarProducto = async (req: Request, res: Response) => {
     data.usuario = req.usuario._id;
 
     const producto = await Producto.findByIdAndUpdate(id, data, { new: true });
+
+    server.io.emit('productos', await Producto.find({ estado: true }).populate('usuario', 'nombre')
+        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
 
     res.json(producto);
 

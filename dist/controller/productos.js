@@ -74,6 +74,7 @@ const crearProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.crearProducto = crearProducto;
 const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const server = server_1.default.instance;
     const { id } = req.params;
     const _b = req.body, { estado, usuario } = _b, data = __rest(_b, ["estado", "usuario"]);
     if (data.nombre) {
@@ -81,6 +82,8 @@ const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
     data.usuario = req.usuario._id;
     const producto = yield producto_1.Producto.findByIdAndUpdate(id, data, { new: true });
+    server.io.emit('productos', yield producto_1.Producto.find({ estado: true }).populate('usuario', 'nombre')
+        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
     res.json(producto);
 });
 exports.actualizarProducto = actualizarProducto;

@@ -73,7 +73,7 @@ const ProductoSchema = new mongoose_1.default.Schema({
     img: [{ type: String }],
 });
 ProductoSchema.methods.toJSON = function () {
-    const _a = this.toObject(), { __v, estado } = _a, data = __rest(_a, ["__v", "estado"]);
+    const _a = this.toObject(), { __v } = _a, data = __rest(_a, ["__v"]);
     return data;
 };
 const Producto = mongoose_1.default.model('Producto', ProductoSchema);
