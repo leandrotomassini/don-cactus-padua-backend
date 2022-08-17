@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 
 import { Categoria } from "../classes/categoria";
 
+import Server from '../classes/server';
+
 export const obtenerCategorias = async (req: Request, res: Response) => {
 
     const { limite = 5, desde = 0 } = req.query;
@@ -11,12 +13,10 @@ export const obtenerCategorias = async (req: Request, res: Response) => {
         Categoria.countDocuments(query),
         Categoria.find(query)
             .populate('usuario', 'nombre')
-            .skip(Number(desde))
-            .limit(Number(limite))
     ]);
 
     res.json({
-        ok: true,   
+        ok: true,
         total,
         categorias: etiquetas
     });
@@ -34,9 +34,12 @@ export const obtenerCategoria = async (req: Request, res: Response) => {
 
 export const crearCategoria = async (req: Request, res: Response) => {
 
+    const server = Server.instance;
+
     try {
 
         const nombre = req.body.nombre.toUpperCase();
+        const img = req.body.img;
 
         const categoriaDB = await Categoria.findOne({ nombre });
 
@@ -50,6 +53,7 @@ export const crearCategoria = async (req: Request, res: Response) => {
         // Generar la data a guardar
         const data = {
             nombre,
+            img,
             usuario: req.usuario._id
         }
 
@@ -57,6 +61,8 @@ export const crearCategoria = async (req: Request, res: Response) => {
 
         // Guardar DB
         await categoria.save();
+
+        server.io.emit('categorias', await Categoria.find({ estado: true }).populate('usuario', 'nombre'));
 
         res.status(201).json(categoria);
     } catch (error) {
@@ -71,6 +77,8 @@ export const crearCategoria = async (req: Request, res: Response) => {
 
 export const actualizarCategoria = async (req: Request, res: Response) => {
 
+    const server = Server.instance;
+
     const { id } = req.params;
     const { estado, usuario, ...data } = req.body;
 
@@ -78,6 +86,7 @@ export const actualizarCategoria = async (req: Request, res: Response) => {
     data.usuario = req.usuario._id;
 
     const categoria = await Categoria.findByIdAndUpdate(id, data, { new: true });
+    server.io.emit('categorias', await Categoria.find({ estado: true }).populate('usuario', 'nombre'));
 
     res.json(categoria);
 
@@ -85,10 +94,16 @@ export const actualizarCategoria = async (req: Request, res: Response) => {
 
 export const borrarCategoria = async (req: Request, res: Response) => {
 
+    const server = Server.instance;
+
     const { id } = req.params;
     const categoriaBorrada = await Categoria.findByIdAndUpdate(id, { estado: false }, { new: true });
+    server.io.emit('categorias', await Categoria.find({ estado: true }).populate('usuario', 'nombre'));
 
-    res.json(categoriaBorrada);
+    res.json({
+        ok: true,
+        categoriaBorrada
+    });
 }
 
 

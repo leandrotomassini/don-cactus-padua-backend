@@ -98,8 +98,15 @@ export const actualizarEtiqueta = async (req: Request, res: Response) => {
 
 export const borrarEtiqueta = async (req: Request, res: Response) => {
 
-    const { id } = req.params;
-    const etiquetaBorrada = await Etiqueta.findByIdAndUpdate(id, { estado: false }, { new: true });
+    const server = Server.instance;
 
-    res.json(etiquetaBorrada);
+    const { id } = req.params;
+   
+    const etiquetaBorrada = await Etiqueta.findByIdAndUpdate(id, { estado: false }, { new: true });
+    server.io.emit('etiquetas', await Etiqueta.find({ estado: true }));
+
+    res.json({
+        ok: true,
+        etiquetaBorrada
+    });
 }

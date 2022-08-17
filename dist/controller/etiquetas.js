@@ -86,8 +86,13 @@ const actualizarEtiqueta = (req, res) => __awaiter(void 0, void 0, void 0, funct
 });
 exports.actualizarEtiqueta = actualizarEtiqueta;
 const borrarEtiqueta = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const server = server_1.default.instance;
     const { id } = req.params;
     const etiquetaBorrada = yield etiqueta_1.Etiqueta.findByIdAndUpdate(id, { estado: false }, { new: true });
-    res.json(etiquetaBorrada);
+    server.io.emit('etiquetas', yield etiqueta_1.Etiqueta.find({ estado: true }));
+    res.json({
+        ok: true,
+        etiquetaBorrada
+    });
 });
 exports.borrarEtiqueta = borrarEtiqueta;

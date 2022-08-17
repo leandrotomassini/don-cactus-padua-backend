@@ -11,6 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productos = exports.desconectar = void 0;
 const producto_1 = require("../classes/producto");
+const categoria_1 = require("../classes/categoria");
+const etiqueta_1 = require("../classes/etiqueta");
 const desconectar = (cliente, io) => {
     cliente.on('disconnect', () => {
         console.log('Cliente desconectado: ', cliente.id);
@@ -29,6 +31,18 @@ const productos = (cliente, io) => {
     cliente.on('get-productos-sin-stock', () => __awaiter(void 0, void 0, void 0, function* () {
         io.emit('productos-sin-stock', yield producto_1.Producto.find({ stock: '0' }).populate('usuario', 'nombre')
             .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
+    }));
+    cliente.on('get-categorias', () => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('categorias', yield categoria_1.Categoria.find({ estado: 'true' }).populate('usuario', 'nombre'));
+    }));
+    cliente.on('get-categorias-borradas', () => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('categorias', yield categoria_1.Categoria.find({ estado: 'false' }).populate('usuario', 'nombre'));
+    }));
+    cliente.on('get-etiquetas', () => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('etiquetas', yield etiqueta_1.Etiqueta.find({ estado: 'true' }).populate('usuario', 'nombre'));
+    }));
+    cliente.on('get-etiquetas-borradas', () => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('etiquetas', yield etiqueta_1.Etiqueta.find({ estado: 'false' }).populate('usuario', 'nombre'));
     }));
 };
 exports.productos = productos;

@@ -24,7 +24,7 @@ const EtiquetaSchema = new mongoose.Schema({
 
 
 EtiquetaSchema.methods.toJSON = function () {
-    const { __v, estado, ...data } = this.toObject();
+    const { __v, ...data } = this.toObject();
     return data;
 }
 

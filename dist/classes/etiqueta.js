@@ -58,7 +58,7 @@ const EtiquetaSchema = new mongoose_1.default.Schema({
     },
 });
 EtiquetaSchema.methods.toJSON = function () {
-    const _a = this.toObject(), { __v, estado } = _a, data = __rest(_a, ["__v", "estado"]);
+    const _a = this.toObject(), { __v } = _a, data = __rest(_a, ["__v"]);
     return data;
 };
 const Etiqueta = mongoose_1.default.model('Etiqueta', EtiquetaSchema);
