@@ -21,3 +21,6 @@ auth.post('/google',[
 auth.get('/', validarJWT, renovarToken);
 
 export default auth;
+ 
+
+let i = 0;
