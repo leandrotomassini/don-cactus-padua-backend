@@ -125,7 +125,7 @@ CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhcnJpdG8ucGFnZS5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXFdpbmRvd3MlMjAxMFxcRGVza3RvcFxcZG9uLWNhY3R1cy1wYWR1YVxcc3JjXFxhcHBcXHBhZ2VzXFxjYXJyaXRvXFxjYXJyaXRvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoiY2Fycml0by5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XG4gICAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xuICB9IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XG59Il19 */";
+module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhcnJpdG8ucGFnZS5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXFdpbmRvd3MlMjAxMFxcRGVza3RvcFxcZG9uLWNhY3R1cy1wYWR1YVxcc3JjXFxhcHBcXHBhZ2VzXFxjYXJyaXRvXFxjYXJyaXRvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoiY2Fycml0by5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XHJcbiAgICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XHJcbiAgfSIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xufSJdfQ== */";
 
 /***/ }),
 
@@ -135,7 +135,7 @@ module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingU
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<app-menu-principal></app-menu-principal>\n<ion-content>\n\n</ion-content>\n";
+module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content>\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 

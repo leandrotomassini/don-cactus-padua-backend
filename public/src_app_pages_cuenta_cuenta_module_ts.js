@@ -135,7 +135,7 @@ CuentaPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
   \**********************************************************/
 /***/ ((module) => {
 
-module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImN1ZW50YS5wYWdlLnNjc3MiLCIuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcV2luZG93cyUyMDEwXFxEZXNrdG9wXFxkb24tY2FjdHVzLXBhZHVhXFxzcmNcXGFwcFxccGFnZXNcXGN1ZW50YVxcY3VlbnRhLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoiY3VlbnRhLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcbiAgICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XG4gIH0iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcbn0iXX0= */";
+module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImN1ZW50YS5wYWdlLnNjc3MiLCIuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcV2luZG93cyUyMDEwXFxEZXNrdG9wXFxkb24tY2FjdHVzLXBhZHVhXFxzcmNcXGFwcFxccGFnZXNcXGN1ZW50YVxcY3VlbnRhLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoiY3VlbnRhLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcclxuICAgIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcclxuICB9IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XG59Il19 */";
 
 /***/ }),
 
@@ -145,7 +145,7 @@ module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingU
   \**********************************************************/
 /***/ ((module) => {
 
-module.exports = "<app-menu-principal></app-menu-principal>\n\n<ion-content>\n<h1>Mi cuenta</h1>\n\n<ion-item>\n    <ion-title>{{ usuario.nombre }}</ion-title>\n    <ion-card-subtitle>{{ usuario.correo }}</ion-card-subtitle>\n    <ion-card-content>\n        <ion-label (click)=\"salir()\">Salir</ion-label>\n    </ion-card-content>\n</ion-item>\n</ion-content>\n";
+module.exports = "<app-menu-principal></app-menu-principal>\r\n\r\n<ion-content>\r\n<h1>Mi cuenta</h1>\r\n\r\n<ion-item>\r\n    <ion-title>{{ usuario.nombre }}</ion-title>\r\n    <ion-card-subtitle>{{ usuario.correo }}</ion-card-subtitle>\r\n    <ion-card-content>\r\n        <ion-label (click)=\"salir()\">Salir</ion-label>\r\n    </ion-card-content>\r\n</ion-item>\r\n</ion-content>\r\n";
 
 /***/ })
 

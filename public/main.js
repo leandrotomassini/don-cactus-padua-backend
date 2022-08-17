@@ -136,7 +136,7 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__.BrowserModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.IonicModule.forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClientModule
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClientModule,
         ],
         providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.IonicRouteStrategy }],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
@@ -520,7 +520,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n";
+module.exports = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n";
 
 /***/ })
 

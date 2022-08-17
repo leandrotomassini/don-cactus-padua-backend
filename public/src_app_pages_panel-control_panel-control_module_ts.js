@@ -135,7 +135,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Panel de control</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col size=\"12\" size-md=\"12\" size-lg=\"8\">\n        <app-tabla-productos></app-tabla-productos>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n    \n</ion-content>\n";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Panel de control</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid fixed>\r\n    <ion-row>\r\n      <ion-col size=\"12\" size-md=\"12\" size-lg=\"8\">\r\n        <app-tabla-productos></app-tabla-productos>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n    \r\n</ion-content>\r\n";
 
 /***/ })
 
