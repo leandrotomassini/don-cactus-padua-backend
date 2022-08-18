@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.borrarProducto = exports.actualizarProducto = exports.crearProducto = exports.obtenerProducto = exports.obtenerProductos = void 0;
+exports.borrarProducto = exports.actualizarProducto = exports.crearProducto = exports.obtenerProductoSlug = exports.obtenerProducto = exports.obtenerProductos = void 0;
 const producto_1 = require("../classes/producto");
 const server_1 = __importDefault(require("../classes/server"));
 const obtenerProductos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -51,9 +51,19 @@ const obtenerProducto = (req, res) => __awaiter(void 0, void 0, void 0, function
     res.json(producto);
 });
 exports.obtenerProducto = obtenerProducto;
+const obtenerProductoSlug = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { slug } = req.params;
+    const producto = yield producto_1.Producto.findOne({ url: slug })
+        .populate('usuario', 'nombre')
+        .populate('categoria', 'nombre');
+    res.json({
+        producto
+    });
+});
+exports.obtenerProductoSlug = obtenerProductoSlug;
 const crearProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const server = server_1.default.instance;
-    const _a = req.body, { estado, usuario } = _a, body = __rest(_a, ["estado", "usuario"]);
+    let _a = req.body, { estado, usuario } = _a, body = __rest(_a, ["estado", "usuario"]);
     const productoDB = yield producto_1.Producto.findOne({ nombre: body.nombre });
     if (productoDB) {
         return res.status(400).json({
@@ -61,7 +71,7 @@ const crearProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
     // Generar la data a guardar
-    const data = Object.assign(Object.assign({}, body), { nombre: body.nombre.toUpperCase(), usuario: req.usuario._id });
+    const data = Object.assign(Object.assign({}, body), { nombre: body.nombre.toUpperCase(), usuario: req.usuario._id, url: body.url.toLowerCase() });
     const producto = new producto_1.Producto(data);
     // Guardar DB
     yield producto.save();

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 
-import { actualizarProducto, borrarProducto, crearProducto, obtenerProducto, obtenerProductos } from "../controller/productos";
+import { actualizarProducto, borrarProducto, crearProducto, obtenerProducto, obtenerProductos, obtenerProductoSlug } from "../controller/productos";
 import { existeCategoriaPorId, existeProductoPorId } from "../helpers/db-validators";
 import { validarCampos } from "../middlewares/validar-campos";
 import { validarJWT } from "../middlewares/validar-jwt";
@@ -22,6 +22,8 @@ productos.get('/:id', [
     check('id').custom(existeProductoPorId),
     validarCampos,
 ], obtenerProducto);
+
+productos.get('/slug/:slug', obtenerProductoSlug);
 
 // Crear categoria - privado - cualquier persona con un token válido
 productos.post('/', [

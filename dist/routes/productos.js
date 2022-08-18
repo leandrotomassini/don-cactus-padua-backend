@@ -19,6 +19,7 @@ productos.get('/:id', [
     (0, express_validator_1.check)('id').custom(db_validators_1.existeProductoPorId),
     validar_campos_1.validarCampos,
 ], productos_1.obtenerProducto);
+productos.get('/slug/:slug', productos_1.obtenerProductoSlug);
 // Crear categoria - privado - cualquier persona con un token válido
 productos.post('/', [
     validar_jwt_1.validarJWT,

@@ -41,6 +41,10 @@ const ProductoSchema = new mongoose_1.default.Schema({
         type: String,
         required: [true, 'El nombre es obligatorio']
     },
+    url: {
+        type: String,
+        required: [true, 'La url es obligatoria']
+    },
     estado: {
         type: Boolean,
         default: true,

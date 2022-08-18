@@ -35,11 +35,25 @@ export const obtenerProducto = async (req: Request, res: Response) => {
 
 }
 
+export const obtenerProductoSlug = async (req: Request, res: Response) => {
+
+    const { slug } = req.params;
+    const producto = await Producto.findOne({ url: slug })
+        .populate('usuario', 'nombre')
+        .populate('categoria', 'nombre');
+
+    res.json({
+        producto
+    });
+}
+
 export const crearProducto = async (req: Request, res: Response) => {
 
     const server = Server.instance;
 
-    const { estado, usuario, ...body } = req.body;
+    let { estado, usuario, ...body } = req.body;
+
+
 
     const productoDB = await Producto.findOne({ nombre: body.nombre });
 
@@ -54,7 +68,8 @@ export const crearProducto = async (req: Request, res: Response) => {
     const data = {
         ...body,
         nombre: body.nombre.toUpperCase(),
-        usuario: req.usuario._id
+        usuario: req.usuario._id,
+        url: body.url.toLowerCase()
     }
 
     const producto = new Producto(data);
