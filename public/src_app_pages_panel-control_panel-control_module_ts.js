@@ -125,7 +125,7 @@ PanelControlPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
   \************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwYW5lbC1jb250cm9sLnBhZ2Uuc2NzcyJ9 */";
+module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhbmVsLWNvbnRyb2wucGFnZS5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXFdpbmRvd3MlMjAxMFxcRGVza3RvcFxcZG9uLWNhY3R1cy1wYWR1YVxcc3JjXFxhcHBcXHBhZ2VzXFxwYW5lbC1jb250cm9sXFxwYW5lbC1jb250cm9sLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoicGFuZWwtY29udHJvbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XHJcbiAgICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XHJcbn0iLCJpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcbn0iXX0= */";
 
 /***/ }),
 
@@ -135,7 +135,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Panel de control</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid fixed>\r\n    <ion-row>\r\n      <ion-col size=\"12\" size-md=\"12\" size-lg=\"8\">\r\n        <app-tabla-productos></app-tabla-productos>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n    \r\n</ion-content>\r\n";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Panel de control</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid fixed>\r\n    <ion-row>\r\n      <ion-col size=\"12\" size-md=\"6\" size-lg=\"6\">\r\n        <app-tabla-categorias></app-tabla-categorias>\r\n      </ion-col>\r\n      <ion-col size=\"12\" size-md=\"6\" size-lg=\"6\">\r\n        <app-tabla-etiquetas></app-tabla-etiquetas>\r\n      </ion-col>\r\n      <ion-col size=\"12\" size-md=\"12\" size-lg=\"12\">\r\n        <app-tabla-productos></app-tabla-productos>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n    \r\n</ion-content>\r\n";
 
 /***/ })
 

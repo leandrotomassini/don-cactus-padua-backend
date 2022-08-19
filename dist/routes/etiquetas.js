@@ -21,7 +21,6 @@ etiquetas.get('/:id', [
 etiquetas.post('/', [
     validar_jwt_1.validarJWT,
     (0, express_validator_1.check)('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    (0, express_validator_1.check)('usuario', 'No es un id de Mongo').isMongoId(),
     validar_roles_1.esAdminRole,
     validar_campos_1.validarCampos
 ], etiquetas_1.crearEtiqueta);

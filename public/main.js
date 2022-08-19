@@ -27,8 +27,12 @@ const routes = [
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 1053)).then(m => m.LoginPageModule)
     },
     {
+        path: ':tituloProductoUrl',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_producto_producto_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/producto/producto.module */ 212)).then(m => m.ProductoPageModule)
+    },
+    {
         path: '**',
-        redirectTo: ''
+        redirectTo: '/'
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

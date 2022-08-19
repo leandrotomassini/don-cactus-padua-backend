@@ -1,6 +1,114 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
+/***/ 6143:
+/*!*************************************************!*\
+  !*** ./src/app/pages/producto/producto.page.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProductoPage": () => (/* binding */ ProductoPage)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _producto_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./producto.page.html?ngResource */ 1594);
+/* harmony import */ var _producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./producto.page.scss?ngResource */ 7485);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/productos.service */ 4893);
+
+
+
+
+
+
+
+
+let ProductoPage = class ProductoPage {
+  constructor(modalCtrl, activateRoute, productosService, navCtrl) {
+    this.modalCtrl = modalCtrl;
+    this.activateRoute = activateRoute;
+    this.productosService = productosService;
+    this.navCtrl = navCtrl;
+    this.producto = {
+      _id: "",
+      nombre: "",
+      url: "",
+      estado: true,
+      usuario: {
+        _id: "",
+        nombre: ""
+      },
+      precio: 0,
+      stock: 0,
+      categoria: {
+        _id: "",
+        nombre: ""
+      },
+      etiquetas: [""],
+      descripcion: "",
+      img: [""]
+    };
+  }
+
+  ngOnInit() {
+    var _this = this;
+
+    this.activateRoute.params.subscribe( /*#__PURE__*/function () {
+      var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* ({
+        tituloProductoUrl
+      }) {
+        yield _this.productosService.getProductoSlug(tituloProductoUrl).then(producto => {
+          _this.producto = producto;
+          _this.producto = _this.producto.producto;
+
+          if (_this.producto == undefined) {
+            _this.navCtrl.navigateRoot('/');
+          }
+        });
+      });
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+  }
+
+  salirSinArgumentos() {
+    this.modalCtrl.dismiss();
+  }
+
+  salirConArgumentos() {
+    this.modalCtrl.dismiss({
+      nombre: 'disponible',
+      precio: 200
+    });
+  }
+
+};
+
+ProductoPage.ctorParameters = () => [{
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.ActivatedRoute
+}, {
+  type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__.ProductosService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController
+}];
+
+ProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+  selector: 'app-producto',
+  template: _producto_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], ProductoPage);
+
+
+/***/ }),
+
 /***/ 5763:
 /*!*********************************************!*\
   !*** ./src/app/services/usuario.service.ts ***!
@@ -1405,6 +1513,26 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 };
 
 
+
+/***/ }),
+
+/***/ 7485:
+/*!**************************************************************!*\
+  !*** ./src/app/pages/producto/producto.page.scss?ngResource ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n\nswiper {\n  background: #EBEBEB;\n}\n\nswiper img {\n  padding-top: 10%;\n  padding-bottom: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2R1Y3RvLnBhZ2Uuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxwYWdlc1xccHJvZHVjdG9cXHByb2R1Y3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0o7O0FERUE7RUFDSSxtQkFBQTtBQ0NKOztBRENJO0VBQ0ksZ0JBQUE7RUFDQSxvQkFBQTtBQ0NSIiwiZmlsZSI6InByb2R1Y3RvLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcclxuICAgIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcclxufVxyXG5cclxuc3dpcGVyIHtcclxuICAgIGJhY2tncm91bmQ6ICNFQkVCRUI7XHJcblxyXG4gICAgaW1nIHtcclxuICAgICAgICBwYWRkaW5nLXRvcDogMTAlO1xyXG4gICAgICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xyXG4gICAgfVxyXG59IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XG59XG5cbnN3aXBlciB7XG4gIGJhY2tncm91bmQ6ICNFQkVCRUI7XG59XG5zd2lwZXIgaW1nIHtcbiAgcGFkZGluZy10b3A6IDEwJTtcbiAgcGFkZGluZy1ib3R0b206IDIwcHg7XG59Il19 */";
+
+/***/ }),
+
+/***/ 1594:
+/*!**************************************************************!*\
+  !*** ./src/app/pages/producto/producto.page.html?ngResource ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-content>\r\n  <ion-label>{{producto.nombre}}</ion-label>\r\n</ion-content>";
 
 /***/ })
 

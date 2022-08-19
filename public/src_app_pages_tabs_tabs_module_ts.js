@@ -65,7 +65,7 @@ const routes = [
         children: [
             {
                 path: 'growshop',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_growshop_growshop_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../growshop/growshop.module */ 3576)).then(m => m.GrowshopPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_growshop_growshop_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../growshop/growshop.module */ 3576)).then(m => m.GrowshopPageModule)
             },
             {
                 path: 'cuenta',

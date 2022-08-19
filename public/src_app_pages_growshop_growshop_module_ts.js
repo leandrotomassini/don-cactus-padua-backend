@@ -107,31 +107,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SeisProductosComponent": () => (/* binding */ SeisProductosComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _seis_productos_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./seis-productos.component.html?ngResource */ 9761);
-/* harmony import */ var _seis_productos_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seis-productos.component.scss?ngResource */ 7573);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _seis_productos_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seis-productos.component.html?ngResource */ 9761);
+/* harmony import */ var _seis_productos_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./seis-productos.component.scss?ngResource */ 7573);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_pages_producto_producto_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/pages/producto/producto.page */ 6143);
+
+
+
 
 
 
 
 let SeisProductosComponent = class SeisProductosComponent {
-    constructor() {
-        this.titulo = '';
-    }
-    ngOnInit() {
-        this.titulo = this.data.shift();
-    }
-};
-SeisProductosComponent.ctorParameters = () => [];
-SeisProductosComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-seis-productos',
-        template: _seis_productos_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_seis_productos_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], SeisProductosComponent);
+  constructor(modalController) {
+    this.modalController = modalController;
+    this.titulo = '';
+  }
 
+  ngOnInit() {
+    this.titulo = this.data.shift();
+  }
+
+  verProducto(producto) {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this.modalController.create({
+        component: src_app_pages_producto_producto_page__WEBPACK_IMPORTED_MODULE_3__.ProductoPage,
+        cssClass: 'transparent-modal',
+        componentProps: {
+          producto
+        }
+      });
+      yield modal.present();
+    })();
+  }
+
+};
+
+SeisProductosComponent.ctorParameters = () => [{
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
+}];
+
+SeisProductosComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+  selector: 'app-seis-productos',
+  template: _seis_productos_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_seis_productos_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], SeisProductosComponent);
 
 
 /***/ }),
@@ -407,8 +432,12 @@ __webpack_require__.r(__webpack_exports__);
 let GrowshopPage = class GrowshopPage {
   constructor(productosService) {
     this.productosService = productosService;
+    this.numeroPar = 0;
     this.etiquetas = [];
     this.categorias = [];
+    this.textoBuscar = '';
+    this.mostrarBuscadorCss = false;
+    this.mostrarProductosCss = true;
   }
 
   ngAfterViewInit() {}
@@ -430,10 +459,14 @@ let GrowshopPage = class GrowshopPage {
   }
 
   mostrarProductos() {
-    this.obtenerEtiquetas();
-    this.obtenerCategorias();
-    this.mostrarProductosEtiquetas();
-    this.mostrarProductosCategorias();
+    if (this.numeroPar % 2 == 0) {
+      this.obtenerEtiquetas();
+      this.obtenerCategorias();
+      this.mostrarProductosEtiquetas();
+      this.mostrarProductosCategorias();
+    }
+
+    this.numeroPar++;
   }
 
   obtenerEtiquetas() {
@@ -588,6 +621,18 @@ let GrowshopPage = class GrowshopPage {
     return productosTemporales;
   }
 
+  buscar(textoBuscar) {
+    this.textoBuscar = textoBuscar;
+
+    if (this.textoBuscar != '') {
+      this.mostrarBuscadorCss = true;
+      this.mostrarProductosCss = false;
+    } else {
+      this.mostrarBuscadorCss = false;
+      this.mostrarProductosCss = true;
+    }
+  }
+
 };
 
 GrowshopPage.ctorParameters = () => [{
@@ -665,7 +710,7 @@ module.exports = "ion-img {\n  width: 100%;\n  height: 200px;\n}\n\n.ver-mas, .p
   \**************************************************************/
 /***/ ((module) => {
 
-module.exports = ".swiper-container {\n  width: 100%;\n  height: 100%;\n}\n\n.swiper-slide {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\nion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImdyb3dzaG9wLnBhZ2Uuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxwYWdlc1xcZ3Jvd3Nob3BcXGdyb3dzaG9wLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSxxQkFBQTtBQ0NGIiwiZmlsZSI6Imdyb3dzaG9wLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zd2lwZXItY29udGFpbmVyIHtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuXHJcbi5zd2lwZXItc2xpZGUge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG5pb24tY29udGVudCB7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xyXG59IiwiLnN3aXBlci1jb250YWluZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4uc3dpcGVyLXNsaWRlIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xufSJdfQ== */";
+module.exports = ".swiper-container {\n  width: 100%;\n  height: 100%;\n}\n\n.swiper-slide {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\nion-content {\n  --background: #EBEBEB;\n}\n\n.contenedor-productos-inicio-culto {\n  display: none;\n}\n\n.contenedor-productos-inicio-activo {\n  display: block;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImdyb3dzaG9wLnBhZ2Uuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxwYWdlc1xcZ3Jvd3Nob3BcXGdyb3dzaG9wLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSxxQkFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtBQ0NGOztBREVBO0VBQ0UsY0FBQTtBQ0NGIiwiZmlsZSI6Imdyb3dzaG9wLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zd2lwZXItY29udGFpbmVyIHtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuXHJcbi5zd2lwZXItc2xpZGUge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG5pb24tY29udGVudCB7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xyXG59XHJcblxyXG4uY29udGVuZWRvci1wcm9kdWN0b3MtaW5pY2lvLWN1bHRve1xyXG4gIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbi5jb250ZW5lZG9yLXByb2R1Y3Rvcy1pbmljaW8tYWN0aXZve1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG59IiwiLnN3aXBlci1jb250YWluZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4uc3dpcGVyLXNsaWRlIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbmlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xufVxuXG4uY29udGVuZWRvci1wcm9kdWN0b3MtaW5pY2lvLWN1bHRvIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cblxuLmNvbnRlbmVkb3ItcHJvZHVjdG9zLWluaWNpby1hY3Rpdm8ge1xuICBkaXNwbGF5OiBibG9jaztcbn0iXX0= */";
 
 /***/ }),
 
@@ -685,7 +730,7 @@ module.exports = "<ion-card class=\"ion-text-center contenedor-principal\">\r\n\
   \**************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-card class=\"ion-text-center contenedor-principal\">\r\n\r\n  <ion-card-header>\r\n    <ion-card-title class=\"titulo-principal\">{{titulo | titlecase}}</ion-card-title>\r\n  </ion-card-header>\r\n\r\n  <ion-grid fixed>\r\n    <ion-row>\r\n      <ion-col size=\"12\" size-lg=\"6\" size-md=\"6\" *ngFor=\"let producto of data | slice:0:6\">\r\n        <ion-card class=\"ion-text-center\">\r\n          <ion-card-content>\r\n            <ion-img [src]=\"producto.img[0]\"></ion-img>\r\n            <ion-card-title>{{producto.nombre}}</ion-card-title>\r\n            <ion-card-subtitle class=\"precio\">${{producto.precio | number}}</ion-card-subtitle>\r\n          </ion-card-content>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col size=\"12\">\r\n        <ion-card-header>\r\n          <!-- <ion-card-subtitle class=\"ver-mas\">Ver más</ion-card-subtitle> -->\r\n        </ion-card-header>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n</ion-card>";
+module.exports = "<ion-card class=\"ion-text-center contenedor-principal\">\r\n\r\n  <ion-card-header>\r\n    <ion-card-title class=\"titulo-principal\">{{titulo | titlecase}}</ion-card-title>\r\n  </ion-card-header>\r\n\r\n  <ion-grid fixed>\r\n    <ion-row>\r\n      <ion-col size=\"12\" size-lg=\"6\" size-md=\"6\" *ngFor=\"let producto of data | slice:0:6\" (click)=\"verProducto(producto)\">\r\n        <ion-card class=\"ion-text-center\">\r\n          <ion-card-content>\r\n            <ion-img [src]=\"producto.img[0]\"></ion-img>\r\n            <ion-card-title>{{producto.nombre}}</ion-card-title>\r\n            <ion-card-subtitle class=\"precio\">${{producto.precio | number}}</ion-card-subtitle>\r\n          </ion-card-content>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col size=\"12\">\r\n        <ion-card-header>\r\n          <!-- <ion-card-subtitle class=\"ver-mas\">Ver más</ion-card-subtitle> -->\r\n        </ion-card-header>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n</ion-card>";
 
 /***/ }),
 
@@ -725,7 +770,7 @@ module.exports = "<ion-card class=\"ion-text-center contenedor-principal\">\r\n\
   \**************************************************************/
 /***/ ((module) => {
 
-module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content>\r\n    <app-slide></app-slide>\r\n <ng-template appDynamicComponent></ng-template>\r\n</ion-content>";
+module.exports = "<app-menu-principal (onBuscar)=\"buscar($event)\"></app-menu-principal>\r\n<ion-content>\r\n    <!-- Mostrar productos página de inicio -->\r\n    <div\r\n        [ngClass]=\"{'contenedor-productos-inicio-activo':mostrarProductosCss,'contenedor-productos-inicio-culto':mostrarBuscadorCss}\">\r\n        <app-slide></app-slide>\r\n        <ng-template appDynamicComponent></ng-template>\r\n    </div>\r\n\r\n    <!-- Resultado de búsquedas -->\r\n    <div [ngClass]=\"{'contenedor-productos-inicio-activo':mostrarBuscadorCss,'contenedor-productos-inicio-culto':mostrarProductosCss}\">\r\n        <app-buscador [textoBuscar]=\"textoBuscar\"></app-buscador>\r\n    </div>\r\n</ion-content>";
 
 /***/ })
 

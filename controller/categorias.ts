@@ -64,7 +64,10 @@ export const crearCategoria = async (req: Request, res: Response) => {
 
         server.io.emit('categorias', await Categoria.find({ estado: true }).populate('usuario', 'nombre'));
 
-        res.status(201).json(categoria);
+        res.status(201).json({
+            ok: true,
+            categoria
+        });
     } catch (error) {
         res.status(400).json({
             ok: false,

@@ -71,6 +71,7 @@ const ProductoSchema = new mongoose_1.default.Schema({
     etiquetas: [{
             type: mongoose_1.Schema.Types.ObjectId,
             ref: 'Etiqueta',
+            require: false
         }],
     descripcion: { type: String },
     disponible: { type: Boolean, defult: true },

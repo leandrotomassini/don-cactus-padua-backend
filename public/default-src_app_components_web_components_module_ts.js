@@ -83,6 +83,64 @@ AvatarSelectorComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
+/***/ 5172:
+/*!***************************************************************!*\
+  !*** ./src/app/components/web/buscador/buscador.component.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BuscadorComponent": () => (/* binding */ BuscadorComponent)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _buscador_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./buscador.component.html?ngResource */ 4352);
+/* harmony import */ var _buscador_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./buscador.component.scss?ngResource */ 7747);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/productos.service */ 4893);
+
+
+
+
+
+
+let BuscadorComponent = class BuscadorComponent {
+  constructor(productosService) {
+    this.productosService = productosService;
+    this.textoBuscar = '';
+  }
+
+  ngOnInit() {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this.productosSubscripcion = yield _this.productosService.getProductos().subscribe(productos => {
+        _this.productos = productos;
+      });
+    })();
+  }
+
+};
+
+BuscadorComponent.ctorParameters = () => [{
+  type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__.ProductosService
+}];
+
+BuscadorComponent.propDecorators = {
+  textoBuscar: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.Input
+  }]
+};
+BuscadorComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+  selector: 'app-buscador',
+  template: _buscador_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_buscador_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], BuscadorComponent);
+
+
+/***/ }),
+
 /***/ 3816:
 /*!*****************************************************!*\
   !*** ./src/app/components/web/components.module.ts ***!
@@ -93,21 +151,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ComponentsModule": () => (/* binding */ ComponentsModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var swiper_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! swiper/angular */ 9737);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var swiper_angular__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! swiper/angular */ 9737);
 /* harmony import */ var _menu_principal_menu_principal_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu-principal/menu-principal.component */ 1102);
 /* harmony import */ var _slide_slide_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slide/slide.component */ 333);
-/* harmony import */ var _pages_producto_producto_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pages/producto/producto.page */ 6143);
-/* harmony import */ var _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./avatar-selector/avatar-selector.component */ 6889);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla-productos/tabla-productos.component */ 4960);
-/* harmony import */ var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/pipes/pipes.module */ 5503);
-/* harmony import */ var src_app_pages_nuevo_producto_nuevo_producto_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/pages/nuevo-producto/nuevo-producto.page */ 9559);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var ngx_editor__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-editor */ 9679);
-/* harmony import */ var src_app_pages_editar_producto_editar_producto_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/pages/editar-producto/editar-producto.page */ 824);
+/* harmony import */ var _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./avatar-selector/avatar-selector.component */ 6889);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla-productos/tabla-productos.component */ 4960);
+/* harmony import */ var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/pipes/pipes.module */ 5503);
+/* harmony import */ var src_app_pages_nuevo_producto_nuevo_producto_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/pages/nuevo-producto/nuevo-producto.page */ 9559);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var ngx_editor__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-editor */ 9679);
+/* harmony import */ var src_app_pages_editar_producto_editar_producto_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/pages/editar-producto/editar-producto.page */ 824);
+/* harmony import */ var _tabla_categorias_tabla_categorias_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tabla-categorias/tabla-categorias.component */ 1523);
+/* harmony import */ var src_app_pages_editar_categoria_editar_categoria_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/pages/editar-categoria/editar-categoria.page */ 6906);
+/* harmony import */ var src_app_pages_nueva_categoria_nueva_categoria_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/pages/nueva-categoria/nueva-categoria.page */ 6160);
+/* harmony import */ var src_app_pages_editar_etiqueta_editar_etiqueta_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/pages/editar-etiqueta/editar-etiqueta.page */ 6125);
+/* harmony import */ var src_app_pages_nueva_etiqueta_nueva_etiqueta_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/pages/nueva-etiqueta/nueva-etiqueta.page */ 4765);
+/* harmony import */ var _tabla_etiquetas_tabla_etiquetas_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./tabla-etiquetas/tabla-etiquetas.component */ 594);
+/* harmony import */ var _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./buscador/buscador.component */ 5172);
+
+
+
+
+
+
 
 
 
@@ -125,31 +195,40 @@ __webpack_require__.r(__webpack_exports__);
 
 let ComponentsModule = class ComponentsModule {
 };
-ComponentsModule = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.NgModule)({
+ComponentsModule = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_15__.NgModule)({
         declarations: [
             _menu_principal_menu_principal_component__WEBPACK_IMPORTED_MODULE_0__.MenuPrincipalComponent,
             _slide_slide_component__WEBPACK_IMPORTED_MODULE_1__.SlideComponent,
-            _pages_producto_producto_page__WEBPACK_IMPORTED_MODULE_2__.ProductoPage,
-            _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_3__.AvatarSelectorComponent,
-            _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_4__.TablaProductosComponent,
-            src_app_pages_nuevo_producto_nuevo_producto_page__WEBPACK_IMPORTED_MODULE_6__.NuevoProductoPage,
-            src_app_pages_editar_producto_editar_producto_page__WEBPACK_IMPORTED_MODULE_7__.EditarProductoPage
+            _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_2__.AvatarSelectorComponent,
+            _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_3__.TablaProductosComponent,
+            src_app_pages_nuevo_producto_nuevo_producto_page__WEBPACK_IMPORTED_MODULE_5__.NuevoProductoPage,
+            src_app_pages_editar_producto_editar_producto_page__WEBPACK_IMPORTED_MODULE_6__.EditarProductoPage,
+            src_app_pages_editar_categoria_editar_categoria_page__WEBPACK_IMPORTED_MODULE_8__.EditarCategoriaPage,
+            src_app_pages_nueva_categoria_nueva_categoria_page__WEBPACK_IMPORTED_MODULE_9__.NuevaCategoriaPage,
+            src_app_pages_editar_etiqueta_editar_etiqueta_page__WEBPACK_IMPORTED_MODULE_10__.EditarEtiquetaPage,
+            src_app_pages_nueva_etiqueta_nueva_etiqueta_page__WEBPACK_IMPORTED_MODULE_11__.NuevaEtiquetaPage,
+            _tabla_categorias_tabla_categorias_component__WEBPACK_IMPORTED_MODULE_7__.TablaCategoriasComponent,
+            _tabla_etiquetas_tabla_etiquetas_component__WEBPACK_IMPORTED_MODULE_12__.TablaEtiquetasComponent,
+            _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__.BuscadorComponent
         ],
         exports: [
             _menu_principal_menu_principal_component__WEBPACK_IMPORTED_MODULE_0__.MenuPrincipalComponent,
             _slide_slide_component__WEBPACK_IMPORTED_MODULE_1__.SlideComponent,
-            _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_3__.AvatarSelectorComponent,
-            _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_4__.TablaProductosComponent
+            _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_2__.AvatarSelectorComponent,
+            _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_3__.TablaProductosComponent,
+            _tabla_categorias_tabla_categorias_component__WEBPACK_IMPORTED_MODULE_7__.TablaCategoriasComponent,
+            _tabla_etiquetas_tabla_etiquetas_component__WEBPACK_IMPORTED_MODULE_12__.TablaEtiquetasComponent,
+            _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__.BuscadorComponent
         ],
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule,
-            swiper_angular__WEBPACK_IMPORTED_MODULE_11__.SwiperModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.IonicModule,
-            src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_5__.PipesModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormsModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_13__.ReactiveFormsModule,
-            ngx_editor__WEBPACK_IMPORTED_MODULE_14__.NgxEditorModule
+            _angular_common__WEBPACK_IMPORTED_MODULE_16__.CommonModule,
+            swiper_angular__WEBPACK_IMPORTED_MODULE_17__.SwiperModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_18__.IonicModule,
+            src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_4__.PipesModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_19__.FormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_19__.ReactiveFormsModule,
+            ngx_editor__WEBPACK_IMPORTED_MODULE_20__.NgxEditorModule,
         ]
     })
 ], ComponentsModule);
@@ -168,27 +247,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MenuPrincipalComponent": () => (/* binding */ MenuPrincipalComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu-principal.component.html?ngResource */ 3499);
-/* harmony import */ var _menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menu-principal.component.scss?ngResource */ 1210);
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menu-principal.component.html?ngResource */ 3499);
+/* harmony import */ var _menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-principal.component.scss?ngResource */ 1210);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
 
 
 
 
-let MenuPrincipalComponent = class MenuPrincipalComponent {
-    constructor() { }
-    ngOnInit() { }
-};
-MenuPrincipalComponent.ctorParameters = () => [];
-MenuPrincipalComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-menu-principal',
-        template: _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], MenuPrincipalComponent);
 
+let MenuPrincipalComponent = class MenuPrincipalComponent {
+  constructor() {
+    this.onBuscar = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
+    this.textoBuscar = '';
+  }
+
+  ngOnInit() {}
+
+  onSearchChange($event) {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      let textoBuscar = $event.detail.value;
+
+      _this.onBuscar.emit(textoBuscar);
+    })();
+  }
+
+};
+
+MenuPrincipalComponent.ctorParameters = () => [];
+
+MenuPrincipalComponent.propDecorators = {
+  onBuscar: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Output
+  }]
+};
+MenuPrincipalComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+  selector: 'app-menu-principal',
+  template: _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], MenuPrincipalComponent);
 
 
 /***/ }),
@@ -243,6 +343,222 @@ SlideComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
     })
 ], SlideComponent);
 
+
+
+/***/ }),
+
+/***/ 1523:
+/*!*******************************************************************************!*\
+  !*** ./src/app/components/web/tabla-categorias/tabla-categorias.component.ts ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TablaCategoriasComponent": () => (/* binding */ TablaCategoriasComponent)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _tabla_categorias_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabla-categorias.component.html?ngResource */ 3913);
+/* harmony import */ var _tabla_categorias_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabla-categorias.component.scss?ngResource */ 1247);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_pages_editar_categoria_editar_categoria_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/pages/editar-categoria/editar-categoria.page */ 6906);
+/* harmony import */ var src_app_pages_nueva_categoria_nueva_categoria_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/pages/nueva-categoria/nueva-categoria.page */ 6160);
+/* harmony import */ var src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/categorias.service */ 5772);
+
+
+
+
+
+
+
+
+
+let TablaCategoriasComponent = class TablaCategoriasComponent {
+  constructor(categoriasService, modalController) {
+    this.categoriasService = categoriasService;
+    this.modalController = modalController;
+    this.textoBuscar = '';
+  }
+
+  ngOnInit() {
+    this.categoriasSubscripcion = this.categoriasService.getCategorias().subscribe(categorias => {
+      this.categorias = categorias;
+    });
+    this.categoriasSubscripcion = this.categoriasService.getCategoriasBorradas().subscribe(categorias => {
+      this.categorias = categorias;
+    });
+  }
+
+  ngOnDestroy() {
+    this.categoriasSubscripcion.unsubscribe();
+  }
+
+  onSearchChange($event) {
+    this.textoBuscar = $event.detail.value;
+  }
+
+  agregarCategoria() {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this.modalController.create({
+        component: src_app_pages_nueva_categoria_nueva_categoria_page__WEBPACK_IMPORTED_MODULE_4__.NuevaCategoriaPage
+      });
+      yield modal.present();
+    })();
+  }
+
+  editarCategoria(categoriaEditar) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this2.modalController.create({
+        component: src_app_pages_editar_categoria_editar_categoria_page__WEBPACK_IMPORTED_MODULE_3__.EditarCategoriaPage,
+        componentProps: {
+          categoriaEditar
+        }
+      });
+      yield modal.present();
+    })();
+  }
+
+  borrarCategoria(idCategoria) {
+    this.categoriasService.borrarCategoria(idCategoria).then().catch();
+  }
+
+  segmentChanged($event) {
+    if ($event.detail.value == 'activas') {
+      this.categoriasService.getCategorias();
+    }
+
+    if ($event.detail.value == 'borradas') {
+      this.categoriasService.getCategoriasBorradas();
+    }
+  }
+
+};
+
+TablaCategoriasComponent.ctorParameters = () => [{
+  type: src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_5__.CategoriasService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ModalController
+}];
+
+TablaCategoriasComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+  selector: 'app-tabla-categorias',
+  template: _tabla_categorias_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_tabla_categorias_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], TablaCategoriasComponent);
+
+
+/***/ }),
+
+/***/ 594:
+/*!*****************************************************************************!*\
+  !*** ./src/app/components/web/tabla-etiquetas/tabla-etiquetas.component.ts ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TablaEtiquetasComponent": () => (/* binding */ TablaEtiquetasComponent)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _tabla_etiquetas_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabla-etiquetas.component.html?ngResource */ 1514);
+/* harmony import */ var _tabla_etiquetas_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabla-etiquetas.component.scss?ngResource */ 7474);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_pages_editar_etiqueta_editar_etiqueta_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/pages/editar-etiqueta/editar-etiqueta.page */ 6125);
+/* harmony import */ var src_app_pages_nueva_etiqueta_nueva_etiqueta_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/pages/nueva-etiqueta/nueva-etiqueta.page */ 4765);
+/* harmony import */ var src_app_services_etiquetas_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/etiquetas.service */ 5421);
+
+
+
+
+
+
+
+
+
+let TablaEtiquetasComponent = class TablaEtiquetasComponent {
+  constructor(etiquetasService, modalController) {
+    this.etiquetasService = etiquetasService;
+    this.modalController = modalController;
+    this.textoBuscar = '';
+  }
+
+  ngOnInit() {
+    this.etiquetasSubscripcion = this.etiquetasService.getEtiquetas().subscribe(etiquetas => {
+      this.etiquetas = etiquetas;
+    });
+    this.etiquetasSubscripcion = this.etiquetasService.getEtiquetasBorradas().subscribe(etiquetas => {
+      this.etiquetas = etiquetas;
+    });
+  }
+
+  ngOnDestroy() {
+    this.etiquetasSubscripcion.unsubscribe();
+  }
+
+  onSearchChange($event) {
+    this.textoBuscar = $event.detail.value;
+  }
+
+  agregarEtiqueta() {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this.modalController.create({
+        component: src_app_pages_nueva_etiqueta_nueva_etiqueta_page__WEBPACK_IMPORTED_MODULE_4__.NuevaEtiquetaPage
+      });
+      yield modal.present();
+    })();
+  }
+
+  editarEtiqueta(etiquetaEditar) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this2.modalController.create({
+        component: src_app_pages_editar_etiqueta_editar_etiqueta_page__WEBPACK_IMPORTED_MODULE_3__.EditarEtiquetaPage,
+        componentProps: {
+          etiquetaEditar
+        }
+      });
+      yield modal.present();
+    })();
+  }
+
+  borrarEtiqueta(idEtiqueta) {
+    this.etiquetasService.borrarEtiqueta(idEtiqueta).then().catch();
+  }
+
+  segmentChanged($event) {
+    if ($event.detail.value == 'activas') {
+      this.etiquetasService.getEtiquetas();
+    }
+
+    if ($event.detail.value == 'borradas') {
+      this.etiquetasService.getEtiquetasBorradas();
+    }
+  }
+
+};
+
+TablaEtiquetasComponent.ctorParameters = () => [{
+  type: src_app_services_etiquetas_service__WEBPACK_IMPORTED_MODULE_5__.EtiquetasService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ModalController
+}];
+
+TablaEtiquetasComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+  selector: 'app-tabla-etiquetas',
+  template: _tabla_etiquetas_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_tabla_etiquetas_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], TablaEtiquetasComponent);
 
 
 /***/ }),
@@ -358,6 +674,78 @@ TablaProductosComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,
   template: _tabla_productos_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_tabla_productos_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], TablaProductosComponent);
+
+
+/***/ }),
+
+/***/ 6906:
+/*!*****************************************************************!*\
+  !*** ./src/app/pages/editar-categoria/editar-categoria.page.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EditarCategoriaPage": () => (/* binding */ EditarCategoriaPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _editar_categoria_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editar-categoria.page.html?ngResource */ 6012);
+/* harmony import */ var _editar_categoria_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editar-categoria.page.scss?ngResource */ 108);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+
+
+
+
+let EditarCategoriaPage = class EditarCategoriaPage {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+EditarCategoriaPage.ctorParameters = () => [];
+EditarCategoriaPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+        selector: 'app-editar-categoria',
+        template: _editar_categoria_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_editar_categoria_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], EditarCategoriaPage);
+
+
+
+/***/ }),
+
+/***/ 6125:
+/*!***************************************************************!*\
+  !*** ./src/app/pages/editar-etiqueta/editar-etiqueta.page.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EditarEtiquetaPage": () => (/* binding */ EditarEtiquetaPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _editar_etiqueta_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editar-etiqueta.page.html?ngResource */ 619);
+/* harmony import */ var _editar_etiqueta_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editar-etiqueta.page.scss?ngResource */ 9091);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+
+
+
+
+let EditarEtiquetaPage = class EditarEtiquetaPage {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+EditarEtiquetaPage.ctorParameters = () => [];
+EditarEtiquetaPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+        selector: 'app-editar-etiqueta',
+        template: _editar_etiqueta_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_editar_etiqueta_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], EditarEtiquetaPage);
+
 
 
 /***/ }),
@@ -514,6 +902,132 @@ EditarProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_ang
 
 /***/ }),
 
+/***/ 6160:
+/*!***************************************************************!*\
+  !*** ./src/app/pages/nueva-categoria/nueva-categoria.page.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NuevaCategoriaPage": () => (/* binding */ NuevaCategoriaPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _nueva_categoria_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nueva-categoria.page.html?ngResource */ 9432);
+/* harmony import */ var _nueva_categoria_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nueva-categoria.page.scss?ngResource */ 2747);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var ngx_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-editor */ 9679);
+/* harmony import */ var src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/categorias.service */ 5772);
+
+
+
+
+
+
+
+
+let NuevaCategoriaPage = class NuevaCategoriaPage {
+    constructor(fb, categoriaService, modalControler) {
+        this.fb = fb;
+        this.categoriaService = categoriaService;
+        this.modalControler = modalControler;
+        this.nuevaCategoriaFormulario = this.fb.group({
+            nombre: ['', [ngx_editor__WEBPACK_IMPORTED_MODULE_3__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_3__.Validators.minLength(5)]],
+            img: ['', [ngx_editor__WEBPACK_IMPORTED_MODULE_3__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_3__.Validators.minLength(5)]],
+        });
+    }
+    ngOnInit() {
+    }
+    guardarCategoria() {
+        this.categoria = this.nuevaCategoriaFormulario.value;
+        this.categoriaService.crearCategoria(this.categoria);
+        this.modalControler.dismiss();
+    }
+    campoEsValido(campo) {
+        return this.nuevaCategoriaFormulario.controls[campo].errors && this.nuevaCategoriaFormulario.controls[campo].touched;
+    }
+};
+NuevaCategoriaPage.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder },
+    { type: src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_2__.CategoriasService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController }
+];
+NuevaCategoriaPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+        selector: 'app-nueva-categoria',
+        template: _nueva_categoria_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_nueva_categoria_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], NuevaCategoriaPage);
+
+
+
+/***/ }),
+
+/***/ 4765:
+/*!*************************************************************!*\
+  !*** ./src/app/pages/nueva-etiqueta/nueva-etiqueta.page.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NuevaEtiquetaPage": () => (/* binding */ NuevaEtiquetaPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _nueva_etiqueta_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nueva-etiqueta.page.html?ngResource */ 234);
+/* harmony import */ var _nueva_etiqueta_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nueva-etiqueta.page.scss?ngResource */ 5359);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_etiquetas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/etiquetas.service */ 5421);
+
+
+
+
+
+
+
+let NuevaEtiquetaPage = class NuevaEtiquetaPage {
+    constructor(fb, etiquetaService, modalControler) {
+        this.fb = fb;
+        this.etiquetaService = etiquetaService;
+        this.modalControler = modalControler;
+        this.nuevaEtiquetaFormulario = this.fb.group({
+            nombre: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.minLength(5)]],
+            titulo: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.minLength(5)]],
+        });
+    }
+    ngOnInit() {
+    }
+    guardarEtiqueta() {
+        this.etiqueta = this.nuevaEtiquetaFormulario.value;
+        this.etiquetaService.crearEtiqueta(this.etiqueta).then(console.log).catch(console.log);
+        this.modalControler.dismiss();
+    }
+    campoEsValido(campo) {
+        return this.nuevaEtiquetaFormulario.controls[campo].errors && this.nuevaEtiquetaFormulario.controls[campo].touched;
+    }
+};
+NuevaEtiquetaPage.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormBuilder },
+    { type: src_app_services_etiquetas_service__WEBPACK_IMPORTED_MODULE_2__.EtiquetasService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController }
+];
+NuevaEtiquetaPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+        selector: 'app-nueva-etiqueta',
+        template: _nueva_etiqueta_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_nueva_etiqueta_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], NuevaEtiquetaPage);
+
+
+
+/***/ }),
+
 /***/ 9559:
 /*!*************************************************************!*\
   !*** ./src/app/pages/nuevo-producto/nuevo-producto.page.ts ***!
@@ -555,6 +1069,7 @@ let NuevoProductoPage = class NuevoProductoPage {
         this.fotoInput = '';
         this.nuevoProductoFormulario = this.fb.group({
             nombre: ['', [ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(5)]],
+            url: ['', [ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(5)]],
             precio: [0, [ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(8)]],
             stock: [0, [ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(3)]],
             img: ['', [ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.required, ngx_editor__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(3)]],
@@ -577,6 +1092,7 @@ let NuevoProductoPage = class NuevoProductoPage {
     guardarProducto() {
         this.producto = this.nuevoProductoFormulario.value;
         this.producto.img = this.fotos;
+        this.producto.url = this.producto.url.replace(" ", "-");
         this.productosService.guardarProducto(this.producto).then(console.log).catch(console.log);
         this.modalController.dismiss();
     }
@@ -616,66 +1132,6 @@ NuevoProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
         styles: [_nuevo_producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], NuevoProductoPage);
-
-
-
-/***/ }),
-
-/***/ 6143:
-/*!*************************************************!*\
-  !*** ./src/app/pages/producto/producto.page.ts ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProductoPage": () => (/* binding */ ProductoPage)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _producto_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./producto.page.html?ngResource */ 1594);
-/* harmony import */ var _producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./producto.page.scss?ngResource */ 7485);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ 3819);
-
-
-
-
-
-let ProductoPage = class ProductoPage {
-    constructor(modalCtrl) {
-        this.modalCtrl = modalCtrl;
-        this.config = {
-            slidesPerView: 1.5,
-            spaceBetween: 20,
-            centeredSlides: true
-        };
-    }
-    ngOnInit() {
-    }
-    salirSinArgumentos() {
-        this.modalCtrl.dismiss();
-    }
-    salirConArgumentos() {
-        this.modalCtrl.dismiss({
-            nombre: 'disponible',
-            precio: 200
-        });
-    }
-};
-ProductoPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__.ModalController }
-];
-ProductoPage.propDecorators = {
-    nombre: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Input }],
-    id: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Input }]
-};
-ProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-producto',
-        template: _producto_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], ProductoPage);
 
 
 
@@ -765,42 +1221,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CategoriasService": () => (/* binding */ CategoriasService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuario.service */ 5763);
+/* harmony import */ var _websocket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./websocket.service */ 8223);
 
 
 
 
-const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url;
+
+
+
+const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
 let CategoriasService = class CategoriasService {
-    constructor(http) {
-        this.http = http;
-    }
-    obtenerCategorias() {
-        return new Promise(resolve => {
-            this.http.get(`${URL}/categorias`)
-                .subscribe(resp => {
-                if (resp['categorias']) {
-                    resolve(resp['categorias']);
-                }
-                else {
-                    resolve(false);
-                }
-            });
-        });
-    }
-};
-CategoriasService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
-];
-CategoriasService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
-        providedIn: 'root'
-    })
-], CategoriasService);
+  constructor(http, wsService, usuarioService) {
+    this.http = http;
+    this.wsService = wsService;
+    this.usuarioService = usuarioService;
+  }
 
+  obtenerCategorias() {
+    return new Promise(resolve => {
+      this.http.get(`${URL}/categorias`).subscribe(resp => {
+        if (resp['categorias']) {
+          resolve(resp['categorias']);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  getCategorias() {
+    this.wsService.emit('get-categorias');
+    return this.wsService.listen('categorias');
+  }
+
+  borrarCategoria(idCategoria) {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this.usuarioService.cargarToken();
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this.http.delete(`${URL}/categorias/${idCategoria}`, {
+          headers
+        }).subscribe( /*#__PURE__*/function () {
+          var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+            if (resp['ok']) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }(), err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+  getCategoriasBorradas() {
+    this.wsService.emit('get-categorias-borradas');
+    return this.wsService.listen('categorias-borradas');
+  }
+
+  crearCategoria(categoria) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this2.usuarioService.cargarToken();
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this2.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this2.http.post(`${URL}/categorias`, categoria, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+};
+
+CategoriasService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient
+}, {
+  type: _websocket_service__WEBPACK_IMPORTED_MODULE_3__.WebsocketService
+}, {
+  type: _usuario_service__WEBPACK_IMPORTED_MODULE_2__.UsuarioService
+}];
+
+CategoriasService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
+  providedIn: 'root'
+})], CategoriasService);
 
 
 /***/ }),
@@ -815,42 +1346,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "EtiquetasService": () => (/* binding */ EtiquetasService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuario.service */ 5763);
+/* harmony import */ var _websocket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./websocket.service */ 8223);
 
 
 
 
-const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url;
+
+
+
+const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
 let EtiquetasService = class EtiquetasService {
-    constructor(http) {
-        this.http = http;
-    }
-    obtenerEtiquetas() {
-        return new Promise(resolve => {
-            this.http.get(`${URL}/etiquetas`)
-                .subscribe(resp => {
-                if (resp['etiquetas']) {
-                    resolve(resp['etiquetas']);
-                }
-                else {
-                    resolve(false);
-                }
-            });
-        });
-    }
-};
-EtiquetasService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
-];
-EtiquetasService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
-        providedIn: 'root'
-    })
-], EtiquetasService);
+  constructor(http, wsService, usuarioService) {
+    this.http = http;
+    this.wsService = wsService;
+    this.usuarioService = usuarioService;
+  }
 
+  obtenerEtiquetas() {
+    return new Promise(resolve => {
+      this.http.get(`${URL}/etiquetas`).subscribe(resp => {
+        if (resp['etiquetas']) {
+          resolve(resp['etiquetas']);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  getEtiquetas() {
+    this.wsService.emit('get-etiquetas');
+    return this.wsService.listen('etiquetas');
+  }
+
+  borrarEtiqueta(idEtiqueta) {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this.usuarioService.cargarToken();
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this.http.delete(`${URL}/etiquetas/${idEtiqueta}`, {
+          headers
+        }).subscribe( /*#__PURE__*/function () {
+          var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+            if (resp['ok']) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }(), err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+  getEtiquetasBorradas() {
+    this.wsService.emit('get-etiquetas-borradas');
+    return this.wsService.listen('etiquetas-borradas');
+  }
+
+  crearEtiqueta(etiqueta) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this2.usuarioService.cargarToken();
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this2.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this2.http.post(`${URL}/etiquetas`, etiqueta, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+};
+
+EtiquetasService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient
+}, {
+  type: _websocket_service__WEBPACK_IMPORTED_MODULE_3__.WebsocketService
+}, {
+  type: _usuario_service__WEBPACK_IMPORTED_MODULE_2__.UsuarioService
+}];
+
+EtiquetasService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
+  providedIn: 'root'
+})], EtiquetasService);
 
 
 /***/ }),
@@ -1014,6 +1620,14 @@ let ProductosService = class ProductosService {
         });
       });
     })();
+  }
+
+  getProductoSlug(slug) {
+    return new Promise(resolve => {
+      this.http.get(`${URL}/productos/slug/${slug}`).subscribe(producto => {
+        resolve(producto);
+      });
+    });
   }
 
 };
@@ -1840,6 +2454,16 @@ module.exports = "img {\n  width: 120px;\n}\n\n.pick-avatar {\n  width: 80px;\n 
 
 /***/ }),
 
+/***/ 7747:
+/*!****************************************************************************!*\
+  !*** ./src/app/components/web/buscador/buscador.component.scss?ngResource ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJidXNjYWRvci5jb21wb25lbnQuc2NzcyJ9 */";
+
+/***/ }),
+
 /***/ 1210:
 /*!****************************************************************************************!*\
   !*** ./src/app/components/web/menu-principal/menu-principal.component.scss?ngResource ***!
@@ -1860,6 +2484,26 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
+/***/ 1247:
+/*!********************************************************************************************!*\
+  !*** ./src/app/components/web/tabla-categorias/tabla-categorias.component.scss?ngResource ***!
+  \********************************************************************************************/
+/***/ ((module) => {
+
+module.exports = ".etiqueta {\n  margin-left: 5px;\n  background-color: green;\n  color: white;\n  border-radius: 5px;\n  padding: 5px;\n  font-weight: bold;\n}\n\n.etiquetas li {\n  margin-top: 8px;\n  list-style: none;\n  float: left;\n}\n\n.producto {\n  border-bottom: 1px solid #EDEDED;\n  padding: 1em;\n}\n\n.precio {\n  font-weight: bold;\n}\n\n.icono-borrar {\n  cursor: pointer;\n  margin-left: 1em;\n  margin-top: 0.5em;\n  font-size: 1.5em;\n  color: red;\n}\n\n.editar-producto {\n  cursor: pointer;\n  margin-left: 1em;\n  font-size: 1.5em;\n  color: blue;\n}\n\n.logo-categoria {\n  width: 50%;\n  border-radius: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYmxhLWNhdGVnb3JpYXMuY29tcG9uZW50LnNjc3MiLCIuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXFdpbmRvd3MlMjAxMFxcRGVza3RvcFxcZG9uLWNhY3R1cy1wYWR1YVxcc3JjXFxhcHBcXGNvbXBvbmVudHNcXHdlYlxcdGFibGEtY2F0ZWdvcmlhc1xcdGFibGEtY2F0ZWdvcmlhcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsdUJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNDSjs7QURFQTtFQUNJLGdDQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0ksaUJBQUE7QUNDSjs7QURHQTtFQUNJLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxVQUFBO0FDQUo7O0FER0E7RUFDSSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNBSjs7QURHQTtFQUNJLFVBQUE7RUFDQSxrQkFBQTtBQ0FKIiwiZmlsZSI6InRhYmxhLWNhdGVnb3JpYXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXRpcXVldGEge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5ldGlxdWV0YXMgbGkge1xyXG4gICAgbWFyZ2luLXRvcDogOHB4O1xyXG4gICAgbGlzdC1zdHlsZTogbm9uZTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG59XHJcblxyXG4ucHJvZHVjdG8ge1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNFREVERUQ7XHJcbiAgICBwYWRkaW5nOiAxZW07XHJcbn1cclxuXHJcbi5wcmVjaW8ge1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcblxyXG4uaWNvbm8tYm9ycmFyIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxZW07XHJcbiAgICBtYXJnaW4tdG9wOiAwLjVlbTtcclxuICAgIGZvbnQtc2l6ZTogMS41ZW07XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG4uZWRpdGFyLXByb2R1Y3RvIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxZW07XHJcbiAgICBmb250LXNpemU6IDEuNWVtO1xyXG4gICAgY29sb3I6IGJsdWU7XHJcbn1cclxuXHJcbi5sb2dvLWNhdGVnb3JpYXtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBib3JkZXItcmFkaXVzOiA4MCU7XHJcbn0iLCIuZXRpcXVldGEge1xuICBtYXJnaW4tbGVmdDogNXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjtcbiAgY29sb3I6IHdoaXRlO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHBhZGRpbmc6IDVweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5ldGlxdWV0YXMgbGkge1xuICBtYXJnaW4tdG9wOiA4cHg7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG4gIGZsb2F0OiBsZWZ0O1xufVxuXG4ucHJvZHVjdG8ge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI0VERURFRDtcbiAgcGFkZGluZzogMWVtO1xufVxuXG4ucHJlY2lvIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5pY29uby1ib3JyYXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG1hcmdpbi1sZWZ0OiAxZW07XG4gIG1hcmdpbi10b3A6IDAuNWVtO1xuICBmb250LXNpemU6IDEuNWVtO1xuICBjb2xvcjogcmVkO1xufVxuXG4uZWRpdGFyLXByb2R1Y3RvIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBtYXJnaW4tbGVmdDogMWVtO1xuICBmb250LXNpemU6IDEuNWVtO1xuICBjb2xvcjogYmx1ZTtcbn1cblxuLmxvZ28tY2F0ZWdvcmlhIHtcbiAgd2lkdGg6IDUwJTtcbiAgYm9yZGVyLXJhZGl1czogODAlO1xufSJdfQ== */";
+
+/***/ }),
+
+/***/ 7474:
+/*!******************************************************************************************!*\
+  !*** ./src/app/components/web/tabla-etiquetas/tabla-etiquetas.component.scss?ngResource ***!
+  \******************************************************************************************/
+/***/ ((module) => {
+
+module.exports = ".etiqueta {\n  margin-left: 5px;\n  background-color: green;\n  color: white;\n  border-radius: 5px;\n  padding: 5px;\n  font-weight: bold;\n}\n\n.etiquetas li {\n  margin-top: 8px;\n  list-style: none;\n  float: left;\n}\n\n.producto {\n  border-bottom: 1px solid #EDEDED;\n  padding: 1em;\n}\n\n.precio {\n  font-weight: bold;\n}\n\n.icono-borrar {\n  cursor: pointer;\n  margin-left: 1em;\n  margin-top: 0.5em;\n  font-size: 1.5em;\n  color: red;\n}\n\n.editar-producto {\n  cursor: pointer;\n  margin-left: 1em;\n  font-size: 1.5em;\n  color: blue;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYmxhLWV0aXF1ZXRhcy5jb21wb25lbnQuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcV2luZG93cyUyMDEwXFxEZXNrdG9wXFxkb24tY2FjdHVzLXBhZHVhXFxzcmNcXGFwcFxcY29tcG9uZW50c1xcd2ViXFx0YWJsYS1ldGlxdWV0YXNcXHRhYmxhLWV0aXF1ZXRhcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsdUJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNDSjs7QURFQTtFQUNJLGdDQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0ksaUJBQUE7QUNDSjs7QURHQTtFQUNJLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxVQUFBO0FDQUo7O0FER0E7RUFDSSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNBSiIsImZpbGUiOiJ0YWJsYS1ldGlxdWV0YXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXRpcXVldGEge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5ldGlxdWV0YXMgbGkge1xyXG4gICAgbWFyZ2luLXRvcDogOHB4O1xyXG4gICAgbGlzdC1zdHlsZTogbm9uZTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG59XHJcblxyXG4ucHJvZHVjdG8ge1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNFREVERUQ7XHJcbiAgICBwYWRkaW5nOiAxZW07XHJcbn1cclxuXHJcbi5wcmVjaW8ge1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcblxyXG4uaWNvbm8tYm9ycmFyIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxZW07XHJcbiAgICBtYXJnaW4tdG9wOiAwLjVlbTtcclxuICAgIGZvbnQtc2l6ZTogMS41ZW07XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG4uZWRpdGFyLXByb2R1Y3RvIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxZW07XHJcbiAgICBmb250LXNpemU6IDEuNWVtO1xyXG4gICAgY29sb3I6IGJsdWU7XHJcbn0iLCIuZXRpcXVldGEge1xuICBtYXJnaW4tbGVmdDogNXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjtcbiAgY29sb3I6IHdoaXRlO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHBhZGRpbmc6IDVweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5ldGlxdWV0YXMgbGkge1xuICBtYXJnaW4tdG9wOiA4cHg7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG4gIGZsb2F0OiBsZWZ0O1xufVxuXG4ucHJvZHVjdG8ge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI0VERURFRDtcbiAgcGFkZGluZzogMWVtO1xufVxuXG4ucHJlY2lvIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5pY29uby1ib3JyYXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG1hcmdpbi1sZWZ0OiAxZW07XG4gIG1hcmdpbi10b3A6IDAuNWVtO1xuICBmb250LXNpemU6IDEuNWVtO1xuICBjb2xvcjogcmVkO1xufVxuXG4uZWRpdGFyLXByb2R1Y3RvIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBtYXJnaW4tbGVmdDogMWVtO1xuICBmb250LXNpemU6IDEuNWVtO1xuICBjb2xvcjogYmx1ZTtcbn0iXX0= */";
+
+/***/ }),
+
 /***/ 4477:
 /*!******************************************************************************************!*\
   !*** ./src/app/components/web/tabla-productos/tabla-productos.component.scss?ngResource ***!
@@ -1867,6 +2511,26 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 module.exports = ".etiqueta {\n  margin-left: 5px;\n  background-color: green;\n  color: white;\n  border-radius: 5px;\n  padding: 5px;\n  font-weight: bold;\n}\n\n.etiquetas li {\n  margin-top: 8px;\n  list-style: none;\n  float: left;\n}\n\n.producto {\n  border-bottom: 1px solid #EDEDED;\n  padding: 1em;\n}\n\n.precio {\n  font-weight: bold;\n}\n\n.icono-borrar {\n  cursor: pointer;\n  margin-left: 1em;\n  margin-top: 0.5em;\n  font-size: 1.5em;\n  color: red;\n}\n\n.editar-producto {\n  cursor: pointer;\n  margin-left: 1em;\n  font-size: 1.5em;\n  color: blue;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYmxhLXByb2R1Y3Rvcy5jb21wb25lbnQuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcV2luZG93cyUyMDEwXFxEZXNrdG9wXFxkb24tY2FjdHVzLXBhZHVhXFxzcmNcXGFwcFxcY29tcG9uZW50c1xcd2ViXFx0YWJsYS1wcm9kdWN0b3NcXHRhYmxhLXByb2R1Y3Rvcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsdUJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNDSjs7QURFQTtFQUNJLGdDQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0ksaUJBQUE7QUNDSjs7QURHQTtFQUNJLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxVQUFBO0FDQUo7O0FER0E7RUFDSSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNBSiIsImZpbGUiOiJ0YWJsYS1wcm9kdWN0b3MuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXRpcXVldGEge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5ldGlxdWV0YXMgbGkge1xyXG4gICAgbWFyZ2luLXRvcDogOHB4O1xyXG4gICAgbGlzdC1zdHlsZTogbm9uZTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG59XHJcblxyXG4ucHJvZHVjdG8ge1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNFREVERUQ7XHJcbiAgICBwYWRkaW5nOiAxZW07XHJcbn1cclxuXHJcbi5wcmVjaW8ge1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcblxyXG4uaWNvbm8tYm9ycmFyIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxZW07XHJcbiAgICBtYXJnaW4tdG9wOiAwLjVlbTtcclxuICAgIGZvbnQtc2l6ZTogMS41ZW07XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG4uZWRpdGFyLXByb2R1Y3RvIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxZW07XHJcbiAgICBmb250LXNpemU6IDEuNWVtO1xyXG4gICAgY29sb3I6IGJsdWU7XHJcbn0iLCIuZXRpcXVldGEge1xuICBtYXJnaW4tbGVmdDogNXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjtcbiAgY29sb3I6IHdoaXRlO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHBhZGRpbmc6IDVweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5ldGlxdWV0YXMgbGkge1xuICBtYXJnaW4tdG9wOiA4cHg7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG4gIGZsb2F0OiBsZWZ0O1xufVxuXG4ucHJvZHVjdG8ge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI0VERURFRDtcbiAgcGFkZGluZzogMWVtO1xufVxuXG4ucHJlY2lvIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5pY29uby1ib3JyYXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG1hcmdpbi1sZWZ0OiAxZW07XG4gIG1hcmdpbi10b3A6IDAuNWVtO1xuICBmb250LXNpemU6IDEuNWVtO1xuICBjb2xvcjogcmVkO1xufVxuXG4uZWRpdGFyLXByb2R1Y3RvIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBtYXJnaW4tbGVmdDogMWVtO1xuICBmb250LXNpemU6IDEuNWVtO1xuICBjb2xvcjogYmx1ZTtcbn0iXX0= */";
+
+/***/ }),
+
+/***/ 108:
+/*!******************************************************************************!*\
+  !*** ./src/app/pages/editar-categoria/editar-categoria.page.scss?ngResource ***!
+  \******************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJlZGl0YXItY2F0ZWdvcmlhLnBhZ2Uuc2NzcyJ9 */";
+
+/***/ }),
+
+/***/ 9091:
+/*!****************************************************************************!*\
+  !*** ./src/app/pages/editar-etiqueta/editar-etiqueta.page.scss?ngResource ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJlZGl0YXItZXRpcXVldGEucGFnZS5zY3NzIn0= */";
 
 /***/ }),
 
@@ -1880,6 +2544,26 @@ module.exports = ".NgxEditor__Wrapper {\n  width: 100%;\n  margin-top: 1em;\n  m
 
 /***/ }),
 
+/***/ 2747:
+/*!****************************************************************************!*\
+  !*** ./src/app/pages/nueva-categoria/nueva-categoria.page.scss?ngResource ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJudWV2YS1jYXRlZ29yaWEucGFnZS5zY3NzIn0= */";
+
+/***/ }),
+
+/***/ 5359:
+/*!**************************************************************************!*\
+  !*** ./src/app/pages/nueva-etiqueta/nueva-etiqueta.page.scss?ngResource ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJudWV2YS1ldGlxdWV0YS5wYWdlLnNjc3MifQ== */";
+
+/***/ }),
+
 /***/ 8487:
 /*!**************************************************************************!*\
   !*** ./src/app/pages/nuevo-producto/nuevo-producto.page.scss?ngResource ***!
@@ -1887,16 +2571,6 @@ module.exports = ".NgxEditor__Wrapper {\n  width: 100%;\n  margin-top: 1em;\n  m
 /***/ ((module) => {
 
 module.exports = ".NgxEditor__Wrapper {\n  width: 100%;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  height: 13em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm51ZXZvLXByb2R1Y3RvLnBhZ2Uuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxwYWdlc1xcbnVldm8tcHJvZHVjdG9cXG51ZXZvLXByb2R1Y3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0FDQ0oiLCJmaWxlIjoibnVldm8tcHJvZHVjdG8ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLk5neEVkaXRvcl9fV3JhcHBlcntcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLXRvcDogMWVtO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMWVtO1xyXG4gICAgaGVpZ2h0OiAxM2VtO1xyXG59IiwiLk5neEVkaXRvcl9fV3JhcHBlciB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAxZW07XG4gIG1hcmdpbi1ib3R0b206IDFlbTtcbiAgaGVpZ2h0OiAxM2VtO1xufSJdfQ== */";
-
-/***/ }),
-
-/***/ 7485:
-/*!**************************************************************!*\
-  !*** ./src/app/pages/producto/producto.page.scss?ngResource ***!
-  \**************************************************************/
-/***/ ((module) => {
-
-module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n\nswiper {\n  background: #EBEBEB;\n}\n\nswiper img {\n  padding-top: 10%;\n  padding-bottom: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2R1Y3RvLnBhZ2Uuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxwYWdlc1xccHJvZHVjdG9cXHByb2R1Y3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0o7O0FERUE7RUFDSSxtQkFBQTtBQ0NKOztBRENJO0VBQ0ksZ0JBQUE7RUFDQSxvQkFBQTtBQ0NSIiwiZmlsZSI6InByb2R1Y3RvLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcclxuICAgIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcclxufVxyXG5cclxuc3dpcGVyIHtcclxuICAgIGJhY2tncm91bmQ6ICNFQkVCRUI7XHJcblxyXG4gICAgaW1nIHtcclxuICAgICAgICBwYWRkaW5nLXRvcDogMTAlO1xyXG4gICAgICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xyXG4gICAgfVxyXG59IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XG59XG5cbnN3aXBlciB7XG4gIGJhY2tncm91bmQ6ICNFQkVCRUI7XG59XG5zd2lwZXIgaW1nIHtcbiAgcGFkZGluZy10b3A6IDEwJTtcbiAgcGFkZGluZy1ib3R0b206IDIwcHg7XG59Il19 */";
 
 /***/ }),
 
@@ -1910,13 +2584,23 @@ module.exports = "<ion-row>\r\n  <ion-col>\r\n    <h3>Seleccione Avatar</h3>\r\n
 
 /***/ }),
 
+/***/ 4352:
+/*!****************************************************************************!*\
+  !*** ./src/app/components/web/buscador/buscador.component.html?ngResource ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-list>\n  <ion-item *ngFor=\"let producto of productos | filtroPipe:textoBuscar:'nombre'\">\n    <img [src]=\"producto.img[0]\" width=\"200px\" height=\"200px\">\n    <ion-label>{{producto.nombre}}</ion-label>\n  </ion-item>\n</ion-list>";
+
+/***/ }),
+
 /***/ 3499:
 /*!****************************************************************************************!*\
   !*** ./src/app/components/web/menu-principal/menu-principal.component.html?ngResource ***!
   \****************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-grid fixed>\r\n      <ion-row class=\"ion-align-items-center\">\r\n        <ion-col size=\"2\" class=\"logo\" size-md=\"2\" size-lg=\"2\">Don Cactus Padua</ion-col>\r\n        <ion-col size-md=\"4\" size-sm=\"12\" size-lg=\"5\">\r\n          <ion-searchbar \r\n            placeholder=\"Buscar marcas, productos y más...\"\r\n          ></ion-searchbar></ion-col>\r\n        <ion-col size=\"4\" size-md=\"6\" size-lg=\"5\" class=\"opciones-principales-menu\">\r\n         <ion-label>Ingresar</ion-label>\r\n         <ion-label>Crear cuenta</ion-label>\r\n         <ion-label>Mis compras</ion-label>\r\n         <ion-label>\r\n          <ion-icon name=\"cart-outline\"></ion-icon>\r\n         </ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-toolbar>\r\n</ion-header>";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-grid fixed>\r\n      <ion-row class=\"ion-align-items-center\">\r\n        <ion-col size=\"2\" class=\"logo\" size-md=\"2\" size-lg=\"2\">Don Cactus Padua</ion-col>\r\n        <ion-col size-md=\"4\" size-sm=\"12\" size-lg=\"5\">\r\n          <ion-searchbar \r\n            placeholder=\"Buscar marcas, productos y más...\"\r\n            (ionChange)=\"onSearchChange($event)\"\r\n            inputmode=\"text\"\r\n          ></ion-searchbar></ion-col>\r\n        <ion-col size=\"4\" size-md=\"6\" size-lg=\"5\" class=\"opciones-principales-menu\">\r\n         <ion-label>Ingresar</ion-label>\r\n         <ion-label>Crear cuenta</ion-label>\r\n         <ion-label>Mis compras</ion-label>\r\n         <ion-label>\r\n          <ion-icon name=\"cart-outline\"></ion-icon>\r\n         </ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-toolbar>\r\n</ion-header>";
 
 /***/ }),
 
@@ -1930,13 +2614,53 @@ module.exports = "<swiper #swiper [config]=\"config\">\r\n\r\n  <ng-template swi
 
 /***/ }),
 
+/***/ 3913:
+/*!********************************************************************************************!*\
+  !*** ./src/app/components/web/tabla-categorias/tabla-categorias.component.html?ngResource ***!
+  \********************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<!-- TODO: EDITAR CATEGORIAS -->\n<ion-card class=\"ion-text-center\">\n  <ion-card-header>\n    <ion-card-title class=\"titulo-principal\">Categorías</ion-card-title>\n    <ion-searchbar (ionChange)=\"onSearchChange($event)\" placeholder=\"Buscar un categoría\" mode=\"ios\" inputmode=\"text\">\n    </ion-searchbar>\n    <ion-segment value=\"activas\" (ionChange)=\"segmentChanged($event)\">\n      <ion-segment-button value=\"activas\">\n        <ion-label>Categorías</ion-label>\n      </ion-segment-button>\n      <ion-segment-button value=\"borradas\">\n        <ion-label>Borradas</ion-label>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-card-header>\n  <ion-card-content>\n    <ion-list>\n      <ion-button (click)=\"agregarCategoria()\" fill=\"clear\" shape=\"round\">\n        <ion-icon name=\"add-circle-outline\"></ion-icon>\n        Agregar nueva categoría\n      </ion-button>\n    </ion-list>\n    <ion-list>\n      <ion-list-header>\n        <ion-grid fixed>\n          <ion-row>\n            <ion-col>\n              <ion-label class=\"precio\">Foto</ion-label>\n            </ion-col>\n            <ion-col>\n              <ion-label class=\"precio\">Categoría</ion-label>\n            </ion-col>\n            <ion-col>\n              <ion-label class=\"precio\">Opciones</ion-label>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-list-header>\n      <ion-grid>\n        <ion-row *ngFor=\"let categoria of categorias | filtroPipe:textoBuscar:'nombre'\" class=\"producto\">\n          <ion-col>\n            <img [src]=\"categoria.img\" class=\"logo-categoria\" />\n          </ion-col>\n          <ion-col>\n            <ion-label>{{categoria.nombre}}</ion-label>\n          </ion-col>\n          <ion-col>\n            <span>\n              <ion-icon name=\"create-outline\" class=\"editar-producto\" (click)=\"editarCategoria(categoria)\"></ion-icon>\n            </span>\n            <span>\n              <ion-icon *ngIf=\"categoria.estado == true\" name=\"trash-outline\" class=\"icono-borrar\"\n                (click)=\"borrarCategoria(categoria._id)\"></ion-icon>\n            </span>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-list>\n\n  </ion-card-content>\n</ion-card>";
+
+/***/ }),
+
+/***/ 1514:
+/*!******************************************************************************************!*\
+  !*** ./src/app/components/web/tabla-etiquetas/tabla-etiquetas.component.html?ngResource ***!
+  \******************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<!-- TODO: EDITAR ETIQUETAS -->\n<ion-card class=\"ion-text-center\">\n  <ion-card-header>\n    <ion-card-title class=\"titulo-principal\">Etiquetas</ion-card-title>\n    <ion-searchbar (ionChange)=\"onSearchChange($event)\" placeholder=\"Buscar un categoría\" mode=\"ios\" inputmode=\"text\">\n    </ion-searchbar>\n    <ion-segment value=\"activas\" (ionChange)=\"segmentChanged($event)\">\n      <ion-segment-button value=\"activas\">\n        <ion-label>Etiquetas</ion-label>\n      </ion-segment-button>\n      <ion-segment-button value=\"borradas\">\n        <ion-label>Borradas</ion-label>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-card-header>\n  <ion-card-content>\n    <ion-list>\n      <ion-button (click)=\"agregarEtiqueta()\" fill=\"clear\" shape=\"round\">\n        <ion-icon name=\"add-circle-outline\"></ion-icon>\n        Agregar nueva Etiqueta\n      </ion-button>\n    </ion-list>\n    <ion-list>\n      <ion-list-header>\n        <ion-grid fixed>\n          <ion-row>\n            <ion-col>\n              <ion-label class=\"precio\">Título</ion-label>\n            </ion-col>\n            <ion-col>\n              <ion-label class=\"precio\">Etiqueta</ion-label>\n            </ion-col>\n            <ion-col>\n              <ion-label class=\"precio\">Opciones</ion-label>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-list-header>\n      <ion-grid>\n        <ion-row *ngFor=\"let etiqueta of etiquetas | filtroPipe:textoBuscar:'nombre'\" class=\"producto\">\n          <ion-col>\n            <ion-label>{{etiqueta.titulo}}</ion-label>\n          </ion-col>\n          <ion-col>\n            <ion-label class=\"etiqueta\">{{etiqueta.nombre}}</ion-label>\n          </ion-col>\n          <ion-col>\n            <span>\n              <ion-icon name=\"create-outline\" class=\"editar-producto\" (click)=\"editarEtiqueta(etiqueta)\"></ion-icon>\n            </span>\n            <span>\n              <ion-icon *ngIf=\"etiqueta.estado == true\" name=\"trash-outline\" class=\"icono-borrar\"\n                (click)=\"borrarEtiqueta(etiqueta._id)\"></ion-icon>\n            </span>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-list>\n\n  </ion-card-content>\n</ion-card>";
+
+/***/ }),
+
 /***/ 105:
 /*!******************************************************************************************!*\
   !*** ./src/app/components/web/tabla-productos/tabla-productos.component.html?ngResource ***!
   \******************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<!-- TODO: EDITAR PRODUCTOS -->\r\n<ion-card class=\"ion-text-center\">\r\n  <ion-card-header>\r\n    <ion-card-title class=\"titulo-principal\">Productos</ion-card-title>\r\n    <ion-searchbar (ionChange)=\"onSearchChange($event)\" placeholder=\"Buscar un producto\" mode=\"ios\" inputmode=\"text\">\r\n    </ion-searchbar>\r\n    <ion-segment value=\"publicados\" (ionChange)=\"segmentChanged($event)\">\r\n      <ion-segment-button value=\"publicados\">\r\n        <ion-label>Públicados</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"sin-stock\">\r\n        <ion-label>Sin stock</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"borrados\">\r\n        <ion-label>Borrados</ion-label>\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-card-header>\r\n  <ion-card-content>\r\n    <ion-list>\r\n      <ion-button (click)=\"agregarProducto()\" fill=\"clear\" shape=\"round\">\r\n        <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n        Agregar nuevo producto\r\n      </ion-button>\r\n    </ion-list>\r\n    <ion-list>\r\n      <ion-list-header>\r\n        <ion-grid fixed>\r\n          <ion-row>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Foto</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Nombre</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Precio</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Stock</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Categoría</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Etiquetas</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Opciones</ion-label>\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-list-header>\r\n      <ion-grid>\r\n        <ion-row *ngFor=\"let producto of productos | filtroPipe:textoBuscar:'nombre'\" class=\"producto\">\r\n          <ion-col>\r\n            <ion-img [src]=\"producto.img[0]\"></ion-img>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label>{{producto.nombre}}</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label class=\"precio\">${{producto.precio | number}}</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label>{{producto.stock | number}} unidades.</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label class=\"precio\">{{producto.categoria.nombre }}</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ul class=\"etiquetas\">\r\n              <li *ngFor=\"let etiqueta of producto.etiquetas\">\r\n                <ion-label position=\"floating\" class=\"etiqueta\">{{etiqueta.nombre}}</ion-label>\r\n              </li>\r\n            </ul>\r\n          </ion-col>\r\n          <ion-col>\r\n            <span>\r\n              <ion-icon name=\"create-outline\" class=\"editar-producto\" (click)=\"editarProducto(producto)\"></ion-icon>\r\n            </span>\r\n            <span>\r\n              <ion-icon *ngIf=\"producto.estado == true\" name=\"trash-outline\" class=\"icono-borrar\"\r\n                (click)=\"borrarProducto(producto._id)\"></ion-icon>\r\n            </span>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </ion-list>\r\n\r\n  </ion-card-content>\r\n</ion-card>";
+module.exports = "<!-- TODO: EDITAR PRODUCTOS -->\r\n<ion-card class=\"ion-text-center\">\r\n  <ion-card-header>\r\n    <ion-card-title class=\"titulo-principal\">Productos</ion-card-title>\r\n    <ion-searchbar (ionChange)=\"onSearchChange($event)\" placeholder=\"Buscar un producto\" mode=\"ios\" inputmode=\"text\">\r\n    </ion-searchbar>\r\n    <ion-segment value=\"publicados\" (ionChange)=\"segmentChanged($event)\">\r\n      <ion-segment-button value=\"publicados\">\r\n        <ion-label>Públicados</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"sin-stock\">\r\n        <ion-label>Sin stock</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"borrados\">\r\n        <ion-label>Borrados</ion-label>\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-card-header>\r\n  <ion-card-content>\r\n    <ion-list>\r\n      <ion-button (click)=\"agregarProducto()\" fill=\"clear\" shape=\"round\">\r\n        <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n        Agregar nuevo producto\r\n      </ion-button>\r\n    </ion-list>\r\n    <ion-list>\r\n      <ion-list-header>\r\n        <ion-grid fixed>\r\n          <ion-row>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Foto</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Nombre</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Precio</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Stock</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Categoría</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Etiquetas</ion-label>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-label class=\"precio\">Opciones</ion-label>\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-list-header>\r\n      <ion-grid>\r\n        <ion-row *ngFor=\"let producto of productos | filtroPipe:textoBuscar:'nombre'\" class=\"producto\">\r\n          <ion-col>\r\n            <ion-img [src]=\"producto.img[0]\"></ion-img>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label>{{producto.nombre}}</ion-label>\r\n            <ion-item>\r\n              <ion-label>\r\n                /{{producto.url | lowercase}}\r\n              </ion-label>\r\n            </ion-item>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label class=\"precio\">${{producto.precio | number}}</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label>{{producto.stock | number}} unidades.</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ion-label class=\"precio\">{{producto.categoria.nombre }}</ion-label>\r\n          </ion-col>\r\n          <ion-col>\r\n            <ul class=\"etiquetas\">\r\n              <li *ngFor=\"let etiqueta of producto.etiquetas\">\r\n                <ion-label position=\"floating\" class=\"etiqueta\">{{etiqueta.nombre}}</ion-label>\r\n              </li>\r\n            </ul>\r\n          </ion-col>\r\n          <ion-col>\r\n            <span>\r\n              <ion-icon name=\"create-outline\" class=\"editar-producto\" (click)=\"editarProducto(producto)\"></ion-icon>\r\n            </span>\r\n            <span>\r\n              <ion-icon *ngIf=\"producto.estado == true\" name=\"trash-outline\" class=\"icono-borrar\"\r\n                (click)=\"borrarProducto(producto._id)\"></ion-icon>\r\n            </span>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </ion-list>\r\n\r\n  </ion-card-content>\r\n</ion-card>";
+
+/***/ }),
+
+/***/ 6012:
+/*!******************************************************************************!*\
+  !*** ./src/app/pages/editar-categoria/editar-categoria.page.html?ngResource ***!
+  \******************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>editar-categoria</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n";
+
+/***/ }),
+
+/***/ 619:
+/*!****************************************************************************!*\
+  !*** ./src/app/pages/editar-etiqueta/editar-etiqueta.page.html?ngResource ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>editar-etiqueta</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n";
 
 /***/ }),
 
@@ -1950,23 +2674,33 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title *ngIf=\"editarPr
 
 /***/ }),
 
+/***/ 9432:
+/*!****************************************************************************!*\
+  !*** ./src/app/pages/nueva-categoria/nueva-categoria.page.html?ngResource ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title *ngIf=\"nuevaCategoriaFormulario.value.nombre == ''\">Nueva categoría</ion-title>\n    <ion-title *ngIf=\"!nuevaCategoriaFormulario.value.nombre == ''\">{{nuevaCategoriaFormulario.value.nombre}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <form [formGroup]=\"nuevaCategoriaFormulario\">\n\n\n      <ion-item>\n        <ion-label>Nombre de la categoría:</ion-label>\n        <ion-input formControlName=\"nombre\"></ion-input>\n      </ion-item>\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\n        Debe de tener por lo menos cinco caracteres.\n      </ion-label>\n      <ion-item>\n        <ion-label>URL de la foto:</ion-label>\n        <ion-input formControlName=\"img\"></ion-input>\n      </ion-item>\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\n        Debe de tener por lo menos cinco caracteres.\n      </ion-label>\n\n      <ion-button (click)=\"guardarCategoria()\" expand=\"block\" fill=\"clear\" shape=\"round\">\n        Guardar categoría\n      </ion-button>\n    </form>\n  </ion-card>\n</ion-content>";
+
+/***/ }),
+
+/***/ 234:
+/*!**************************************************************************!*\
+  !*** ./src/app/pages/nueva-etiqueta/nueva-etiqueta.page.html?ngResource ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title *ngIf=\"nuevaEtiquetaFormulario.value.nombre == ''\">Nueva etiqueta</ion-title>\n    <ion-title *ngIf=\"!nuevaEtiquetaFormulario.value.nombre == ''\">{{nuevaEtiquetaFormulario.value.nombre}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <form [formGroup]=\"nuevaEtiquetaFormulario\">\n\n\n      <ion-item>\n        <ion-label>Nombre de la etiqueta:</ion-label>\n        <ion-input formControlName=\"nombre\"></ion-input>\n      </ion-item>\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\n        Debe de tener por lo menos cinco caracteres.\n      </ion-label>\n      <ion-item>\n        <ion-label>Título para vender:</ion-label>\n        <ion-input formControlName=\"titulo\"></ion-input>\n      </ion-item>\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\n        Debe de tener por lo menos cinco caracteres.\n      </ion-label>\n\n      <ion-button (click)=\"guardarEtiqueta()\" expand=\"block\" fill=\"clear\" shape=\"round\">\n        Guardar nueva etiqueta\n      </ion-button>\n    </form>\n  </ion-card>\n</ion-content>";
+
+/***/ }),
+
 /***/ 3500:
 /*!**************************************************************************!*\
   !*** ./src/app/pages/nuevo-producto/nuevo-producto.page.html?ngResource ***!
   \**************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title *ngIf=\"nuevoProductoFormulario.value.nombre == ''\">Nuevo producto</ion-title>\r\n    <ion-title *ngIf=\"!nuevoProductoFormulario.value.nombre == ''\">{{nuevoProductoFormulario.value.nombre}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card>\r\n    <form [formGroup]=\"nuevoProductoFormulario\">\r\n\r\n      <ion-item>\r\n        <ion-label>Nombre del producto:</ion-label>\r\n        <ion-input formControlName=\"nombre\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-input formControlName=\"img\" placeholder=\"Pegue aquí la URL de la foto\" [(ngModel)]=\"fotoInput\"></ion-input>\r\n        <ion-button (click)=\"guardarFoto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n          Agregar foto\r\n        </ion-button>\r\n      </ion-item>\r\n      <ion-list *ngIf=\"fotos.length > 0\">\r\n        <ion-item *ngFor=\"let foto of fotos; let i = index\">\r\n          <ion-icon name=\"close-circle-outline\" (click)=\"borrarFoto(i)\"></ion-icon>\r\n          <img [src]=\"foto\" width=\"150px\" height=\"150px\">\r\n        </ion-item>\r\n      </ion-list>\r\n      <ion-item>\r\n        <div class=\"NgxEditor__Wrapper\">\r\n          <ngx-editor-menu [editor]=\"editor\"> </ngx-editor-menu>\r\n          <ngx-editor [editor]=\"editor\" [placeholder]=\"'Escribe la descripción aquí...'\" formControlName=\"descripcion\">\r\n          </ngx-editor>\r\n        </div>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Precio:</ion-label>\r\n        <ion-input formControlName=\"precio\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('precio')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-label>Stock:</ion-label>\r\n        <ion-input formControlName=\"stock\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('stock')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"false\" placeholder=\"Seleccione una categoría\" formControlName=\"categoria\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let categoria of categorias\" [value]=\"categoria._id\">\r\n            {{categoria.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"true\" placeholder=\"Seleccione las etiquetas\" formControlName=\"etiquetas\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let etiqueta of etiquetas\" [value]=\"etiqueta._id\">\r\n            {{etiqueta.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-button (click)=\"guardarProducto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n        Guardar cambios\r\n      </ion-button>\r\n    </form>\r\n  </ion-card>\r\n</ion-content>";
-
-/***/ }),
-
-/***/ 1594:
-/*!**************************************************************!*\
-  !*** ./src/app/pages/producto/producto.page.html?ngResource ***!
-  \**************************************************************/
-/***/ ((module) => {
-
-module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content class=\"ion-padding\">\r\n\r\n  <swiper [config]=\"config\">\r\n    <ng-template swiperSlide *ngFor=\"let img of [1,2,3,4]\">\r\n      <img src=\"https://m.media-amazon.com/images/I/31cn43h6fsL._AC_.jpg\" tappable>\r\n    </ng-template>\r\n  </swiper>\r\n\r\n    nombre: {{nombre}}\r\n    id: {{id}}\r\n\r\n    <ion-button (click)=\"salirSinArgumentos()\">\r\n        Salir sin argumentos\r\n    </ion-button>\r\n\r\n    <ion-button (click)=\"salirConArgumentos()\">\r\n        Salir con argumentos\r\n    </ion-button>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title *ngIf=\"nuevoProductoFormulario.value.nombre == ''\">Nuevo producto</ion-title>\r\n    <ion-title *ngIf=\"!nuevoProductoFormulario.value.nombre == ''\">{{nuevoProductoFormulario.value.nombre}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card>\r\n    <form [formGroup]=\"nuevoProductoFormulario\">\r\n\r\n      \r\n      <ion-item>\r\n        <ion-label>Nombre del producto:</ion-label>\r\n        <ion-input formControlName=\"nombre\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n      <ion-item>\r\n        <ion-label>URL para el producto:</ion-label>\r\n        <ion-input formControlName=\"url\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n      <ion-item>\r\n        <ion-input formControlName=\"img\" placeholder=\"Pegue aquí la URL de la foto\" [(ngModel)]=\"fotoInput\"></ion-input>\r\n        <ion-button (click)=\"guardarFoto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n          Agregar foto\r\n        </ion-button>\r\n      </ion-item>\r\n      <ion-list *ngIf=\"fotos.length > 0\">\r\n        <ion-item *ngFor=\"let foto of fotos; let i = index\">\r\n          <ion-icon name=\"close-circle-outline\" (click)=\"borrarFoto(i)\"></ion-icon>\r\n          <img [src]=\"foto\" width=\"150px\" height=\"150px\">\r\n        </ion-item>\r\n      </ion-list>\r\n      <ion-item>\r\n        <div class=\"NgxEditor__Wrapper\">\r\n          <ngx-editor-menu [editor]=\"editor\"> </ngx-editor-menu>\r\n          <ngx-editor [editor]=\"editor\" [placeholder]=\"'Escribe la descripción aquí...'\" formControlName=\"descripcion\">\r\n          </ngx-editor>\r\n        </div>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Precio:</ion-label>\r\n        <ion-input formControlName=\"precio\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('precio')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-label>Stock:</ion-label>\r\n        <ion-input formControlName=\"stock\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('stock')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"false\" placeholder=\"Seleccione una categoría\" formControlName=\"categoria\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let categoria of categorias\" [value]=\"categoria._id\">\r\n            {{categoria.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"true\" placeholder=\"Seleccione las etiquetas\" formControlName=\"etiquetas\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let etiqueta of etiquetas\" [value]=\"etiqueta._id\">\r\n            {{etiqueta.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-button (click)=\"guardarProducto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n        Guardar nuevo producto\r\n      </ion-button>\r\n    </form>\r\n  </ion-card>\r\n</ion-content>";
 
 /***/ }),
 

@@ -28,6 +28,7 @@ categorias.get('/:id', [
 categorias.post('/', [
     validarJWT,
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    esAdminRole,
     validarCampos
 ], crearCategoria);
 

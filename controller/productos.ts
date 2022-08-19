@@ -49,42 +49,45 @@ export const obtenerProductoSlug = async (req: Request, res: Response) => {
 
 export const crearProducto = async (req: Request, res: Response) => {
 
-    const server = Server.instance;
+    try {
 
-    let { estado, usuario, ...body } = req.body;
+        const server = Server.instance;
+
+        let { estado, usuario, ...body } = req.body;
+
+   
+        const productoDB = await Producto.findOne({ nombre: body.nombre });
+
+        if (productoDB) {
+            return res.status(400).json({
+                msg: `El producto ${productoDB.nombre}, ya existe`
+            });
+        }
 
 
+        // Generar la data a guardar
+        const data = {
+            ...body,
+            nombre: body.nombre.toUpperCase(),
+            usuario: req.usuario._id,
+            url: body.url.toLowerCase()
+        }
 
-    const productoDB = await Producto.findOne({ nombre: body.nombre });
+        const producto = new Producto(data);
+        // Guardar DB
+        await producto.save();
 
-    if (productoDB) {
-        return res.status(400).json({
-            msg: `El producto ${productoDB.nombre}, ya existe`
+        server.io.emit('productos', await Producto.find({ estado: true }).populate('usuario', 'nombre')
+            .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
+
+
+        res.status(201).json({
+            ok: true,
+            producto
         });
+    } catch (error) {
+        console.log('Error al guardar el producto ' + error);
     }
-
-
-    // Generar la data a guardar
-    const data = {
-        ...body,
-        nombre: body.nombre.toUpperCase(),
-        usuario: req.usuario._id,
-        url: body.url.toLowerCase()
-    }
-
-    const producto = new Producto(data);
-
-    // Guardar DB
-    await producto.save();
-
-    server.io.emit('productos', await Producto.find({ estado: true }).populate('usuario', 'nombre')
-        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
-
-
-    res.status(201).json({
-        ok: true,
-        producto
-    });
 
 }
 

@@ -69,7 +69,10 @@ const crearCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function*
         // Guardar DB
         yield categoria.save();
         server.io.emit('categorias', yield categoria_1.Categoria.find({ estado: true }).populate('usuario', 'nombre'));
-        res.status(201).json(categoria);
+        res.status(201).json({
+            ok: true,
+            categoria
+        });
     }
     catch (error) {
         res.status(400).json({

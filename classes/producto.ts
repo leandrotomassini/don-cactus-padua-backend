@@ -35,6 +35,7 @@ const ProductoSchema = new mongoose.Schema({
     etiquetas: [{
         type: Schema.Types.ObjectId,
         ref: 'Etiqueta',
+        require: false
     }],
     descripcion: { type: String },
     disponible: { type: Boolean, defult: true },

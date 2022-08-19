@@ -24,6 +24,7 @@ categorias.get('/:id', [
 categorias.post('/', [
     validar_jwt_1.validarJWT,
     (0, express_validator_1.check)('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    validar_roles_1.esAdminRole,
     validar_campos_1.validarCampos
 ], categorias_1.crearCategoria);
 // Actualizar - privado - cualquiera con token válido

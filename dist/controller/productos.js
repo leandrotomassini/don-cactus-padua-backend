@@ -62,25 +62,30 @@ const obtenerProductoSlug = (req, res) => __awaiter(void 0, void 0, void 0, func
 });
 exports.obtenerProductoSlug = obtenerProductoSlug;
 const crearProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const server = server_1.default.instance;
-    let _a = req.body, { estado, usuario } = _a, body = __rest(_a, ["estado", "usuario"]);
-    const productoDB = yield producto_1.Producto.findOne({ nombre: body.nombre });
-    if (productoDB) {
-        return res.status(400).json({
-            msg: `El producto ${productoDB.nombre}, ya existe`
+    try {
+        const server = server_1.default.instance;
+        let _a = req.body, { estado, usuario } = _a, body = __rest(_a, ["estado", "usuario"]);
+        const productoDB = yield producto_1.Producto.findOne({ nombre: body.nombre });
+        if (productoDB) {
+            return res.status(400).json({
+                msg: `El producto ${productoDB.nombre}, ya existe`
+            });
+        }
+        // Generar la data a guardar
+        const data = Object.assign(Object.assign({}, body), { nombre: body.nombre.toUpperCase(), usuario: req.usuario._id, url: body.url.toLowerCase() });
+        const producto = new producto_1.Producto(data);
+        // Guardar DB
+        yield producto.save();
+        server.io.emit('productos', yield producto_1.Producto.find({ estado: true }).populate('usuario', 'nombre')
+            .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
+        res.status(201).json({
+            ok: true,
+            producto
         });
     }
-    // Generar la data a guardar
-    const data = Object.assign(Object.assign({}, body), { nombre: body.nombre.toUpperCase(), usuario: req.usuario._id, url: body.url.toLowerCase() });
-    const producto = new producto_1.Producto(data);
-    // Guardar DB
-    yield producto.save();
-    server.io.emit('productos', yield producto_1.Producto.find({ estado: true }).populate('usuario', 'nombre')
-        .populate('categoria', 'nombre').populate('etiquetas', 'nombre'));
-    res.status(201).json({
-        ok: true,
-        producto
-    });
+    catch (error) {
+        console.log('Error al guardar el producto ' + error);
+    }
 });
 exports.crearProducto = crearProducto;
 const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
