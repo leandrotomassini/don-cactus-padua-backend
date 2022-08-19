@@ -7,6 +7,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const server_1 = __importDefault(require("./classes/server"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const carrito_1 = __importDefault(require("./routes/carrito"));
 const categoria_1 = __importDefault(require("./routes/categoria"));
 const etiquetas_1 = __importDefault(require("./routes/etiquetas"));
 const pedidos_1 = __importDefault(require("./routes/pedidos"));
@@ -25,6 +26,7 @@ server.app.use('/api/auth', auth_1.default);
 server.app.use('/api/categorias', categoria_1.default);
 server.app.use('/api/etiquetas', etiquetas_1.default);
 server.app.use('/api/pedidos', pedidos_1.default);
+server.app.use('/api/carrito', carrito_1.default);
 server.start(() => {
     console.log(`Servidor corriendo en el puerto ${server.port}.`);
 });

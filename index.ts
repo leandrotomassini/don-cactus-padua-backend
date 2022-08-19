@@ -4,6 +4,7 @@ import cors from 'cors';
 import Server from "./classes/server";
 
 import auth from './routes/auth';
+import carrito from './routes/carrito';
 import categorias from './routes/categoria';
 import etiquetas from './routes/etiquetas';
 import pedidos from './routes/pedidos';
@@ -30,6 +31,7 @@ server.app.use('/api/auth', auth);
 server.app.use('/api/categorias', categorias);
 server.app.use('/api/etiquetas', etiquetas);
 server.app.use('/api/pedidos', pedidos);
+server.app.use('/api/carrito', carrito);
 
 server.start(() => {
     console.log(`Servidor corriendo en el puerto ${server.port}.`);
