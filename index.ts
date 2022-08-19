@@ -6,6 +6,7 @@ import Server from "./classes/server";
 import auth from './routes/auth';
 import categorias from './routes/categoria';
 import etiquetas from './routes/etiquetas';
+import pedidos from './routes/pedidos';
 import productos from './routes/productos';
 import usuarios from './routes/usuarios';
 
@@ -28,6 +29,7 @@ server.app.use('/api/productos', productos);
 server.app.use('/api/auth', auth);
 server.app.use('/api/categorias', categorias);
 server.app.use('/api/etiquetas', etiquetas);
+server.app.use('/api/pedidos', pedidos);
 
 server.start(() => {
     console.log(`Servidor corriendo en el puerto ${server.port}.`);

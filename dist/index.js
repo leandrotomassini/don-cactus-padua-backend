@@ -9,6 +9,7 @@ const server_1 = __importDefault(require("./classes/server"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const categoria_1 = __importDefault(require("./routes/categoria"));
 const etiquetas_1 = __importDefault(require("./routes/etiquetas"));
+const pedidos_1 = __importDefault(require("./routes/pedidos"));
 const productos_1 = __importDefault(require("./routes/productos"));
 const usuarios_1 = __importDefault(require("./routes/usuarios"));
 const server = server_1.default.instance;
@@ -23,6 +24,7 @@ server.app.use('/api/productos', productos_1.default);
 server.app.use('/api/auth', auth_1.default);
 server.app.use('/api/categorias', categoria_1.default);
 server.app.use('/api/etiquetas', etiquetas_1.default);
+server.app.use('/api/pedidos', pedidos_1.default);
 server.start(() => {
     console.log(`Servidor corriendo en el puerto ${server.port}.`);
 });
