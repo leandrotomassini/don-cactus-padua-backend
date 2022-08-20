@@ -93,28 +93,224 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CarritoPage": () => (/* binding */ CarritoPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _carrito_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./carrito.page.html?ngResource */ 4202);
-/* harmony import */ var _carrito_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carrito.page.scss?ngResource */ 1237);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _carrito_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carrito.page.html?ngResource */ 4202);
+/* harmony import */ var _carrito_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./carrito.page.scss?ngResource */ 1237);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_app_services_carrito_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/carrito.service */ 1635);
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/usuario.service */ 5763);
+
+
+
 
 
 
 
 let CarritoPage = class CarritoPage {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-CarritoPage.ctorParameters = () => [];
-CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-carrito',
-        template: _carrito_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_carrito_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], CarritoPage);
+  constructor(carritoService, usuarioService) {
+    this.carritoService = carritoService;
+    this.usuarioService = usuarioService;
+    this.total = 0;
+  }
 
+  ngOnInit() {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this.usuarioService.cargarToken();
+      _this.productosSubscripcion = _this.carritoService.obtenerProductosCarrito(_this.usuarioService.usuario.uid).subscribe(productos => {
+        _this.productos = productos;
+
+        _this.calcularTotal();
+      });
+    })();
+  }
+
+  calcularTotal() {
+    this.total = 0;
+    this.productos.forEach(producto => {
+      this.total = this.total + producto.producto.precio;
+    });
+  }
+
+  borrarProducto(idCarrito) {
+    this.carritoService.borrarProductoCarrito(idCarrito).then().catch();
+  }
+
+  pagar() {
+    this.carritoService.pagar(this.productos).then(resp => {
+      let link = resp.linkPago;
+
+      if (link != undefined) {
+        window.open(link, "_blank");
+      }
+    }).catch();
+  }
+
+};
+
+CarritoPage.ctorParameters = () => [{
+  type: src_app_services_carrito_service__WEBPACK_IMPORTED_MODULE_3__.CarritoService
+}, {
+  type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_4__.UsuarioService
+}];
+
+CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+  selector: 'app-carrito',
+  template: _carrito_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_carrito_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], CarritoPage);
+
+
+/***/ }),
+
+/***/ 1635:
+/*!*********************************************!*\
+  !*** ./src/app/services/carrito.service.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CarritoService": () => (/* binding */ CarritoService)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuario.service */ 5763);
+/* harmony import */ var _websocket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./websocket.service */ 8223);
+
+
+
+
+
+
+
+const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
+let CarritoService = class CarritoService {
+  constructor(http, wsService, usuarioService) {
+    this.http = http;
+    this.wsService = wsService;
+    this.usuarioService = usuarioService;
+  }
+
+  obtenerCarrito() {
+    return new Promise(resolve => {
+      this.http.get(`${URL}/carrito`).subscribe(resp => {
+        if (resp['ok']) {
+          resolve(resp['carrito']);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  agregarProductoCarrito(producto) {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this.usuarioService.cargarToken();
+      const data = {
+        "producto": producto
+      };
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this.http.post(`${URL}/carrito`, data, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            resolve(resp);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+  borrarProductoCarrito(idcarrito) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this2.usuarioService.cargarToken();
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this2.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this2.http.delete(`${URL}/carrito/${idcarrito}`, {
+          headers
+        }).subscribe( /*#__PURE__*/function () {
+          var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+            if (resp['ok']) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }(), err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+  obtenerProductosCarrito(idUsuario) {
+    this.wsService.emit('get-productos-carrito', idUsuario);
+    return this.wsService.listen('productos-carrito');
+  }
+
+  pagar(productos) {
+    var _this3 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this3.usuarioService.cargarToken();
+      const data = {
+        "productos": productos
+      };
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this3.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this3.http.post(`${URL}/pedidos/linkPago`, data, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            resolve(resp);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+};
+
+CarritoService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient
+}, {
+  type: _websocket_service__WEBPACK_IMPORTED_MODULE_3__.WebsocketService
+}, {
+  type: _usuario_service__WEBPACK_IMPORTED_MODULE_2__.UsuarioService
+}];
+
+CarritoService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
+  providedIn: 'root'
+})], CarritoService);
 
 
 /***/ }),
@@ -125,7 +321,7 @@ CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhcnJpdG8ucGFnZS5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXFdpbmRvd3MlMjAxMFxcRGVza3RvcFxcZG9uLWNhY3R1cy1wYWR1YVxcc3JjXFxhcHBcXHBhZ2VzXFxjYXJyaXRvXFxjYXJyaXRvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoiY2Fycml0by5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XHJcbiAgICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XHJcbiAgfSIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xufSJdfQ== */";
+module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n\n.icono-borrar {\n  cursor: pointer;\n  margin-left: 1em;\n  margin-top: 0.5em;\n  font-size: 1.5em;\n  color: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhcnJpdG8ucGFnZS5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXFdpbmRvd3MlMjAxMFxcRGVza3RvcFxcZG9uLWNhY3R1cy1wYWR1YVxcc3JjXFxhcHBcXHBhZ2VzXFxjYXJyaXRvXFxjYXJyaXRvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFBO0FDQ0Y7O0FER0E7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGdCQUFBO0VBQ0EsVUFBQTtBQ0FGIiwiZmlsZSI6ImNhcnJpdG8ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQge1xyXG4gIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcclxufVxyXG5cclxuXHJcbi5pY29uby1ib3JyYXIge1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxuICBtYXJnaW4tbGVmdDogMWVtO1xyXG4gIG1hcmdpbi10b3A6IDAuNWVtO1xyXG4gIGZvbnQtc2l6ZTogMS41ZW07XHJcbiAgY29sb3I6IHJlZDtcclxufSIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRUJFQkVCO1xufVxuXG4uaWNvbm8tYm9ycmFyIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBtYXJnaW4tbGVmdDogMWVtO1xuICBtYXJnaW4tdG9wOiAwLjVlbTtcbiAgZm9udC1zaXplOiAxLjVlbTtcbiAgY29sb3I6IHJlZDtcbn0iXX0= */";
 
 /***/ }),
 
@@ -135,7 +331,7 @@ module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n/*# sourceMappingU
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content>\r\n\r\n</ion-content>\r\n";
+module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content>\r\n    <ion-card>\r\n        <ion-card-header>\r\n            <ion-card-title>Carrito de compras</ion-card-title>\r\n        </ion-card-header>\r\n        <ion-list>\r\n            <ion-item *ngFor=\"let producto of productos\">\r\n                <img [src]=\"producto.producto.img[0]\" width=\"50\" height=\"50\">\r\n                <ion-label>{{producto.producto.nombre}}</ion-label>\r\n                <ion-label>$ {{producto.producto.precio | number}}</ion-label>\r\n                <ion-icon name=\"trash-outline\" class=\"icono-borrar\"\r\n                (click)=\"borrarProducto(producto._id)\"></ion-icon>\r\n            </ion-item>\r\n            <ion-item class=\"ion-text-center\">\r\n                <ion-label>Total: $ {{total | number}}</ion-label>\r\n                <ion-button (click)=\"pagar()\">\r\n                    Pagar ahora\r\n                </ion-button>\r\n            </ion-item>\r\n        </ion-list>\r\n    </ion-card>\r\n</ion-content>";
 
 /***/ })
 

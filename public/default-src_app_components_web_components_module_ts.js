@@ -94,10 +94,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "BuscadorComponent": () => (/* binding */ BuscadorComponent)
 /* harmony export */ });
 /* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _buscador_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./buscador.component.html?ngResource */ 4352);
 /* harmony import */ var _buscador_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./buscador.component.scss?ngResource */ 7747);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/productos.service */ 4893);
 
 
@@ -105,9 +106,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let BuscadorComponent = class BuscadorComponent {
-  constructor(productosService) {
+  constructor(productosService, navCtrl) {
     this.productosService = productosService;
+    this.navCtrl = navCtrl;
     this.textoBuscar = '';
   }
 
@@ -121,18 +124,25 @@ let BuscadorComponent = class BuscadorComponent {
     })();
   }
 
+  verProducto(urlProducto) {
+    let url = '/' + urlProducto;
+    this.navCtrl.navigateRoot(url);
+  }
+
 };
 
 BuscadorComponent.ctorParameters = () => [{
   type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__.ProductosService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController
 }];
 
 BuscadorComponent.propDecorators = {
   textoBuscar: [{
-    type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.Input
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.Input
   }]
 };
-BuscadorComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+BuscadorComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
   selector: 'app-buscador',
   template: _buscador_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_buscador_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -151,19 +161,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ComponentsModule": () => (/* binding */ ComponentsModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var swiper_angular__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! swiper/angular */ 9737);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var swiper_angular__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! swiper/angular */ 9737);
 /* harmony import */ var _menu_principal_menu_principal_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu-principal/menu-principal.component */ 1102);
 /* harmony import */ var _slide_slide_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slide/slide.component */ 333);
 /* harmony import */ var _avatar_selector_avatar_selector_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./avatar-selector/avatar-selector.component */ 6889);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla-productos/tabla-productos.component */ 4960);
 /* harmony import */ var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/pipes/pipes.module */ 5503);
 /* harmony import */ var src_app_pages_nuevo_producto_nuevo_producto_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/pages/nuevo-producto/nuevo-producto.page */ 9559);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var ngx_editor__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-editor */ 9679);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var ngx_editor__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ngx-editor */ 9679);
 /* harmony import */ var src_app_pages_editar_producto_editar_producto_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/pages/editar-producto/editar-producto.page */ 824);
 /* harmony import */ var _tabla_categorias_tabla_categorias_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tabla-categorias/tabla-categorias.component */ 1523);
 /* harmony import */ var src_app_pages_editar_categoria_editar_categoria_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/pages/editar-categoria/editar-categoria.page */ 6906);
@@ -172,6 +182,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_pages_nueva_etiqueta_nueva_etiqueta_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/pages/nueva-etiqueta/nueva-etiqueta.page */ 4765);
 /* harmony import */ var _tabla_etiquetas_tabla_etiquetas_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./tabla-etiquetas/tabla-etiquetas.component */ 594);
 /* harmony import */ var _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./buscador/buscador.component */ 5172);
+/* harmony import */ var _producto_slide_producto_slide_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./producto-slide/producto-slide.component */ 9435);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/router */ 124);
+
+
 
 
 
@@ -195,8 +209,8 @@ __webpack_require__.r(__webpack_exports__);
 
 let ComponentsModule = class ComponentsModule {
 };
-ComponentsModule = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_15__.NgModule)({
+ComponentsModule = (0,tslib__WEBPACK_IMPORTED_MODULE_15__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_16__.NgModule)({
         declarations: [
             _menu_principal_menu_principal_component__WEBPACK_IMPORTED_MODULE_0__.MenuPrincipalComponent,
             _slide_slide_component__WEBPACK_IMPORTED_MODULE_1__.SlideComponent,
@@ -210,7 +224,8 @@ ComponentsModule = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([
             src_app_pages_nueva_etiqueta_nueva_etiqueta_page__WEBPACK_IMPORTED_MODULE_11__.NuevaEtiquetaPage,
             _tabla_categorias_tabla_categorias_component__WEBPACK_IMPORTED_MODULE_7__.TablaCategoriasComponent,
             _tabla_etiquetas_tabla_etiquetas_component__WEBPACK_IMPORTED_MODULE_12__.TablaEtiquetasComponent,
-            _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__.BuscadorComponent
+            _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__.BuscadorComponent,
+            _producto_slide_producto_slide_component__WEBPACK_IMPORTED_MODULE_14__.ProductoSlideComponent
         ],
         exports: [
             _menu_principal_menu_principal_component__WEBPACK_IMPORTED_MODULE_0__.MenuPrincipalComponent,
@@ -219,16 +234,18 @@ ComponentsModule = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([
             _tabla_productos_tabla_productos_component__WEBPACK_IMPORTED_MODULE_3__.TablaProductosComponent,
             _tabla_categorias_tabla_categorias_component__WEBPACK_IMPORTED_MODULE_7__.TablaCategoriasComponent,
             _tabla_etiquetas_tabla_etiquetas_component__WEBPACK_IMPORTED_MODULE_12__.TablaEtiquetasComponent,
-            _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__.BuscadorComponent
+            _buscador_buscador_component__WEBPACK_IMPORTED_MODULE_13__.BuscadorComponent,
+            _producto_slide_producto_slide_component__WEBPACK_IMPORTED_MODULE_14__.ProductoSlideComponent
         ],
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_16__.CommonModule,
-            swiper_angular__WEBPACK_IMPORTED_MODULE_17__.SwiperModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_18__.IonicModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_17__.CommonModule,
+            swiper_angular__WEBPACK_IMPORTED_MODULE_18__.SwiperModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_19__.IonicModule,
             src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_4__.PipesModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_19__.FormsModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_19__.ReactiveFormsModule,
-            ngx_editor__WEBPACK_IMPORTED_MODULE_20__.NgxEditorModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_20__.FormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_20__.ReactiveFormsModule,
+            ngx_editor__WEBPACK_IMPORTED_MODULE_21__.NgxEditorModule,
+            _angular_router__WEBPACK_IMPORTED_MODULE_22__.RouterModule
         ]
     })
 ], ComponentsModule);
@@ -289,6 +306,60 @@ MenuPrincipalComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_
   template: _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], MenuPrincipalComponent);
+
+
+/***/ }),
+
+/***/ 9435:
+/*!***************************************************************************!*\
+  !*** ./src/app/components/web/producto-slide/producto-slide.component.ts ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProductoSlideComponent": () => (/* binding */ ProductoSlideComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _producto_slide_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./producto-slide.component.html?ngResource */ 617);
+/* harmony import */ var _producto_slide_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./producto-slide.component.scss?ngResource */ 1321);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+
+
+
+
+let ProductoSlideComponent = class ProductoSlideComponent {
+    constructor() {
+        this.config = {
+            slidesPerView: 1,
+            spaceBetween: 50,
+            navigation: true,
+            loop: true,
+            autoplay: true
+        };
+    }
+    ngOnInit() {
+        console.log(this.producto);
+    }
+    ngAfterContentChecked() {
+        if (this.swiper) {
+            this.swiper.updateSwiper({});
+        }
+    }
+};
+ProductoSlideComponent.ctorParameters = () => [];
+ProductoSlideComponent.propDecorators = {
+    swiper: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ViewChild, args: ['swiper',] }],
+    producto: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input }]
+};
+ProductoSlideComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Component)({
+        selector: 'app-producto-slide',
+        template: _producto_slide_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_producto_slide_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], ProductoSlideComponent);
+
 
 
 /***/ }),
@@ -2474,6 +2545,16 @@ module.exports = "ion-header ion-toolbar {\n  --background: #00C500;\n  --color:
 
 /***/ }),
 
+/***/ 1321:
+/*!****************************************************************************************!*\
+  !*** ./src/app/components/web/producto-slide/producto-slide.component.scss?ngResource ***!
+  \****************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9kdWN0by1zbGlkZS5jb21wb25lbnQuc2NzcyJ9 */";
+
+/***/ }),
+
 /***/ 6285:
 /*!**********************************************************************!*\
   !*** ./src/app/components/web/slide/slide.component.scss?ngResource ***!
@@ -2590,7 +2671,7 @@ module.exports = "<ion-row>\r\n  <ion-col>\r\n    <h3>Seleccione Avatar</h3>\r\n
   \****************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-list>\n  <ion-item *ngFor=\"let producto of productos | filtroPipe:textoBuscar:'nombre'\">\n    <img [src]=\"producto.img[0]\" width=\"200px\" height=\"200px\">\n    <ion-label>{{producto.nombre}}</ion-label>\n  </ion-item>\n</ion-list>";
+module.exports = "<ion-list>\n  <ion-item *ngFor=\"let producto of productos | filtroPipe:textoBuscar:'nombre'\" (click)=\"verProducto(producto.url)\">\n    <img [src]=\"producto.img[0]\" width=\"200px\" height=\"200px\">\n    <ion-label>{{producto.nombre}}</ion-label>\n  </ion-item>\n</ion-list>";
 
 /***/ }),
 
@@ -2600,7 +2681,17 @@ module.exports = "<ion-list>\n  <ion-item *ngFor=\"let producto of productos | f
   \****************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-grid fixed>\r\n      <ion-row class=\"ion-align-items-center\">\r\n        <ion-col size=\"2\" class=\"logo\" size-md=\"2\" size-lg=\"2\">Don Cactus Padua</ion-col>\r\n        <ion-col size-md=\"4\" size-sm=\"12\" size-lg=\"5\">\r\n          <ion-searchbar \r\n            placeholder=\"Buscar marcas, productos y más...\"\r\n            (ionChange)=\"onSearchChange($event)\"\r\n            inputmode=\"text\"\r\n          ></ion-searchbar></ion-col>\r\n        <ion-col size=\"4\" size-md=\"6\" size-lg=\"5\" class=\"opciones-principales-menu\">\r\n         <ion-label>Ingresar</ion-label>\r\n         <ion-label>Crear cuenta</ion-label>\r\n         <ion-label>Mis compras</ion-label>\r\n         <ion-label>\r\n          <ion-icon name=\"cart-outline\"></ion-icon>\r\n         </ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-toolbar>\r\n</ion-header>";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-grid fixed>\r\n      <ion-row class=\"ion-align-items-center\">\r\n        <ion-col size=\"2\" class=\"logo\" size-md=\"2\" size-lg=\"2\">Don Cactus Padua</ion-col>\r\n        <ion-col size-md=\"4\" size-sm=\"12\" size-lg=\"5\">\r\n          <ion-searchbar \r\n            placeholder=\"Buscar marcas, productos y más...\"\r\n            (ionChange)=\"onSearchChange($event)\"\r\n            inputmode=\"text\"\r\n          ></ion-searchbar></ion-col>\r\n        <ion-col size=\"4\" size-md=\"6\" size-lg=\"5\" class=\"opciones-principales-menu\">\r\n         <ion-label>Ingresar</ion-label>\r\n         <ion-label>Crear cuenta</ion-label>\r\n         <ion-label>Mis compras</ion-label>\r\n         <ion-label>\r\n          <ion-icon name=\"cart-outline\" routerLink=\"/carrito\"></ion-icon>\r\n         </ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-toolbar>\r\n</ion-header>";
+
+/***/ }),
+
+/***/ 617:
+/*!****************************************************************************************!*\
+  !*** ./src/app/components/web/producto-slide/producto-slide.component.html?ngResource ***!
+  \****************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<swiper #swiper [config]=\"config\">\n\n  <ng-template swiperSlide *ngFor=\"let foto of producto.img\">\n    <img src=\"{{foto}}\"/>\n  </ng-template>\n\n</swiper>";
 
 /***/ }),
 
@@ -2700,7 +2791,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title *ngIf=\"nuevaEti
   \**************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title *ngIf=\"nuevoProductoFormulario.value.nombre == ''\">Nuevo producto</ion-title>\r\n    <ion-title *ngIf=\"!nuevoProductoFormulario.value.nombre == ''\">{{nuevoProductoFormulario.value.nombre}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card>\r\n    <form [formGroup]=\"nuevoProductoFormulario\">\r\n\r\n      \r\n      <ion-item>\r\n        <ion-label>Nombre del producto:</ion-label>\r\n        <ion-input formControlName=\"nombre\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n      <ion-item>\r\n        <ion-label>URL para el producto:</ion-label>\r\n        <ion-input formControlName=\"url\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n      <ion-item>\r\n        <ion-input formControlName=\"img\" placeholder=\"Pegue aquí la URL de la foto\" [(ngModel)]=\"fotoInput\"></ion-input>\r\n        <ion-button (click)=\"guardarFoto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n          Agregar foto\r\n        </ion-button>\r\n      </ion-item>\r\n      <ion-list *ngIf=\"fotos.length > 0\">\r\n        <ion-item *ngFor=\"let foto of fotos; let i = index\">\r\n          <ion-icon name=\"close-circle-outline\" (click)=\"borrarFoto(i)\"></ion-icon>\r\n          <img [src]=\"foto\" width=\"150px\" height=\"150px\">\r\n        </ion-item>\r\n      </ion-list>\r\n      <ion-item>\r\n        <div class=\"NgxEditor__Wrapper\">\r\n          <ngx-editor-menu [editor]=\"editor\"> </ngx-editor-menu>\r\n          <ngx-editor [editor]=\"editor\" [placeholder]=\"'Escribe la descripción aquí...'\" formControlName=\"descripcion\">\r\n          </ngx-editor>\r\n        </div>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Precio:</ion-label>\r\n        <ion-input formControlName=\"precio\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('precio')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-label>Stock:</ion-label>\r\n        <ion-input formControlName=\"stock\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('stock')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"false\" placeholder=\"Seleccione una categoría\" formControlName=\"categoria\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let categoria of categorias\" [value]=\"categoria._id\">\r\n            {{categoria.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"true\" placeholder=\"Seleccione las etiquetas\" formControlName=\"etiquetas\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let etiqueta of etiquetas\" [value]=\"etiqueta._id\">\r\n            {{etiqueta.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-button (click)=\"guardarProducto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n        Guardar nuevo producto\r\n      </ion-button>\r\n    </form>\r\n  </ion-card>\r\n</ion-content>";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title *ngIf=\"nuevoProductoFormulario.value.nombre == ''\">Nuevo producto</ion-title>\r\n    <ion-title *ngIf=\"!nuevoProductoFormulario.value.nombre == ''\">{{nuevoProductoFormulario.value.nombre}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card>\r\n    <form [formGroup]=\"nuevoProductoFormulario\">\r\n\r\n      \r\n      <ion-item>\r\n        <ion-label>Nombre del producto:</ion-label>\r\n        <ion-input formControlName=\"nombre\" maxlength=\"40\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n      <ion-item>\r\n        <ion-label>URL para el producto:</ion-label>\r\n        <ion-input formControlName=\"url\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('nombre')\">\r\n        Debe de tener por lo menos cinco caracteres.\r\n      </ion-label>\r\n      <ion-item>\r\n        <ion-input formControlName=\"img\" placeholder=\"Pegue aquí la URL de la foto\" [(ngModel)]=\"fotoInput\"></ion-input>\r\n        <ion-button (click)=\"guardarFoto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n          Agregar foto\r\n        </ion-button>\r\n      </ion-item>\r\n      <ion-list *ngIf=\"fotos.length > 0\">\r\n        <ion-item *ngFor=\"let foto of fotos; let i = index\">\r\n          <ion-icon name=\"close-circle-outline\" (click)=\"borrarFoto(i)\"></ion-icon>\r\n          <img [src]=\"foto\" width=\"150px\" height=\"150px\">\r\n        </ion-item>\r\n      </ion-list>\r\n      <ion-item>\r\n        <div class=\"NgxEditor__Wrapper\">\r\n          <ngx-editor-menu [editor]=\"editor\"> </ngx-editor-menu>\r\n          <ngx-editor [editor]=\"editor\" [placeholder]=\"'Escribe la descripción aquí...'\" formControlName=\"descripcion\">\r\n          </ngx-editor>\r\n        </div>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Precio:</ion-label>\r\n        <ion-input formControlName=\"precio\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('precio')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-label>Stock:</ion-label>\r\n        <ion-input formControlName=\"stock\" type=\"number\" min=\"0\"></ion-input>\r\n      </ion-item>\r\n      <ion-label class=\"mensaje-error\" *ngIf=\"campoEsValido('stock')\">\r\n        Debe de tener un precio.\r\n      </ion-label>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"false\" placeholder=\"Seleccione una categoría\" formControlName=\"categoria\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let categoria of categorias\" [value]=\"categoria._id\">\r\n            {{categoria.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-item>\r\n        <ion-select multiple=\"true\" placeholder=\"Seleccione las etiquetas\" formControlName=\"etiquetas\" expand=\"block\">\r\n          <ion-select-option *ngFor=\"let etiqueta of etiquetas\" [value]=\"etiqueta._id\">\r\n            {{etiqueta.nombre}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n\r\n      <ion-button (click)=\"guardarProducto()\" expand=\"block\" fill=\"clear\" shape=\"round\">\r\n        Guardar nuevo producto\r\n      </ion-button>\r\n    </form>\r\n  </ion-card>\r\n</ion-content>";
 
 /***/ }),
 

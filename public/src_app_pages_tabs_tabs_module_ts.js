@@ -65,7 +65,7 @@ const routes = [
         children: [
             {
                 path: 'growshop',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_growshop_growshop_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../growshop/growshop.module */ 3576)).then(m => m.GrowshopPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("default-src_app_pages_producto_producto_page_ts"), __webpack_require__.e("src_app_pages_growshop_growshop_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../growshop/growshop.module */ 3576)).then(m => m.GrowshopPageModule)
             },
             {
                 path: 'cuenta',
@@ -74,15 +74,18 @@ const routes = [
             },
             {
                 path: 'carrito',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../carrito/carrito.module */ 4646)).then(m => m.CarritoPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../carrito/carrito.module */ 4646)).then(m => m.CarritoPageModule),
+                canLoad: [src_app_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
             },
             {
                 path: 'categorias',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_categorias_categorias_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../categorias/categorias.module */ 1653)).then(m => m.CategoriasPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_categorias_categorias_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../categorias/categorias.module */ 1653)).then(m => m.CategoriasPageModule),
+                canLoad: [src_app_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
             },
             {
                 path: 'panel-control',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_panel-control_panel-control_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../panel-control/panel-control.module */ 5666)).then(m => m.PanelControlPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_panel-control_panel-control_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../panel-control/panel-control.module */ 5666)).then(m => m.PanelControlPageModule),
+                canLoad: [src_app_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
             },
             {
                 path: '',
@@ -161,34 +164,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TabsPage": () => (/* binding */ TabsPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _tabs_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs.page.html?ngResource */ 7867);
-/* harmony import */ var _tabs_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs.page.scss?ngResource */ 4436);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/usuario.service */ 5763);
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _tabs_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs.page.html?ngResource */ 7867);
+/* harmony import */ var _tabs_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabs.page.scss?ngResource */ 4436);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/usuario.service */ 5763);
+
 
 
 
 
 
 let TabsPage = class TabsPage {
-    constructor(usuarioService) {
-        this.usuarioService = usuarioService;
-        this.rol = '';
-        this.rol = this.usuarioService.usuario.rol;
-    }
-};
-TabsPage.ctorParameters = () => [
-    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_2__.UsuarioService }
-];
-TabsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
-        selector: 'app-tabs',
-        template: _tabs_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_tabs_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], TabsPage);
+  // admin: boolean = false;
+  constructor(usuarioService) {
+    this.usuarioService = usuarioService;
+    this.rol = '';
+  }
 
+  ngOnInit() {// await this.usuarioService.validaToken();
+    // this.rol = await this.usuarioService.usuario.rol;
+    // if (this.rol == 'ADMINISTRADOR') {
+    //   this.admin = true;
+    // } else {
+    //   this.admin = false;
+    // }
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
+  }
+
+};
+
+TabsPage.ctorParameters = () => [{
+  type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_3__.UsuarioService
+}];
+
+TabsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+  selector: 'app-tabs',
+  template: _tabs_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_tabs_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], TabsPage);
 
 
 /***/ }),
