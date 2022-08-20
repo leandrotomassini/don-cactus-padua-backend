@@ -39,6 +39,9 @@ export const agregarProducto = async (req: Request, res: Response) => {
         // Guardar DB
         await carrito.save();
 
+        server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre')
+            .populate('producto'));
+
         res.status(201).json({
             ok: true,
             carrito
@@ -58,6 +61,9 @@ export const borrarProducto = async (req: Request, res: Response) => {
 
     const { id } = req.params;
     const productoBorrado = await Carrito.findByIdAndDelete(id);
+
+    server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre')
+    .populate('producto'));
 
     res.json({
         ok: true,

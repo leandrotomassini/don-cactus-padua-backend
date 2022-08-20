@@ -13,6 +13,7 @@ exports.productos = exports.desconectar = void 0;
 const producto_1 = require("../classes/producto");
 const categoria_1 = require("../classes/categoria");
 const etiqueta_1 = require("../classes/etiqueta");
+const carrito_1 = require("../classes/carrito");
 const desconectar = (cliente, io) => {
     cliente.on('disconnect', () => {
         console.log('Cliente desconectado: ', cliente.id);
@@ -43,6 +44,9 @@ const productos = (cliente, io) => {
     }));
     cliente.on('get-etiquetas-borradas', () => __awaiter(void 0, void 0, void 0, function* () {
         io.emit('etiquetas', yield etiqueta_1.Etiqueta.find({ estado: 'false' }).populate('usuario', 'nombre'));
+    }));
+    cliente.on('get-productos-carrito', (idusuario) => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: idusuario }).populate('usuario', 'nombre').populate('producto'));
     }));
 };
 exports.productos = productos;

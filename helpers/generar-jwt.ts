@@ -9,7 +9,7 @@ export const generarJWT = ( uid = '' ) => {
         const payload = { uid };
 
         jwt.sign( payload, SECRETORPRIVATEKEY, {
-            expiresIn: '4h'
+            expiresIn: '80700h'
         }, ( err, token ) => {
 
             if ( err ) {

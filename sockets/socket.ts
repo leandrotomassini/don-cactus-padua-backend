@@ -4,6 +4,7 @@ import socketIO from 'socket.io';
 import { Producto } from '../classes/producto';
 import { Categoria } from '../classes/categoria';
 import { Etiqueta } from '../classes/etiqueta';
+import { Carrito } from '../classes/carrito';
 
 
 export const desconectar = (cliente: Socket, io: socketIO.Server) => {
@@ -43,6 +44,10 @@ export const productos = (cliente: Socket, io: socketIO.Server) => {
 
     cliente.on('get-etiquetas-borradas', async () => {
         io.emit('etiquetas', await Etiqueta.find({ estado: 'false' }).populate('usuario', 'nombre'));
+    });
+
+    cliente.on('get-productos-carrito', async (idusuario) => {
+        io.emit('productos-carrito', await Carrito.find({ usuario: idusuario }).populate('usuario', 'nombre').populate('producto'));
     });
 
 }
