@@ -20,7 +20,7 @@ const obtenerCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function*
     const [total, productos] = yield Promise.all([
         carrito_1.Carrito.countDocuments(query),
         carrito_1.Carrito.find(query)
-            .populate('usuario', 'nombre')
+            .populate('usuario')
             .populate('producto')
     ]);
     res.json({
@@ -41,7 +41,7 @@ const agregarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function
         const carrito = new carrito_1.Carrito(data);
         // Guardar DB
         yield carrito.save();
-        server.io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre')
+        server.io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario')
             .populate('producto'));
         res.status(201).json({
             ok: true,
@@ -61,7 +61,7 @@ const borrarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function*
     const server = server_1.default.instance;
     const { id } = req.params;
     const productoBorrado = yield carrito_1.Carrito.findByIdAndDelete(id);
-    server.io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre')
+    server.io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario')
         .populate('producto'));
     res.json({
         ok: true,

@@ -8,22 +8,29 @@ export const crearLinkPago = async (req: Request, res: Response) => {
     try {
         let usuario = req.body.productos[0].usuario._id;
         let productos = req.body.productos;
+        let items: [] = [];
+        let item: any;
+
+        
+
+        for (let i = 0; i < productos.length; i++) {
+
+            item = {
+                title: productos[i].producto.nombre,
+                description: productos[i].producto.descripcion,
+                picture_url: productos[i].producto.img[0],
+                quantity: 1,
+                unit_price: productos[i].producto.precio
+            }
+            items.push(item);
+        }
 
         const url = "https://api.mercadopago.com/checkout/preferences"
 
         const cuerpo = {
 
-            payer_email: "test_user_5759607@testuser.com",
-            items: [
-                {
-                    title: "Dummy Title",
-                    description: "Dummy description",
-                    picture_url: "http://www.myapp.com/myimage.jpg",
-                    category_id: "cat123",
-                    quantity: 1,
-                    unit_price: 10
-                }
-            ],
+            payer_email: req.body.productos[0].usuario.correo,
+            items: items,
             back_urls: {
                 success: "https://www.google.com",
                 failure: "http://www.taringa.net",
@@ -31,6 +38,7 @@ export const crearLinkPago = async (req: Request, res: Response) => {
             },
             notification_url: "https://www.doncactuspadua.com"
         };
+
 
         const payment = await axios.post(url, cuerpo, {
             headers: {
@@ -42,6 +50,7 @@ export const crearLinkPago = async (req: Request, res: Response) => {
         const linkPago = payment.data.init_point;
 
         console.log(productos)
+
         res.json({
             ok: true,
             linkPago,

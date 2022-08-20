@@ -12,7 +12,7 @@ export const obtenerProductos = async (req: Request, res: Response) => {
     const [total, productos] = await Promise.all([
         Producto.countDocuments(query),
         Producto.find(query)
-            .populate('usuario', 'nombre')
+            .populate('usuario')
             .populate('categoria', 'nombre')
             .skip(Number(desde))
             .limit(Number(limite))
@@ -28,7 +28,7 @@ export const obtenerProducto = async (req: Request, res: Response) => {
 
     const { id } = req.params;
     const producto = await Producto.findById(id)
-        .populate('usuario', 'nombre')
+        .populate('usuario')
         .populate('categoria', 'nombre');
 
     res.json(producto);
@@ -39,7 +39,7 @@ export const obtenerProductoSlug = async (req: Request, res: Response) => {
 
     const { slug } = req.params;
     const producto = await Producto.findOne({ url: slug })
-        .populate('usuario', 'nombre')
+        .populate('usuario')
         .populate('categoria', 'nombre');
 
     res.json({

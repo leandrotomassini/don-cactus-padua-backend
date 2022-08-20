@@ -32,7 +32,7 @@ const obtenerProductos = (req, res) => __awaiter(void 0, void 0, void 0, functio
     const [total, productos] = yield Promise.all([
         producto_1.Producto.countDocuments(query),
         producto_1.Producto.find(query)
-            .populate('usuario', 'nombre')
+            .populate('usuario')
             .populate('categoria', 'nombre')
             .skip(Number(desde))
             .limit(Number(limite))
@@ -46,7 +46,7 @@ exports.obtenerProductos = obtenerProductos;
 const obtenerProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const producto = yield producto_1.Producto.findById(id)
-        .populate('usuario', 'nombre')
+        .populate('usuario')
         .populate('categoria', 'nombre');
     res.json(producto);
 });
@@ -54,7 +54,7 @@ exports.obtenerProducto = obtenerProducto;
 const obtenerProductoSlug = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { slug } = req.params;
     const producto = yield producto_1.Producto.findOne({ url: slug })
-        .populate('usuario', 'nombre')
+        .populate('usuario')
         .populate('categoria', 'nombre');
     res.json({
         producto

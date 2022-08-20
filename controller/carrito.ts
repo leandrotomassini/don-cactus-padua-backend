@@ -11,7 +11,7 @@ export const obtenerCarrito = async (req: Request, res: Response) => {
     const [total, productos] = await Promise.all([
         Carrito.countDocuments(query),
         Carrito.find(query)
-            .populate('usuario', 'nombre')
+            .populate('usuario')
             .populate('producto')
     ]);
 
@@ -39,7 +39,7 @@ export const agregarProducto = async (req: Request, res: Response) => {
         // Guardar DB
         await carrito.save();
 
-        server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre')
+        server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario')
             .populate('producto'));
 
         res.status(201).json({
@@ -62,7 +62,7 @@ export const borrarProducto = async (req: Request, res: Response) => {
     const { id } = req.params;
     const productoBorrado = await Carrito.findByIdAndDelete(id);
 
-    server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre')
+    server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario')
     .populate('producto'));
 
     res.json({
