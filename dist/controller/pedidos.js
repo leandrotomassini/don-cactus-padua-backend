@@ -34,7 +34,6 @@ const crearLinkPago = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         let pedidoId = req.body.pedidoId;
         let items = [];
         let item;
-        console.log(req.body);
         for (let i = 0; i < productos.length; i++) {
             item = {
                 title: productos[i].producto.nombre,
@@ -50,11 +49,11 @@ const crearLinkPago = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             payer_email: req.body.productos[0].usuario.correo,
             items: items,
             back_urls: {
-                success: `https://doncactuspadua.com/cuenta`,
-                failure: "https://doncactuspadua.com/carrito",
-                pending: "https://doncactuspadua.com/cuenta"
+                success: "https://doncactuspadua.com/api/pedidos/settings",
+                failure: "https://doncactuspadua.com/api/pedidos/settings",
+                pending: "https://doncactuspadua.com/api/pedidos/settings"
             },
-            notification_url: "https://www.doncactuspadua.com",
+            notification_url: "https://doncactuspadua.com",
             auto_return: "all",
             external_reference: pedidoId
         };

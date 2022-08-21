@@ -2,6 +2,7 @@ import axios from "axios";
 import { Request, Response } from "express";
 
 import { ACCESS_TOKEN } from "../global/enviroment";
+import { URLWEB } from '../global/enviroment';
 
 import { Pedido } from "../classes/pedido";
 
@@ -14,7 +15,6 @@ export const crearLinkPago = async (req: Request, res: Response) => {
         let items: [] = [];
         let item: any;
 
-        console.log(req.body)
 
         for (let i = 0; i < productos.length; i++) {
 
@@ -35,11 +35,11 @@ export const crearLinkPago = async (req: Request, res: Response) => {
             payer_email: req.body.productos[0].usuario.correo,
             items: items,
             back_urls: {
-                success: `https://doncactuspadua.com/cuenta`,
-                failure: "https://doncactuspadua.com/carrito",
-                pending: "https://doncactuspadua.com/cuenta"
+                success: "https://doncactuspadua.com/api/pedidos/settings",
+                failure: "https://doncactuspadua.com/api/pedidos/settings",
+                pending: "https://doncactuspadua.com/api/pedidos/settings"
             },
-            notification_url: "https://www.doncactuspadua.com",
+            notification_url: "https://doncactuspadua.com",
             auto_return: "all",
             external_reference: pedidoId
         };
@@ -87,7 +87,7 @@ export const crearPedido = async (req: Request, res: Response) => {
 
         res.json({
             ok: true,
-            pedido    
+            pedido
         });
     } catch (error) {
         console.log(error);
