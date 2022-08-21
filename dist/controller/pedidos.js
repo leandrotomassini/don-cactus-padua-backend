@@ -119,10 +119,11 @@ const confirmarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function
         }
         // Actualizar el pedido
         let pedidoActualizado = yield pedido_1.Pedido.findByIdAndUpdate(external_reference, pedido, { new: true });
-        res.json({
-            ok: true,
-            pedidoActualizado
-        });
+        res.redirect('https://www.doncactuspadua.com/cuenta');
+        // res.json({
+        //     ok: true,
+        //     pedidoActualizado
+        // });
     }
     catch (error) {
         res.json({
@@ -130,6 +131,5 @@ const confirmarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function
             error
         });
     }
-    // res.redirect('https://www.doncactuspadua.com/cuenta');
 });
 exports.confirmarPedido = confirmarPedido;

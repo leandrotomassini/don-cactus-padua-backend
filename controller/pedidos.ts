@@ -137,10 +137,11 @@ export const confirmarPedido = async (req: Request, res: Response) => {
         // Actualizar el pedido
         let pedidoActualizado = await Pedido.findByIdAndUpdate(external_reference, pedido, { new: true });
 
-        res.json({
-            ok: true,
-            pedidoActualizado
-        });
+        res.redirect('https://www.doncactuspadua.com/cuenta');
+        // res.json({
+        //     ok: true,
+        //     pedidoActualizado
+        // });
 
     } catch (error) {
         res.json({
@@ -148,7 +149,7 @@ export const confirmarPedido = async (req: Request, res: Response) => {
             error
         });
     }
-    // res.redirect('https://www.doncactuspadua.com/cuenta');
+    
 }
 
 
