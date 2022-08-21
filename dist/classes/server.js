@@ -43,7 +43,9 @@ class Server {
         this.conectarDB();
         // Sockets
         this.httpServer = new http_1.default.Server(this.app);
-        this.io = new socket_io_1.default.Server(this.httpServer, { cors: { origin: true, credentials: true } });
+        this.io = new socket_io_1.default.Server(this.httpServer, {
+            cors: { origin: '*', credentials: true }
+        });
         this.escucharSockets();
     }
     // Sockets patron singleton

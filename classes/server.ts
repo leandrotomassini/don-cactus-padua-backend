@@ -27,16 +27,18 @@ export default class Server {
 
         this.app = express();
         this.port = SERVER_PORT;
-        
+
         // Directorio Público
-        this.app.use( express.static('public') );
+        this.app.use(express.static('public'));
 
         this.conectarDB();
 
         // Sockets
         this.httpServer = new http.Server(this.app);
         this.io = new socketIO.Server(this.httpServer,
-            { cors: { origin: '*', credentials: true } }
+            {
+                cors: { origin: '*', credentials: true }
+            }
         );
 
         this.escucharSockets();
@@ -47,7 +49,7 @@ export default class Server {
         return this._instance || (this._instance = new this());
     }
 
-    conectarDB(){
+    conectarDB() {
         dbConnection();
     }
 
