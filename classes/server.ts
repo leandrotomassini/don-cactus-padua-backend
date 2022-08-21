@@ -36,7 +36,7 @@ export default class Server {
         // Sockets
         this.httpServer = new http.Server(this.app);
         this.io = new socketIO.Server(this.httpServer,
-            { cors: { origin: true, credentials: true } }
+            { cors: { origin: '*', credentials: true } }
         );
 
         this.escucharSockets();
