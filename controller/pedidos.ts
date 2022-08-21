@@ -11,7 +11,7 @@ export const crearLinkPago = async (req: Request, res: Response) => {
         let items: [] = [];
         let item: any;
 
-        
+
 
         for (let i = 0; i < productos.length; i++) {
 
@@ -32,9 +32,9 @@ export const crearLinkPago = async (req: Request, res: Response) => {
             payer_email: req.body.productos[0].usuario.correo,
             items: items,
             back_urls: {
-                success: "https://www.google.com",
-                failure: "http://www.taringa.net",
-                pending: "http://www.wikipedia.com"
+                success: `https://doncactuspadua.com/cuenta`,
+                failure: "https://doncactuspadua.com/carrito",
+                pending: "https://doncactuspadua.com/cuenta"
             },
             notification_url: "https://www.doncactuspadua.com"
         };
