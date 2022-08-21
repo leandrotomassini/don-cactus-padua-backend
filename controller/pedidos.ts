@@ -10,10 +10,11 @@ export const crearLinkPago = async (req: Request, res: Response) => {
     try {
         let usuario = req.body.productos[0].usuario._id;
         let productos = req.body.productos;
+        let pedidoId = req.body.pedidoId;
         let items: [] = [];
         let item: any;
 
-
+        console.log(req.body)
 
         for (let i = 0; i < productos.length; i++) {
 
@@ -40,7 +41,7 @@ export const crearLinkPago = async (req: Request, res: Response) => {
             },
             notification_url: "https://www.doncactuspadua.com",
             auto_return: "all",
-            external_reference: "hola mundo"
+            external_reference: pedidoId
         };
 
 
@@ -57,7 +58,8 @@ export const crearLinkPago = async (req: Request, res: Response) => {
             ok: true,
             linkPago,
             usuario,
-            productos
+            productos,
+            pedidoId
         });
     } catch (error) {
         res.json(error);
@@ -82,7 +84,11 @@ export const crearPedido = async (req: Request, res: Response) => {
         // Guardar DB
         await pedido.save();
 
-        res.json(pedido);
+
+        res.json({
+            ok: true,
+            pedido    
+        });
     } catch (error) {
         console.log(error);
         res.json({

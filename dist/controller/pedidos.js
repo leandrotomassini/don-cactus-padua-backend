@@ -31,8 +31,10 @@ const crearLinkPago = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         let usuario = req.body.productos[0].usuario._id;
         let productos = req.body.productos;
+        let pedidoId = req.body.pedidoId;
         let items = [];
         let item;
+        console.log(req.body);
         for (let i = 0; i < productos.length; i++) {
             item = {
                 title: productos[i].producto.nombre,
@@ -54,7 +56,7 @@ const crearLinkPago = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             },
             notification_url: "https://www.doncactuspadua.com",
             auto_return: "all",
-            external_reference: "hola mundo"
+            external_reference: pedidoId
         };
         const payment = yield axios_1.default.post(url, cuerpo, {
             headers: {
@@ -67,7 +69,8 @@ const crearLinkPago = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             ok: true,
             linkPago,
             usuario,
-            productos
+            productos,
+            pedidoId
         });
     }
     catch (error) {
@@ -84,7 +87,10 @@ const crearPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const pedido = new pedido_1.Pedido(data);
         // Guardar DB
         yield pedido.save();
-        res.json(pedido);
+        res.json({
+            ok: true,
+            pedido
+        });
     }
     catch (error) {
         console.log(error);
