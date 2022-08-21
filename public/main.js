@@ -11,24 +11,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./guards/usuario.guard */ 8482);
+
 
 
 
 const routes = [
     {
         path: '',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_tabs_tabs_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/tabs/tabs.module */ 5557)).then(m => m.TabsPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_tabs_tabs_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/tabs/tabs.module */ 5557)).then(m => m.TabsPageModule)
     },
     {
         path: 'login',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 1053)).then(m => m.LoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 1053)).then(m => m.LoginPageModule)
     },
     {
         path: ':tituloProductoUrl',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("default-src_app_pages_producto_producto_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_producto_producto_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/producto/producto.module */ 212)).then(m => m.ProductoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_producto_producto_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/producto/producto.module */ 212)).then(m => m.ProductoPageModule)
+    },
+    {
+        path: 'cuenta',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_cuenta_cuenta_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cuenta/cuenta.module */ 4178)).then(m => m.CuentaPageModule),
+        canLoad: [_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
+    },
+    {
+        path: 'carrito',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/carrito/carrito.module */ 4646)).then(m => m.CarritoPageModule),
+        canLoad: [_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
+    },
+    {
+        path: 'categorias',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_categorias_categorias_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/categorias/categorias.module */ 1653)).then(m => m.CategoriasPageModule),
+        canLoad: [_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
+    },
+    {
+        path: 'panel-control',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("src_app_pages_panel-control_panel-control_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/panel-control/panel-control.module */ 5666)).then(m => m.PanelControlPageModule),
+        canLoad: [_guards_usuario_guard__WEBPACK_IMPORTED_MODULE_0__.UsuarioGuard]
     },
     {
         path: '**',
@@ -37,12 +59,12 @@ const routes = [
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
-AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.NgModule)({
+AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
         imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__.PreloadAllModules })
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_3__.PreloadAllModules })
         ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule]
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule]
     })
 ], AppRoutingModule);
 
@@ -147,6 +169,242 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
     })
 ], AppModule);
 
+
+
+/***/ }),
+
+/***/ 8482:
+/*!*****************************************!*\
+  !*** ./src/app/guards/usuario.guard.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UsuarioGuard": () => (/* binding */ UsuarioGuard)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _services_usuario_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/usuario.service */ 5763);
+
+
+
+let UsuarioGuard = class UsuarioGuard {
+    constructor(usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+    canLoad() {
+        return this.usuarioService.validaToken();
+    }
+};
+UsuarioGuard.ctorParameters = () => [
+    { type: _services_usuario_service__WEBPACK_IMPORTED_MODULE_0__.UsuarioService }
+];
+UsuarioGuard = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root'
+    })
+], UsuarioGuard);
+
+
+
+/***/ }),
+
+/***/ 5763:
+/*!*********************************************!*\
+  !*** ./src/app/services/usuario.service.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UsuarioService": () => (/* binding */ UsuarioService)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage-angular */ 190);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 8759);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+
+
+
+
+
+
+
+
+const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
+let UsuarioService = class UsuarioService {
+  constructor(http, storage, navCtrl) {
+    this.http = http;
+    this.storage = storage;
+    this.navCtrl = navCtrl;
+    this.token = 'null';
+    this.usuario = {};
+    this.storage.create();
+  }
+
+  login(correo, password) {
+    var _this = this;
+
+    const data = {
+      correo,
+      password
+    };
+    return new Promise(resolve => {
+      this.http.post(`${URL}/auth/login`, data).subscribe( /*#__PURE__*/function () {
+        var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+          if (resp['ok']) {
+            yield _this.guardarToken(resp['token']);
+            resolve(true);
+          } else {
+            _this.token = null;
+
+            _this.storage.clear();
+
+            resolve(false);
+          }
+        });
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }(), err => {
+        this.token = null;
+        this.storage.clear();
+        resolve(false);
+      });
+    });
+  }
+
+  guardarToken(token) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this2.token = token;
+      yield _this2.storage.set('token', token);
+    })();
+  }
+
+  registro(usuario) {
+    var _this3 = this;
+
+    return new Promise(resolve => {
+      console.log(usuario);
+      this.http.post(`${URL}/usuarios`, usuario).subscribe( /*#__PURE__*/function () {
+        var _ref2 = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+          if (resp['ok']) {
+            yield _this3.guardarToken(resp['token']);
+            resolve(true);
+          } else {
+            _this3.token = null;
+
+            _this3.storage.clear();
+
+            resolve(false);
+          }
+        });
+
+        return function (_x2) {
+          return _ref2.apply(this, arguments);
+        };
+      }(), err => {
+        this.token = null;
+        this.storage.clear();
+        resolve(false);
+      });
+    });
+  }
+
+  cargarToken() {
+    var _this4 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this4.token = (yield _this4.storage.get('token')) || null;
+    })();
+  }
+
+  validaToken() {
+    var _this5 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this5.cargarToken();
+
+      if (!_this5.token) {
+        _this5.navCtrl.navigateRoot('/login');
+
+        return Promise.resolve(false);
+      }
+
+      return new Promise(resolve => {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+          'x-token': _this5.token
+        });
+
+        _this5.http.get(`${URL}/auth`, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            _this5.usuario = resp['usuario'];
+            resolve(true);
+          } else {
+            _this5.navCtrl.navigateRoot('/login');
+
+            resolve(false);
+          }
+        });
+      });
+    })();
+  }
+
+  loginGoogle(id_token) {
+    var _this6 = this;
+
+    return this.http.post(`${URL}/auth/google`, {
+      id_token
+    }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.tap)( /*#__PURE__*/function () {
+      var _ref3 = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+        yield _this6.guardarToken(resp.token);
+        let url = (yield _this6.storage.get('url')) || null;
+
+        if (url != null) {
+          _this6.navCtrl.navigateRoot('/' + url);
+        } else {
+          _this6.navCtrl.navigateRoot('/cuenta');
+        }
+      });
+
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
+      };
+    }()));
+  }
+
+  logout() {
+    this.usuario = null;
+    this.token = null;
+    this.storage.clear();
+    this.navCtrl.navigateRoot('/login');
+  }
+
+};
+
+UsuarioService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
+}, {
+  type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__.Storage
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController
+}];
+
+UsuarioService = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Injectable)({
+  providedIn: 'root'
+})], UsuarioService);
 
 
 /***/ }),

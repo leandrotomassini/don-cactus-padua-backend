@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 
 import { ACCESS_TOKEN } from "../global/enviroment";
 
+import { Pedido } from "../classes/pedido";
+
 export const crearLinkPago = async (req: Request, res: Response) => {
 
     try {
@@ -36,7 +38,9 @@ export const crearLinkPago = async (req: Request, res: Response) => {
                 failure: "https://doncactuspadua.com/carrito",
                 pending: "https://doncactuspadua.com/cuenta"
             },
-            notification_url: "https://www.doncactuspadua.com"
+            notification_url: "https://www.doncactuspadua.com",
+            auto_return: "all",
+            external_reference: "hola mundo"
         };
 
 
@@ -49,8 +53,6 @@ export const crearLinkPago = async (req: Request, res: Response) => {
 
         const linkPago = payment.data.init_point;
 
-        console.log(productos)
-
         res.json({
             ok: true,
             linkPago,
@@ -60,4 +62,63 @@ export const crearLinkPago = async (req: Request, res: Response) => {
     } catch (error) {
         res.json(error);
     }
+}
+
+export const crearPedido = async (req: Request, res: Response) => {
+
+    try {
+        let { estado, usuario, ...body } = req.body;
+
+        usuario = req.usuario._id;
+        let productos = req.body.productos;
+
+
+        const data = {
+            ...body,
+            usuario: req.usuario._id,
+        }
+
+        const pedido = new Pedido(data);
+        // Guardar DB
+        await pedido.save();
+
+        res.json(pedido);
+    } catch (error) {
+        console.log(error);
+        res.json({
+            ok: false
+        })
+    }
+}
+
+export const confirmarPedido = (req: Request, res: Response) => {
+
+    const {
+        collection_id,
+        collection_status,
+        payment_id,
+        status,
+        external_reference,
+        payment_type,
+        merchant_order_id,
+        preference_id,
+        site_id,
+        processing_mode,
+        merchant_account_id,
+    } = req.query;
+
+    res.json({
+        ok: true,
+        collection_id,
+        collection_status,
+        payment_id,
+        status,
+        external_reference,
+        payment_type,
+        merchant_order_id,
+        preference_id,
+        site_id,
+        processing_mode,
+        merchant_account_id,
+    });
 }

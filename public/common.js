@@ -1,199 +1,198 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
-/***/ 5763:
+/***/ 6143:
+/*!*************************************************!*\
+  !*** ./src/app/pages/producto/producto.page.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProductoPage": () => (/* binding */ ProductoPage)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _producto_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./producto.page.html?ngResource */ 1594);
+/* harmony import */ var _producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./producto.page.scss?ngResource */ 7485);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_pedidos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/pedidos.service */ 4362);
+/* harmony import */ var src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/productos.service */ 4893);
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/usuario.service */ 5763);
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/storage-angular */ 190);
+/* harmony import */ var src_app_services_carrito_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/carrito.service */ 1635);
+
+
+
+
+
+
+
+
+
+
+
+
+let ProductoPage = class ProductoPage {
+  constructor(modalCtrl, activateRoute, productosService, navCtrl, pedidosService, usuarioService, storage, carritoService) {
+    this.modalCtrl = modalCtrl;
+    this.activateRoute = activateRoute;
+    this.productosService = productosService;
+    this.navCtrl = navCtrl;
+    this.pedidosService = pedidosService;
+    this.usuarioService = usuarioService;
+    this.storage = storage;
+    this.carritoService = carritoService;
+    this.producto = {
+      _id: "",
+      nombre: "",
+      url: "",
+      estado: true,
+      usuario: {
+        _id: "",
+        nombre: ""
+      },
+      precio: 0,
+      stock: 0,
+      categoria: {
+        _id: "",
+        nombre: ""
+      },
+      etiquetas: [""],
+      descripcion: "",
+      img: [""]
+    };
+    this.storage.create();
+  }
+
+  ngOnInit() {
+    var _this = this;
+
+    this.activateRoute.params.subscribe( /*#__PURE__*/function () {
+      var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* ({
+        tituloProductoUrl
+      }) {
+        yield _this.productosService.getProductoSlug(tituloProductoUrl).then(producto => {
+          _this.producto = producto;
+          _this.producto = _this.producto.producto;
+
+          if (_this.producto == undefined) {
+            _this.navCtrl.navigateRoot('/');
+          }
+        });
+      });
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+  }
+
+  salirSinArgumentos() {
+    this.modalCtrl.dismiss();
+  }
+
+  salirConArgumentos() {
+    this.modalCtrl.dismiss({
+      nombre: 'disponible',
+      precio: 200
+    });
+  }
+
+  comprar() {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this2.usuarioService.cargarToken();
+      yield _this2.usuarioService.validaToken();
+
+      if (_this2.usuarioService.usuario.nombre == undefined) {
+        yield _this2.storage.set('url', _this2.producto.url);
+
+        _this2.navCtrl.navigateRoot('/login');
+      } else {
+        yield _this2.carritoService.agregarProductoCarrito(_this2.producto._id).then(resp => {
+          _this2.navCtrl.navigateRoot('/carrito');
+        }).catch();
+      }
+    })();
+  }
+
+  agregarAlCarrito() {
+    var _this3 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this3.usuarioService.cargarToken();
+      yield _this3.usuarioService.validaToken();
+
+      if (_this3.usuarioService.usuario.nombre == undefined) {
+        yield _this3.storage.set('url', _this3.producto.url);
+
+        _this3.navCtrl.navigateRoot('/login');
+      } else {
+        yield _this3.carritoService.agregarProductoCarrito(_this3.producto._id).then().catch();
+      }
+    })();
+  }
+
+};
+
+ProductoPage.ctorParameters = () => [{
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ModalController
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.ActivatedRoute
+}, {
+  type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_4__.ProductosService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController
+}, {
+  type: src_app_services_pedidos_service__WEBPACK_IMPORTED_MODULE_3__.PedidosService
+}, {
+  type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__.UsuarioService
+}, {
+  type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_9__.Storage
+}, {
+  type: src_app_services_carrito_service__WEBPACK_IMPORTED_MODULE_6__.CarritoService
+}];
+
+ProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
+  selector: 'app-producto',
+  template: _producto_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_producto_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], ProductoPage);
+
+
+/***/ }),
+
+/***/ 4362:
 /*!*********************************************!*\
-  !*** ./src/app/services/usuario.service.ts ***!
+  !*** ./src/app/services/pedidos.service.ts ***!
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UsuarioService": () => (/* binding */ UsuarioService)
+/* harmony export */   "PedidosService": () => (/* binding */ PedidosService)
 /* harmony export */ });
-/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage-angular */ 190);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 8759);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2560);
 
 
-
-
-
-
-
-
-const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
-let UsuarioService = class UsuarioService {
-  constructor(http, storage, navCtrl) {
-    this.http = http;
-    this.storage = storage;
-    this.navCtrl = navCtrl;
-    this.token = 'null';
-    this.usuario = {};
-    this.storage.create();
-  }
-
-  login(correo, password) {
-    var _this = this;
-
-    const data = {
-      correo,
-      password
-    };
-    return new Promise(resolve => {
-      this.http.post(`${URL}/auth/login`, data).subscribe( /*#__PURE__*/function () {
-        var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
-          if (resp['ok']) {
-            yield _this.guardarToken(resp['token']);
-            resolve(true);
-          } else {
-            _this.token = null;
-
-            _this.storage.clear();
-
-            resolve(false);
-          }
-        });
-
-        return function (_x) {
-          return _ref.apply(this, arguments);
-        };
-      }(), err => {
-        this.token = null;
-        this.storage.clear();
-        resolve(false);
-      });
-    });
-  }
-
-  guardarToken(token) {
-    var _this2 = this;
-
-    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this2.token = token;
-      yield _this2.storage.set('token', token);
-    })();
-  }
-
-  registro(usuario) {
-    var _this3 = this;
-
-    return new Promise(resolve => {
-      console.log(usuario);
-      this.http.post(`${URL}/usuarios`, usuario).subscribe( /*#__PURE__*/function () {
-        var _ref2 = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
-          if (resp['ok']) {
-            yield _this3.guardarToken(resp['token']);
-            resolve(true);
-          } else {
-            _this3.token = null;
-
-            _this3.storage.clear();
-
-            resolve(false);
-          }
-        });
-
-        return function (_x2) {
-          return _ref2.apply(this, arguments);
-        };
-      }(), err => {
-        this.token = null;
-        this.storage.clear();
-        resolve(false);
-      });
-    });
-  }
-
-  cargarToken() {
-    var _this4 = this;
-
-    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this4.token = (yield _this4.storage.get('token')) || null;
-    })();
-  }
-
-  validaToken() {
-    var _this5 = this;
-
-    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      yield _this5.cargarToken();
-
-      if (!_this5.token) {
-        _this5.navCtrl.navigateRoot('/login');
-
-        return Promise.resolve(false);
-      }
-
-      return new Promise(resolve => {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
-          'x-token': _this5.token
-        });
-
-        _this5.http.get(`${URL}/auth`, {
-          headers
-        }).subscribe(resp => {
-          if (resp['ok']) {
-            _this5.usuario = resp['usuario'];
-            resolve(true);
-          } else {
-            _this5.navCtrl.navigateRoot('/login');
-
-            resolve(false);
-          }
-        });
-      });
-    })();
-  }
-
-  loginGoogle(id_token) {
-    var _this6 = this;
-
-    return this.http.post(`${URL}/auth/google`, {
-      id_token
-    }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.tap)( /*#__PURE__*/function () {
-      var _ref3 = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
-        yield _this6.guardarToken(resp.token);
-        let url = (yield _this6.storage.get('url')) || null;
-
-        if (url != null) {
-          _this6.navCtrl.navigateRoot('/' + url);
-        } else {
-          _this6.navCtrl.navigateRoot('/cuenta');
-        }
-      });
-
-      return function (_x3) {
-        return _ref3.apply(this, arguments);
-      };
-    }()));
-  }
-
-  logout() {
-    this.usuario = null;
-    this.token = null;
-    this.storage.clear();
-    this.navCtrl.navigateRoot('/login');
-  }
-
+let PedidosService = class PedidosService {
+    constructor() {
+    }
+    comprarProductos(productos) {
+    }
 };
+PedidosService.ctorParameters = () => [];
+PedidosService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+        providedIn: 'root'
+    })
+], PedidosService);
 
-UsuarioService.ctorParameters = () => [{
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
-}, {
-  type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__.Storage
-}, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController
-}];
-
-UsuarioService = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Injectable)({
-  providedIn: 'root'
-})], UsuarioService);
 
 
 /***/ }),
@@ -1410,6 +1409,26 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 };
 
 
+
+/***/ }),
+
+/***/ 7485:
+/*!**************************************************************!*\
+  !*** ./src/app/pages/producto/producto.page.scss?ngResource ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n\nswiper {\n  background: #EBEBEB;\n}\n\nswiper img {\n  padding-top: 10%;\n  padding-bottom: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2R1Y3RvLnBhZ2Uuc2NzcyIsIi4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxwYWdlc1xccHJvZHVjdG9cXHByb2R1Y3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0o7O0FERUE7RUFDSSxtQkFBQTtBQ0NKOztBRENJO0VBQ0ksZ0JBQUE7RUFDQSxvQkFBQTtBQ0NSIiwiZmlsZSI6InByb2R1Y3RvLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcclxuICAgIC0tYmFja2dyb3VuZDogI0VCRUJFQjtcclxufVxyXG5cclxuc3dpcGVyIHtcclxuICAgIGJhY2tncm91bmQ6ICNFQkVCRUI7XHJcblxyXG4gICAgaW1nIHtcclxuICAgICAgICBwYWRkaW5nLXRvcDogMTAlO1xyXG4gICAgICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xyXG4gICAgfVxyXG59IiwiaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6ICNFQkVCRUI7XG59XG5cbnN3aXBlciB7XG4gIGJhY2tncm91bmQ6ICNFQkVCRUI7XG59XG5zd2lwZXIgaW1nIHtcbiAgcGFkZGluZy10b3A6IDEwJTtcbiAgcGFkZGluZy1ib3R0b206IDIwcHg7XG59Il19 */";
+
+/***/ }),
+
+/***/ 1594:
+/*!**************************************************************!*\
+  !*** ./src/app/pages/producto/producto.page.html?ngResource ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+module.exports = "<app-menu-principal></app-menu-principal>\r\n\r\n<ion-content>\r\n  \r\n<ion-list *ngIf=\"producto.nombre == ''\">\r\n  <ion-title>Iniciando sesión aguarde un instante por favor...</ion-title>\r\n  <ion-list-header>\r\n    <ion-skeleton-text [animated]=\"true\" style=\"width: 80px\"></ion-skeleton-text>\r\n  </ion-list-header>\r\n  <ion-item>\r\n    <ion-thumbnail slot=\"start\">\r\n      <ion-skeleton-text [animated]=\"true\"></ion-skeleton-text>\r\n    </ion-thumbnail>\r\n    <ion-label>\r\n      <h3>\r\n        <ion-skeleton-text [animated]=\"true\" style=\"width: 80%;\"></ion-skeleton-text>\r\n      </h3>\r\n      <p>\r\n        <ion-skeleton-text [animated]=\"true\" style=\"width: 60%;\"></ion-skeleton-text>\r\n      </p>\r\n      <p>\r\n        <ion-skeleton-text [animated]=\"true\" style=\"width: 30%;\"></ion-skeleton-text>\r\n      </p>\r\n    </ion-label>\r\n  </ion-item>\r\n</ion-list>\r\n\r\n\r\n  <div *ngIf=\"producto.nombre != ''\">\r\n    <ion-grid fixed>\r\n      <ion-row>\r\n        <ion-col size=\"12\" size-md=\"6\">\r\n          <ion-card>\r\n            <ion-card-content>\r\n              <app-producto-slide [producto]=\"producto\" *ngIf=\"producto.nombre != ''\"></app-producto-slide>\r\n            </ion-card-content>\r\n          </ion-card>\r\n        </ion-col>\r\n        <ion-col size=\"12\" size-md=\"6\">\r\n          <ion-card>\r\n            <ion-card-content>\r\n              <ion-grid fixed>\r\n                <ion-row>\r\n                  <ion-col size=\"12\">\r\n                    <h1>{{producto.nombre | titlecase }}</h1>\r\n                  </ion-col>\r\n                  <ion-col size=\"12\">\r\n                    <h1>$ {{producto.precio | number}}</h1>\r\n                  </ion-col>\r\n                  <ion-col size=\"12\">\r\n                    <ion-button (click)=\"comprar()\">\r\n                      Comprar\r\n                    </ion-button>\r\n                    <ion-button color=\"danger\" (click)=\"agregarAlCarrito()\">\r\n                      Agregar al carrito\r\n                      <ion-icon name=\"cart-outline\"></ion-icon>\r\n                    </ion-button>\r\n                  </ion-col>\r\n                  <ion-col size=\"12\">\r\n                    <div [innerHTML]=\"producto.descripcion\"></div>\r\n                  </ion-col>\r\n                </ion-row>\r\n              </ion-grid>\r\n            </ion-card-content>\r\n          </ion-card>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </div>\r\n\r\n</ion-content>";
 
 /***/ })
 

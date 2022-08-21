@@ -127,6 +127,10 @@ let CarritoPage = class CarritoPage {
     })();
   }
 
+  ngOnDestroy() {
+    this.productosSubscripcion.unsubscribe();
+  }
+
   calcularTotal() {
     this.total = 0;
     this.productos.forEach(producto => {
@@ -165,156 +169,6 @@ CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_cor
 
 /***/ }),
 
-/***/ 1635:
-/*!*********************************************!*\
-  !*** ./src/app/services/carrito.service.ts ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CarritoService": () => (/* binding */ CarritoService)
-/* harmony export */ });
-/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
-/* harmony import */ var _usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuario.service */ 5763);
-/* harmony import */ var _websocket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./websocket.service */ 8223);
-
-
-
-
-
-
-
-const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
-let CarritoService = class CarritoService {
-  constructor(http, wsService, usuarioService) {
-    this.http = http;
-    this.wsService = wsService;
-    this.usuarioService = usuarioService;
-  }
-
-  obtenerCarrito() {
-    return new Promise(resolve => {
-      this.http.get(`${URL}/carrito`).subscribe(resp => {
-        if (resp['ok']) {
-          resolve(resp['carrito']);
-        } else {
-          resolve(false);
-        }
-      });
-    });
-  }
-
-  agregarProductoCarrito(producto) {
-    var _this = this;
-
-    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      yield _this.usuarioService.cargarToken();
-      const data = {
-        "producto": producto
-      };
-      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
-        'x-token': _this.usuarioService.token
-      });
-      return new Promise(resolve => {
-        _this.http.post(`${URL}/carrito`, data, {
-          headers
-        }).subscribe(resp => {
-          if (resp['ok']) {
-            resolve(resp);
-          } else {
-            resolve(false);
-          }
-        }, err => {
-          resolve(err);
-        });
-      });
-    })();
-  }
-
-  borrarProductoCarrito(idcarrito) {
-    var _this2 = this;
-
-    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      yield _this2.usuarioService.cargarToken();
-      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
-        'x-token': _this2.usuarioService.token
-      });
-      return new Promise(resolve => {
-        _this2.http.delete(`${URL}/carrito/${idcarrito}`, {
-          headers
-        }).subscribe( /*#__PURE__*/function () {
-          var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
-            if (resp['ok']) {
-              resolve(true);
-            } else {
-              resolve(false);
-            }
-          });
-
-          return function (_x) {
-            return _ref.apply(this, arguments);
-          };
-        }(), err => {
-          resolve(err);
-        });
-      });
-    })();
-  }
-
-  obtenerProductosCarrito(idUsuario) {
-    this.wsService.emit('get-productos-carrito', idUsuario);
-    return this.wsService.listen('productos-carrito');
-  }
-
-  pagar(productos) {
-    var _this3 = this;
-
-    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      yield _this3.usuarioService.cargarToken();
-      const data = {
-        "productos": productos
-      };
-      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
-        'x-token': _this3.usuarioService.token
-      });
-      return new Promise(resolve => {
-        _this3.http.post(`${URL}/pedidos/linkPago`, data, {
-          headers
-        }).subscribe(resp => {
-          if (resp['ok']) {
-            resolve(resp);
-          } else {
-            resolve(false);
-          }
-        }, err => {
-          resolve(err);
-        });
-      });
-    })();
-  }
-
-};
-
-CarritoService.ctorParameters = () => [{
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient
-}, {
-  type: _websocket_service__WEBPACK_IMPORTED_MODULE_3__.WebsocketService
-}, {
-  type: _usuario_service__WEBPACK_IMPORTED_MODULE_2__.UsuarioService
-}];
-
-CarritoService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
-  providedIn: 'root'
-})], CarritoService);
-
-
-/***/ }),
-
 /***/ 1237:
 /*!************************************************************!*\
   !*** ./src/app/pages/carrito/carrito.page.scss?ngResource ***!
@@ -331,7 +185,7 @@ module.exports = "ion-content {\n  --background: #EBEBEB;\n}\n\n.icono-borrar {\
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content>\r\n    <ion-card>\r\n        <ion-card-header>\r\n            <ion-card-title>Carrito de compras</ion-card-title>\r\n        </ion-card-header>\r\n        <ion-list>\r\n            <ion-item *ngFor=\"let producto of productos\">\r\n                <img [src]=\"producto.producto.img[0]\" width=\"50\" height=\"50\">\r\n                <ion-label>{{producto.producto.nombre}}</ion-label>\r\n                <ion-label>$ {{producto.producto.precio | number}}</ion-label>\r\n                <ion-icon name=\"trash-outline\" class=\"icono-borrar\"\r\n                (click)=\"borrarProducto(producto._id)\"></ion-icon>\r\n            </ion-item>\r\n            <ion-item class=\"ion-text-center\">\r\n                <ion-label>Total: $ {{total | number}}</ion-label>\r\n                <ion-button (click)=\"pagar()\">\r\n                    Pagar ahora\r\n                </ion-button>\r\n            </ion-item>\r\n        </ion-list>\r\n    </ion-card>\r\n</ion-content>";
+module.exports = "<app-menu-principal></app-menu-principal>\r\n<ion-content>\r\n\r\n    <ion-card>\r\n        <ion-card-header>\r\n            <ion-card-title>Carrito de compras</ion-card-title>\r\n        </ion-card-header>\r\n        <ion-list>\r\n            <ion-item *ngFor=\"let producto of productos\">\r\n                <img [src]=\"producto.producto.img[0]\" width=\"50\" height=\"50\">\r\n                <ion-label>{{producto.producto.nombre}}</ion-label>\r\n                <ion-label>$ {{producto.producto.precio | number}}</ion-label>\r\n                <ion-icon name=\"trash-outline\" class=\"icono-borrar\" (click)=\"borrarProducto(producto._id)\">\r\n                </ion-icon>\r\n            </ion-item>\r\n            <ion-item class=\"ion-text-center\">\r\n                <ion-label>Total: $ {{total | number}}</ion-label>\r\n                <ion-button (click)=\"pagar()\">\r\n                    Pagar ahora\r\n                </ion-button>\r\n            </ion-item>\r\n        </ion-list>\r\n    </ion-card>\r\n</ion-content>";
 
 /***/ })
 

@@ -265,43 +265,97 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MenuPrincipalComponent": () => (/* binding */ MenuPrincipalComponent)
 /* harmony export */ });
 /* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menu-principal.component.html?ngResource */ 3499);
 /* harmony import */ var _menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-principal.component.scss?ngResource */ 1210);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_carrito_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/carrito.service */ 1635);
+/* harmony import */ var src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/productos.service */ 4893);
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/usuario.service */ 5763);
+
+
+
+
 
 
 
 
 
 let MenuPrincipalComponent = class MenuPrincipalComponent {
-  constructor() {
-    this.onBuscar = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
-    this.textoBuscar = '';
+  constructor(productosService, navCtrl, carritoService, usuarioService) {
+    this.productosService = productosService;
+    this.navCtrl = navCtrl;
+    this.carritoService = carritoService;
+    this.usuarioService = usuarioService;
+    this.mostrarBuscadorCss = false;
+    this.mostrarProductosCss = true;
+    this.notificacion = false;
   }
 
-  ngOnInit() {}
-
-  onSearchChange($event) {
+  ngOnInit() {
     var _this = this;
 
     return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      let textoBuscar = $event.detail.value;
+      // await this.usuarioService.validaToken();
+      _this.productosSubscripcion = yield _this.productosService.getProductos().subscribe(productos => {
+        _this.productos = productos;
+      });
+      _this.carritoSubscripcion = yield _this.carritoService.obtenerNotificacionProductosCarrito(_this.usuarioService.usuario.uid).subscribe(productos => {
+        _this.carrito = productos;
 
-      _this.onBuscar.emit(textoBuscar);
+        _this.mostrarNotificacionCarrito();
+      });
     })();
+  }
+
+  ngOnDestroy() {
+    this.productosSubscripcion.unsubscribe();
+    this.carritoSubscripcion.unsubscribe();
+  }
+
+  onSearchChange($event) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      let textoBuscar = $event.detail.value;
+      _this2.textoBuscar = textoBuscar;
+
+      if (textoBuscar != '') {
+        _this2.mostrarBuscadorCss = true;
+        _this2.mostrarProductosCss = false;
+      } else {
+        _this2.mostrarBuscadorCss = false;
+        _this2.mostrarProductosCss = true;
+      }
+    })();
+  }
+
+  verProducto(productoUrl) {
+    this.navCtrl.navigateRoot(`/${productoUrl}`);
+  }
+
+  mostrarNotificacionCarrito() {
+    if (this.carrito.length > 0) {
+      this.notificacion = true;
+    } else {
+      this.notificacion = false;
+    }
   }
 
 };
 
-MenuPrincipalComponent.ctorParameters = () => [];
+MenuPrincipalComponent.ctorParameters = () => [{
+  type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_4__.ProductosService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController
+}, {
+  type: src_app_services_carrito_service__WEBPACK_IMPORTED_MODULE_3__.CarritoService
+}, {
+  type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__.UsuarioService
+}];
 
-MenuPrincipalComponent.propDecorators = {
-  onBuscar: [{
-    type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Output
-  }]
-};
-MenuPrincipalComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+MenuPrincipalComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
   selector: 'app-menu-principal',
   template: _menu_principal_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_menu_principal_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -339,7 +393,6 @@ let ProductoSlideComponent = class ProductoSlideComponent {
         };
     }
     ngOnInit() {
-        console.log(this.producto);
     }
     ngAfterContentChecked() {
         if (this.swiper) {
@@ -902,7 +955,7 @@ let EditarProductoPage = class EditarProductoPage {
     this.editarProductoFormulario.value._id = this.productoEditar._id;
     this.producto = this.editarProductoFormulario.value;
     this.producto.img = this.fotos;
-    this.productosService.editarProducto(this.producto).then().catch(console.log);
+    this.productosService.editarProducto(this.producto).then().catch();
     this.modalController.dismiss();
   }
 
@@ -1230,7 +1283,9 @@ let FiltroPipe = class FiltroPipe {
         if (!arreglo) {
             return arreglo;
         }
-        texto = texto.toLocaleLowerCase();
+        if (texto != undefined) {
+            texto = texto.toLocaleLowerCase();
+        }
         return arreglo.filter(item => item[columna].toLocaleLowerCase().includes(texto));
     }
 };
@@ -1278,6 +1333,161 @@ PipesModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
     })
 ], PipesModule);
 
+
+
+/***/ }),
+
+/***/ 1635:
+/*!*********************************************!*\
+  !*** ./src/app/services/carrito.service.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CarritoService": () => (/* binding */ CarritoService)
+/* harmony export */ });
+/* harmony import */ var C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuario.service */ 5763);
+/* harmony import */ var _websocket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./websocket.service */ 8223);
+
+
+
+
+
+
+
+const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url;
+let CarritoService = class CarritoService {
+  constructor(http, wsService, usuarioService) {
+    this.http = http;
+    this.wsService = wsService;
+    this.usuarioService = usuarioService;
+  }
+
+  obtenerCarrito() {
+    return new Promise(resolve => {
+      this.http.get(`${URL}/carrito`).subscribe(resp => {
+        if (resp['ok']) {
+          resolve(resp['carrito']);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  agregarProductoCarrito(producto) {
+    var _this = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this.usuarioService.cargarToken();
+      const data = {
+        "producto": producto
+      };
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this.http.post(`${URL}/carrito`, data, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            resolve(resp);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+  borrarProductoCarrito(idcarrito) {
+    var _this2 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this2.usuarioService.cargarToken();
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this2.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this2.http.delete(`${URL}/carrito/${idcarrito}`, {
+          headers
+        }).subscribe( /*#__PURE__*/function () {
+          var _ref = (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resp) {
+            if (resp['ok']) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }(), err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+  obtenerProductosCarrito(idUsuario) {
+    this.wsService.emit('get-productos-carrito', idUsuario);
+    return this.wsService.listen('productos-carrito');
+  }
+
+  obtenerNotificacionProductosCarrito(idUsuario) {
+    this.wsService.emit('get-productos-carrito-notificacion', idUsuario);
+    return this.wsService.listen('productos-carrito-notificacion');
+  }
+
+  pagar(productos) {
+    var _this3 = this;
+
+    return (0,C_Users_Windows_10_Desktop_don_cactus_padua_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      yield _this3.usuarioService.cargarToken();
+      const data = {
+        "productos": productos
+      };
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({
+        'x-token': _this3.usuarioService.token
+      });
+      return new Promise(resolve => {
+        _this3.http.post(`${URL}/pedidos/linkPago`, data, {
+          headers
+        }).subscribe(resp => {
+          if (resp['ok']) {
+            resolve(resp);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          resolve(err);
+        });
+      });
+    })();
+  }
+
+};
+
+CarritoService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient
+}, {
+  type: _websocket_service__WEBPACK_IMPORTED_MODULE_3__.WebsocketService
+}, {
+  type: _usuario_service__WEBPACK_IMPORTED_MODULE_2__.UsuarioService
+}];
+
+CarritoService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
+  providedIn: 'root'
+})], CarritoService);
 
 
 /***/ }),
@@ -2541,7 +2751,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \****************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "ion-header ion-toolbar {\n  --background: #00C500;\n  --color: white;\n  font-weight: bold;\n}\n\n.opciones-principales-menu {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.opciones-principales-menu ion-label ion-icon {\n  font-size: 1.8em;\n  font-weight: bold;\n}\n\n.logo {\n  font-family: Raleway, sans-serif;\n  font-weight: 700;\n}\n\n@media (max-width: 768px) {\n  .opciones-principales-menu, .logo {\n    display: none;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtcHJpbmNpcGFsLmNvbXBvbmVudC5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxjb21wb25lbnRzXFx3ZWJcXG1lbnUtcHJpbmNpcGFsXFxtZW51LXByaW5jaXBhbC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FDQ0o7O0FERUE7RUFDSSxhQUFBO0VBQ0EsNkJBQUE7RUFDQSxtQkFBQTtBQ0NKOztBRENBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtBQ0VKOztBRENBO0VBQ0ksZ0NBQUE7RUFDQSxnQkFBQTtBQ0VKOztBREVBO0VBQ0k7SUFDRSxhQUFBO0VDQ0o7QUFDRiIsImZpbGUiOiJtZW51LXByaW5jaXBhbC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1oZWFkZXIgaW9uLXRvb2xiYXIge1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMDBDNTAwO1xyXG4gICAgLS1jb2xvcjogd2hpdGU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLm9wY2lvbmVzLXByaW5jaXBhbGVzLW1lbnV7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IGlvbi1sYWJlbCBpb24taWNvbntcclxuICAgIGZvbnQtc2l6ZTogMS44ZW07XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLmxvZ297XHJcbiAgICBmb250LWZhbWlseTogUmFsZXdheSwgc2Fucy1zZXJpZjtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcblxyXG59XHJcblxyXG5AbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIC5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51LCAubG9nbyB7XHJcbiAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICB9XHJcbn0iLCJpb24taGVhZGVyIGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiAjMDBDNTAwO1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IGlvbi1sYWJlbCBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMS44ZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4ubG9nbyB7XG4gIGZvbnQtZmFtaWx5OiBSYWxld2F5LCBzYW5zLXNlcmlmO1xuICBmb250LXdlaWdodDogNzAwO1xufVxuXG5AbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLm9wY2lvbmVzLXByaW5jaXBhbGVzLW1lbnUsIC5sb2dvIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG59Il19 */";
+module.exports = "ion-header ion-toolbar {\n  --background: #00C500;\n  --color: white;\n  font-weight: bold;\n}\n\n.opciones-principales-menu {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.opciones-principales-menu ion-label ion-icon {\n  font-size: 1.8em;\n  font-weight: bold;\n}\n\n.logo {\n  font-family: Raleway, sans-serif;\n  font-weight: 700;\n}\n\n.contenedor-productos-inicio-culto {\n  display: none;\n}\n\n.contenedor-productos-inicio-activo {\n  display: block;\n}\n\n.resultado-busqueda {\n  position: fixed;\n  width: 34%;\n  margin-left: 23%;\n  margin-right: 25%;\n  z-index: 1;\n}\n\n.foto-item {\n  padding: 10px;\n}\n\n.item-resultado-busqueda {\n  font-weight: bold;\n}\n\n.item-resultado-busqueda:hover {\n  --background: #6ae56a;\n  animation-duration: 6s;\n}\n\n.precio {\n  font-weight: bold;\n}\n\n.notificacion {\n  background-color: #278bf2;\n  border-radius: 100%;\n  text-align: center;\n  padding: 3px;\n  font-size: 12px;\n}\n\n@media (max-width: 768px) {\n  .opciones-principales-menu,\n.logo {\n    display: none;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtcHJpbmNpcGFsLmNvbXBvbmVudC5zY3NzIiwiLi5cXC4uXFwuLlxcLi5cXC4uXFwuLlxcLi5cXC4uXFxXaW5kb3dzJTIwMTBcXERlc2t0b3BcXGRvbi1jYWN0dXMtcGFkdWFcXHNyY1xcYXBwXFxjb21wb25lbnRzXFx3ZWJcXG1lbnUtcHJpbmNpcGFsXFxtZW51LXByaW5jaXBhbC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FDQ0o7O0FERUE7RUFDSSxhQUFBO0VBQ0EsNkJBQUE7RUFDQSxtQkFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksZ0NBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREdBO0VBQ0ksYUFBQTtBQ0FKOztBREdBO0VBQ0ksY0FBQTtBQ0FKOztBREdBO0VBQ0ksZUFBQTtFQUNBLFVBQUE7RUFDQSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsVUFBQTtBQ0FKOztBREdBO0VBQ0ksYUFBQTtBQ0FKOztBREdBO0VBQ0ksaUJBQUE7QUNBSjs7QURHQTtFQUNJLHFCQUFBO0VBQ0Esc0JBQUE7QUNBSjs7QURHQTtFQUNJLGlCQUFBO0FDQUo7O0FER0E7RUFDSSx5QkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsZUFBQTtBQ0FKOztBREdBO0VBRUk7O0lBRUksYUFBQTtFQ0ROO0FBQ0YiLCJmaWxlIjoibWVudS1wcmluY2lwYWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVyIGlvbi10b29sYmFyIHtcclxuICAgIC0tYmFja2dyb3VuZDogIzAwQzUwMDtcclxuICAgIC0tY29sb3I6IHdoaXRlO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IGlvbi1sYWJlbCBpb24taWNvbiB7XHJcbiAgICBmb250LXNpemU6IDEuOGVtO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5sb2dvIHtcclxuICAgIGZvbnQtZmFtaWx5OiBSYWxld2F5LCBzYW5zLXNlcmlmO1xyXG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcclxuXHJcbn1cclxuXHJcbi5jb250ZW5lZG9yLXByb2R1Y3Rvcy1pbmljaW8tY3VsdG8ge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuLmNvbnRlbmVkb3ItcHJvZHVjdG9zLWluaWNpby1hY3Rpdm8ge1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuXHJcbi5yZXN1bHRhZG8tYnVzcXVlZGEge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgd2lkdGg6IDM0JTtcclxuICAgIG1hcmdpbi1sZWZ0OiAyMyU7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDI1JTtcclxuICAgIHotaW5kZXg6IDE7XHJcbn1cclxuXHJcbi5mb3RvLWl0ZW0ge1xyXG4gICAgcGFkZGluZzogMTBweDtcclxufVxyXG5cclxuLml0ZW0tcmVzdWx0YWRvLWJ1c3F1ZWRhIHtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4uaXRlbS1yZXN1bHRhZG8tYnVzcXVlZGE6aG92ZXIge1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjNmFlNTZhO1xyXG4gICAgYW5pbWF0aW9uLWR1cmF0aW9uOiA2c1xyXG59XHJcblxyXG4ucHJlY2lvIHtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4ubm90aWZpY2FjaW9ue1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzI3OGJmMjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nOiAzcHg7XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbn1cclxuXHJcbkBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG5cclxuICAgIC5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51LFxyXG4gICAgLmxvZ28ge1xyXG4gICAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICB9XHJcbn0iLCJpb24taGVhZGVyIGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiAjMDBDNTAwO1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5vcGNpb25lcy1wcmluY2lwYWxlcy1tZW51IGlvbi1sYWJlbCBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMS44ZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4ubG9nbyB7XG4gIGZvbnQtZmFtaWx5OiBSYWxld2F5LCBzYW5zLXNlcmlmO1xuICBmb250LXdlaWdodDogNzAwO1xufVxuXG4uY29udGVuZWRvci1wcm9kdWN0b3MtaW5pY2lvLWN1bHRvIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cblxuLmNvbnRlbmVkb3ItcHJvZHVjdG9zLWluaWNpby1hY3Rpdm8ge1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnJlc3VsdGFkby1idXNxdWVkYSB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgd2lkdGg6IDM0JTtcbiAgbWFyZ2luLWxlZnQ6IDIzJTtcbiAgbWFyZ2luLXJpZ2h0OiAyNSU7XG4gIHotaW5kZXg6IDE7XG59XG5cbi5mb3RvLWl0ZW0ge1xuICBwYWRkaW5nOiAxMHB4O1xufVxuXG4uaXRlbS1yZXN1bHRhZG8tYnVzcXVlZGEge1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLml0ZW0tcmVzdWx0YWRvLWJ1c3F1ZWRhOmhvdmVyIHtcbiAgLS1iYWNrZ3JvdW5kOiAjNmFlNTZhO1xuICBhbmltYXRpb24tZHVyYXRpb246IDZzO1xufVxuXG4ucHJlY2lvIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5ub3RpZmljYWNpb24ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjc4YmYyO1xuICBib3JkZXItcmFkaXVzOiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDNweDtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuXG5AbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLm9wY2lvbmVzLXByaW5jaXBhbGVzLW1lbnUsXG4ubG9nbyB7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgfVxufSJdfQ== */";
 
 /***/ }),
 
@@ -2681,7 +2891,7 @@ module.exports = "<ion-list>\n  <ion-item *ngFor=\"let producto of productos | f
   \****************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-grid fixed>\r\n      <ion-row class=\"ion-align-items-center\">\r\n        <ion-col size=\"2\" class=\"logo\" size-md=\"2\" size-lg=\"2\">Don Cactus Padua</ion-col>\r\n        <ion-col size-md=\"4\" size-sm=\"12\" size-lg=\"5\">\r\n          <ion-searchbar \r\n            placeholder=\"Buscar marcas, productos y más...\"\r\n            (ionChange)=\"onSearchChange($event)\"\r\n            inputmode=\"text\"\r\n          ></ion-searchbar></ion-col>\r\n        <ion-col size=\"4\" size-md=\"6\" size-lg=\"5\" class=\"opciones-principales-menu\">\r\n         <ion-label>Ingresar</ion-label>\r\n         <ion-label>Crear cuenta</ion-label>\r\n         <ion-label>Mis compras</ion-label>\r\n         <ion-label>\r\n          <ion-icon name=\"cart-outline\" routerLink=\"/carrito\"></ion-icon>\r\n         </ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-toolbar>\r\n</ion-header>";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-grid fixed>\r\n      <ion-row class=\"ion-align-items-center\">\r\n        <ion-col size=\"2\" class=\"logo\" size-md=\"2\" size-lg=\"2\">Don Cactus Padua</ion-col>\r\n        <ion-col size-md=\"4\" size-sm=\"12\" size-lg=\"5\">\r\n          <ion-searchbar placeholder=\"Buscar marcas, productos y más...\" (ionChange)=\"onSearchChange($event)\"\r\n            inputmode=\"text\"></ion-searchbar>\r\n        </ion-col>\r\n        <ion-col size=\"4\" size-md=\"6\" size-lg=\"5\" class=\"opciones-principales-menu\">\r\n          <ion-label>Ingresar</ion-label>\r\n          <ion-label>Crear cuenta</ion-label>\r\n          <ion-label>Mis compras</ion-label>\r\n          <ion-label>\r\n            <ion-icon name=\"cart-outline\" routerLink=\"/carrito\" class=\"notification-cart\">\r\n            </ion-icon>\r\n            <label class=\"notificacion\" *ngIf=\"notificacion\">{{carrito.length}}</label>\r\n          </ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-toolbar>\r\n  <!-- Resultado de búsquedas -->\r\n  <div\r\n    [ngClass]=\"{'contenedor-productos-inicio-activo':mostrarBuscadorCss,'contenedor-productos-inicio-culto':mostrarProductosCss}\">\r\n    <section class=\"resultado-busqueda\">\r\n      <ion-list>\r\n        <ion-item *ngFor=\"let producto of productos | filtroPipe:textoBuscar:'nombre' | slice:0:5\"\r\n          class=\"item-resultado-busqueda\">\r\n          <ion-grid fixed (click)=\"verProducto(producto.url)\">\r\n            <ion-row>\r\n              <ion-col size=\"3\">\r\n                <img [src]=\"producto.img\" width=\"60px\" height=\"60px\" class=\"foto-item\">\r\n              </ion-col>\r\n              <ion-col size=\"6\">\r\n                <h5>{{producto.nombre}}</h5>\r\n              </ion-col>\r\n              <ion-col size=\"3\">\r\n                <ion-item>\r\n                  <ion-label class=\"precio\">${{producto.precio | number}}</ion-label>\r\n                </ion-item>\r\n              </ion-col>\r\n            </ion-row>\r\n          </ion-grid>\r\n        </ion-item>\r\n      </ion-list>\r\n    </section>\r\n  </div>\r\n\r\n\r\n</ion-header>";
 
 /***/ }),
 

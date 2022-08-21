@@ -9,4 +9,6 @@ const pedidos = (0, express_1.Router)();
  * {{url}}/api/pedidos
  */
 pedidos.post('/linkPago', [validar_jwt_1.validarJWT, validar_campos_1.validarCampos], pedidos_1.crearLinkPago);
+pedidos.post('/nuevopedido', [validar_jwt_1.validarJWT, validar_campos_1.validarCampos], pedidos_1.crearPedido);
+pedidos.get('/settings', pedidos_1.confirmarPedido);
 exports.default = pedidos;

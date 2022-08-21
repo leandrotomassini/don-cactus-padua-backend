@@ -1,43 +1,6 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_tabs_tabs_module_ts"],{
 
-/***/ 8482:
-/*!*****************************************!*\
-  !*** ./src/app/guards/usuario.guard.ts ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UsuarioGuard": () => (/* binding */ UsuarioGuard)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _services_usuario_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/usuario.service */ 5763);
-
-
-
-let UsuarioGuard = class UsuarioGuard {
-    constructor(usuarioService) {
-        this.usuarioService = usuarioService;
-    }
-    canLoad() {
-        return this.usuarioService.validaToken();
-    }
-};
-UsuarioGuard.ctorParameters = () => [
-    { type: _services_usuario_service__WEBPACK_IMPORTED_MODULE_0__.UsuarioService }
-];
-UsuarioGuard = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
-        providedIn: 'root'
-    })
-], UsuarioGuard);
-
-
-
-/***/ }),
-
 /***/ 5448:
 /*!***************************************************!*\
   !*** ./src/app/pages/tabs/tabs-routing.module.ts ***!
@@ -65,7 +28,7 @@ const routes = [
         children: [
             {
                 path: 'growshop',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("default-src_app_pages_producto_producto_page_ts"), __webpack_require__.e("src_app_pages_growshop_growshop_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../growshop/growshop.module */ 3576)).then(m => m.GrowshopPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_components_web_components_module_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_growshop_growshop_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../growshop/growshop.module */ 3576)).then(m => m.GrowshopPageModule)
             },
             {
                 path: 'cuenta',
