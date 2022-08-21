@@ -48,5 +48,8 @@ const productos = (cliente, io) => {
     cliente.on('get-productos-carrito', (idusuario) => __awaiter(void 0, void 0, void 0, function* () {
         io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: idusuario }).populate('usuario', 'nombre').populate('producto'));
     }));
+    cliente.on('get-productos-carrito-notificacion', (idUsuario) => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('productos-carrito-notificacion', yield carrito_1.Carrito.find({ usuario: idUsuario }).populate('usuario', 'nombre').populate('producto'));
+    }));
 };
 exports.productos = productos;

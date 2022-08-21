@@ -50,6 +50,10 @@ export const productos = (cliente: Socket, io: socketIO.Server) => {
         io.emit('productos-carrito', await Carrito.find({ usuario: idusuario }).populate('usuario', 'nombre').populate('producto'));
     });
 
+    cliente.on('get-productos-carrito-notificacion', async (idUsuario) => {
+        io.emit('productos-carrito-notificacion', await Carrito.find({ usuario: idUsuario }).populate('usuario', 'nombre').populate('producto'));
+    });
+
 }
 
 

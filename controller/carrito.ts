@@ -41,6 +41,7 @@ export const agregarProducto = async (req: Request, res: Response) => {
 
         server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario')
             .populate('producto'));
+        server.io.emit('productos-carrito-notificacion', await Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre').populate('producto'));
 
         res.status(201).json({
             ok: true,
@@ -63,9 +64,10 @@ export const borrarProducto = async (req: Request, res: Response) => {
     const productoBorrado = await Carrito.findByIdAndDelete(id);
 
     server.io.emit('productos-carrito', await Carrito.find({ usuario: req.usuario._id }).populate('usuario')
-    .populate('producto'));
-
-    res.json({
+        .populate('producto'));
+    server.io.emit('productos-carrito-notificacion', await Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre').populate('producto'));
+   
+     res.json({
         ok: true,
         productoBorrado
     });

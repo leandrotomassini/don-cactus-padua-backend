@@ -43,6 +43,7 @@ const agregarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function
         yield carrito.save();
         server.io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario')
             .populate('producto'));
+        server.io.emit('productos-carrito-notificacion', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre').populate('producto'));
         res.status(201).json({
             ok: true,
             carrito
@@ -63,6 +64,7 @@ const borrarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function*
     const productoBorrado = yield carrito_1.Carrito.findByIdAndDelete(id);
     server.io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario')
         .populate('producto'));
+    server.io.emit('productos-carrito-notificacion', yield carrito_1.Carrito.find({ usuario: req.usuario._id }).populate('usuario', 'nombre').populate('producto'));
     res.json({
         ok: true,
         productoBorrado
