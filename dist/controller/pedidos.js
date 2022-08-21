@@ -99,21 +99,37 @@ const crearPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.crearPedido = crearPedido;
-const confirmarPedido = (req, res) => {
-    const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id, } = req.query;
-    res.json({
-        ok: true,
-        collection_id,
-        collection_status,
-        payment_id,
-        status,
-        external_reference,
-        payment_type,
-        merchant_order_id,
-        preference_id,
-        site_id,
-        processing_mode,
-        merchant_account_id,
-    });
-};
+const confirmarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id, } = req.query;
+        let pedido = yield pedido_1.Pedido.findById(external_reference);
+        pedido.collection_id = collection_id.toString() || '';
+        pedido.collection_status = collection_status.toString() || '';
+        pedido.payment_id = payment_id.toString() || '';
+        pedido.status = status.toString() || '';
+        pedido.external_reference = external_reference.toString() || '';
+        pedido.merchant_order_id = merchant_order_id.toString() || '';
+        pedido.payment_type = payment_type.toString() || '';
+        pedido.preference_id = preference_id.toString() || '';
+        pedido.site_id = site_id.toString() || '';
+        pedido.processing_mode = processing_mode.toString() || '';
+        pedido.merchant_account_id = merchant_account_id.toString() || '';
+        if (collection_status == 'approved') {
+            pedido.aprobado = true;
+        }
+        // Actualizar el pedido
+        let pedidoActualizado = yield pedido_1.Pedido.findByIdAndUpdate(external_reference, pedido, { new: true });
+        res.json({
+            ok: true,
+            pedidoActualizado
+        });
+    }
+    catch (error) {
+        res.json({
+            ok: false,
+            error
+        });
+    }
+    // res.redirect('https://www.doncactuspadua.com/cuenta');
+});
 exports.confirmarPedido = confirmarPedido;
