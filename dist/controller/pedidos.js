@@ -27,6 +27,7 @@ exports.confirmarPedido = exports.crearPedido = exports.crearLinkPago = void 0;
 const axios_1 = __importDefault(require("axios"));
 const enviroment_1 = require("../global/enviroment");
 const pedido_1 = require("../classes/pedido");
+const carrito_1 = require("../classes/carrito");
 const crearLinkPago = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let usuario = req.body.productos[0].usuario._id;
@@ -119,7 +120,9 @@ const confirmarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function
         }
         // Actualizar el pedido
         let pedidoActualizado = yield pedido_1.Pedido.findByIdAndUpdate(external_reference, pedido, { new: true });
-        res.redirect('https://www.doncactuspadua.com/cuenta');
+        let idUsuario = pedido.usuario.toString();
+        yield carrito_1.Carrito.deleteMany({ usuario: idUsuario });
+        res.redirect('https://www.doncactuspadua.com');
         // res.json({
         //     ok: true,
         //     pedidoActualizado

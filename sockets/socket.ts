@@ -5,6 +5,7 @@ import { Producto } from '../classes/producto';
 import { Categoria } from '../classes/categoria';
 import { Etiqueta } from '../classes/etiqueta';
 import { Carrito } from '../classes/carrito';
+import { Pedido } from '../classes/pedido';
 
 
 export const desconectar = (cliente: Socket, io: socketIO.Server) => {
@@ -51,10 +52,14 @@ export const productos = (cliente: Socket, io: socketIO.Server) => {
     });
 
     cliente.on('get-productos-carrito-notificacion', async (idUsuario) => {
-        io.emit('productos-carrito-notificacion', await Carrito.find({ usuario: idUsuario
-         }).populate('usuario', 'nombre').populate('producto'));
+        io.emit('productos-carrito-notificacion', await Carrito.find({
+            usuario: idUsuario
+        }).populate('usuario', 'nombre').populate('producto'));
     });
 
+    cliente.on('get-pedidos', async () => {
+        io.emit('pedidos', await Pedido.find({ estado: true }).populate('usuario'));
+    });
 }
 
 

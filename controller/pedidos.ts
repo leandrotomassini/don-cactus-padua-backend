@@ -5,6 +5,7 @@ import { ACCESS_TOKEN } from "../global/enviroment";
 import { URLWEB } from '../global/enviroment';
 
 import { Pedido } from "../classes/pedido";
+import { Carrito } from "../classes/carrito";
 
 export const crearLinkPago = async (req: Request, res: Response) => {
 
@@ -137,7 +138,10 @@ export const confirmarPedido = async (req: Request, res: Response) => {
         // Actualizar el pedido
         let pedidoActualizado = await Pedido.findByIdAndUpdate(external_reference, pedido, { new: true });
 
-        res.redirect('https://www.doncactuspadua.com/cuenta');
+        let idUsuario = pedido.usuario.toString();
+        await Carrito.deleteMany({ usuario: idUsuario });
+
+        res.redirect('https://www.doncactuspadua.com');
         // res.json({
         //     ok: true,
         //     pedidoActualizado

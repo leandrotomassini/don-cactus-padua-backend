@@ -14,6 +14,7 @@ const producto_1 = require("../classes/producto");
 const categoria_1 = require("../classes/categoria");
 const etiqueta_1 = require("../classes/etiqueta");
 const carrito_1 = require("../classes/carrito");
+const pedido_1 = require("../classes/pedido");
 const desconectar = (cliente, io) => {
     cliente.on('disconnect', () => {
         console.log('Cliente desconectado: ', cliente.id);
@@ -49,8 +50,12 @@ const productos = (cliente, io) => {
         io.emit('productos-carrito', yield carrito_1.Carrito.find({ usuario: idusuario }).populate('usuario', 'nombre').populate('producto'));
     }));
     cliente.on('get-productos-carrito-notificacion', (idUsuario) => __awaiter(void 0, void 0, void 0, function* () {
-        io.emit('productos-carrito-notificacion', yield carrito_1.Carrito.find({ usuario: idUsuario
+        io.emit('productos-carrito-notificacion', yield carrito_1.Carrito.find({
+            usuario: idUsuario
         }).populate('usuario', 'nombre').populate('producto'));
+    }));
+    cliente.on('get-pedidos', () => __awaiter(void 0, void 0, void 0, function* () {
+        io.emit('pedidos', yield pedido_1.Pedido.find({ estado: true }).populate('usuario'));
     }));
 };
 exports.productos = productos;
